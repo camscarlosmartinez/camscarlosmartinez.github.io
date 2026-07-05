@@ -41,11 +41,13 @@ Para editar contenido:
 - Árbol del problema técnico con panel explicativo.
 - Stepper de teoría de cambio.
 - Tabs de estado del arte.
+- Stepper de ruta integrada de transformación institucional.
+- Inspector del Expediente Técnico Integrado.
 - Filtro documental.
 - Menú móvil.
 - Panel flotante de participación.
 
-Si JavaScript falla, el contenido sigue visible como HTML normal.
+Las interacciones usan HTML, CSS y JavaScript puro. Cuando JavaScript carga, los paneles aplican roles y estados accesibles (`tab`, `tabpanel`, `aria-selected`, `aria-controls`, `hidden` y navegación por teclado). Si JavaScript falla, el contenido sigue visible como HTML normal.
 
 ## Probar localmente
 

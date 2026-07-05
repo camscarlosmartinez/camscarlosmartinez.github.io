@@ -72,8 +72,10 @@
       <a href="#tipologia">Tipología</a>
       <a href="#teoria-cambio">Teoría de cambio</a>
       <a href="#estado-arte">Estado del arte</a>
+      <a href="#fundamento">Fundamento</a>
       <a href="#arquitectura">Arquitectura</a>
       <a href="#expediente">Expediente</a>
+      <a href="#metodologias">Metodologías</a>
       <a href="#tablero">Tablero</a>
     </nav>
 
@@ -192,9 +194,11 @@
             <span>Estado que Cumple</span>
             <small>diagnóstico · madurez · aprendizaje</small>
           </div>
-          <button class="core-node is-active" type="button" data-core-tab="raices" aria-selected="true" aria-controls="proposal-raices">RAÍCES</button>
-          <button class="core-node" type="button" data-core-tab="savia" aria-selected="false" aria-controls="proposal-savia">SAVIA</button>
-          <button class="core-node" type="button" data-core-tab="semillas" aria-selected="false" aria-controls="proposal-semillas">SEMILLAS</button>
+          <div class="core-tablist">
+            <button class="core-node node-raices is-active" type="button" data-core-tab="raices" aria-selected="true" aria-controls="proposal-raices">RAÍCES</button>
+            <button class="core-node node-savia" type="button" data-core-tab="savia" aria-selected="false" aria-controls="proposal-savia">SAVIA</button>
+            <button class="core-node node-semillas" type="button" data-core-tab="semillas" aria-selected="false" aria-controls="proposal-semillas">SEMILLAS</button>
+          </div>
         </div>
         <div class="core-panels">
           <article class="core-panel is-active" id="proposal-raices" data-core-panel="raices">
@@ -272,6 +276,19 @@
       </div>
     </section>
 
+    <section class="section" id="fundamento">
+      <div class="section-title wide">
+        <p class="overline">Fundamento constitucional, legal y administrativo</p>
+        <h2>La propuesta no reemplaza competencias: ordena la decisión para llevarla al instrumento correcto.</h2>
+      </div>
+      <div class="foundation-grid">
+        <article><span>Constitucional</span><h3>Finalidad pública y derechos</h3><p>La transformación debe justificar qué derecho, servicio, función o problema público busca cumplir con capacidad real.</p></article>
+        <article><span>Legal</span><h3>Competencia y reserva de ley</h3><p>Cuando una decisión modifica competencias, crea estructuras o cambia reglas sustantivas, debe pasar por el canal legal competente.</p></article>
+        <article><span>Jurisprudencial</span><h3>Razonabilidad y motivación</h3><p>La evidencia, la proporcionalidad y la motivación ayudan a evitar reformas improvisadas o institucionalmente frágiles.</p></article>
+        <article><span>Administrativo</span><h3>Planeación, función pública y control</h3><p>DAFP, DNP, Hacienda, sectores, territorios y órganos de control tienen piezas distintas dentro de la maduración institucional.</p></article>
+      </div>
+    </section>
+
     <section class="section system-map" id="arquitectura" data-system-map aria-labelledby="arquitectura-title">
       <div class="section-title wide">
         <p class="overline">Arquitectura institucional completa</p>
@@ -328,31 +345,70 @@
         <h2 id="ruta-title">De la solicitud a la evaluación: una cadena de decisión con memoria.</h2>
       </div>
       <div class="process-line">
-        <span>Solicitud</span><span>Revisión</span><span>Priorización</span><span>Análisis</span><span>Piloto si aplica</span><span>Expediente</span><span>Decisión</span><span>Implementación</span><span>Evaluación</span>
+        <button class="is-active" type="button" data-step-tab="solicitud" aria-selected="true">Solicitud</button>
+        <button type="button" data-step-tab="revision" aria-selected="false">Revisión</button>
+        <button type="button" data-step-tab="priorizacion" aria-selected="false">Priorización</button>
+        <button type="button" data-step-tab="analisis" aria-selected="false">Análisis</button>
+        <button type="button" data-step-tab="piloto" aria-selected="false">Piloto si aplica</button>
+        <button type="button" data-step-tab="expediente" aria-selected="false">Expediente</button>
+        <button type="button" data-step-tab="decision" aria-selected="false">Decisión</button>
+        <button type="button" data-step-tab="implementacion" aria-selected="false">Implementación</button>
+        <button type="button" data-step-tab="evaluacion" aria-selected="false">Evaluación</button>
       </div>
-      <div class="route-note">
-        <p>La ruta evita saltar directamente de una demanda pública a una nueva entidad. Primero clasifica el problema, revisa lo existente, evalúa madurez, prueba si hace falta y solo después selecciona el instrumento competente.</p>
+      <div class="step-panels process-panels">
+        <article class="step-panel is-active" data-step-panel="solicitud"><span>Entrada</span><h3>Solicitud</h3><p>Un caso entra por gobierno, Congreso, ciudadanía, territorio, servidores, órganos de control, decisión judicial o indicador crítico.</p></article>
+        <article class="step-panel" data-step-panel="revision"><span>RAÍCES</span><h3>Revisión</h3><p>Se identifica qué existe, qué se superpone, qué falta, qué datos hay y qué restricciones institucionales aparecen.</p></article>
+        <article class="step-panel" data-step-panel="priorizacion"><span>Gobernanza</span><h3>Priorización</h3><p>La instancia competente decide si el caso requiere mesa técnica, expediente completo, piloto o archivo motivado.</p></article>
+        <article class="step-panel" data-step-panel="analisis"><span>SAVIA</span><h3>Análisis</h3><p>Se revisa madurez fiscal, laboral, territorial, documental, jurídica, de datos, participación, control y prevención de captura.</p></article>
+        <article class="step-panel" data-step-panel="piloto"><span>SEMILLAS</span><h3>Piloto si aplica</h3><p>Cuando la capacidad no está probada, se ensaya una solución acotada con línea base, indicadores y evaluación.</p></article>
+        <article class="step-panel" data-step-panel="expediente"><span>Soporte</span><h3>Expediente</h3><p>Se integra evidencia, alternativas, costos, riesgos, participación, cronograma, indicadores y ruta jurídica.</p></article>
+        <article class="step-panel" data-step-panel="decision"><span>Competencia</span><h3>Decisión</h3><p>La salida se lleva al instrumento correcto: directiva, decreto, CONPES, PND, ley, acuerdo territorial, guía o archivo.</p></article>
+        <article class="step-panel" data-step-panel="implementacion"><span>Cumplimiento</span><h3>Implementación</h3><p>La decisión queda asociada a responsables, plazos, recursos, datos, archivo, seguimiento y rendición pública.</p></article>
+        <article class="step-panel" data-step-panel="evaluacion"><span>Aprendizaje</span><h3>Evaluación</h3><p>Se revisa qué funcionó, qué debe ajustarse, qué puede escalarse, qué debe cerrarse y qué queda como memoria institucional.</p></article>
       </div>
     </section>
 
-    <section class="section" id="expediente">
+    <section class="section checklist-section" id="expediente" data-checklist>
       <div class="section-title wide">
         <p class="overline">Expediente Técnico Integrado</p>
         <h2>La decisión debe dejar huella: evidencia, alternativas, riesgos, cronograma e indicadores.</h2>
       </div>
-      <div class="checklist-grid">
-        <article><span>Diagnóstico</span><p>Problema público, funciones existentes, duplicidades, vacíos y restricciones.</p></article>
-        <article><span>Alternativas</span><p>Opciones de ajuste, absorción, coordinación, cierre, piloto o creación.</p></article>
-        <article><span>Impacto fiscal</span><p>Costos, fuente de financiación, sostenibilidad y articulación presupuestal.</p></article>
-        <article><span>Soporte laboral</span><p>Planta, perfiles, cargas, contratación recurrente y capacidades internas.</p></article>
-        <article><span>Datos</span><p>Interoperabilidad, calidad, metadatos, seguridad y uso decisorio.</p></article>
-        <article><span>Archivo</span><p>Gestión documental, versiones, trazabilidad y memoria institucional.</p></article>
-        <article><span>Riesgos</span><p>Captura, duplicidad, opacidad, centralismo, simulación y efectos no deseados.</p></article>
-        <article><span>Participación</span><p>Comentarios, actores afectados, respuestas institucionales y participación incidente.</p></article>
-        <article><span>Instrumento jurídico</span><p>Directiva, decreto, CONPES, PND, ley, acuerdo u otro canal competente.</p></article>
-        <article><span>Cronograma</span><p>Fases, responsables, entregables y plazos de revisión pública.</p></article>
-        <article><span>Indicadores</span><p>Línea base, metas de proceso, resultado, aprendizaje y evaluación posterior.</p></article>
-        <article><span>Evaluación</span><p>Revisión posterior para ajustar, escalar, cerrar o archivar con evidencia.</p></article>
+      <div class="checklist-layout">
+        <div class="checklist-grid">
+          <button class="check-card is-active" type="button" data-check-item data-check-title="Diagnóstico" data-check-meta="Problema, funciones, duplicidades, vacíos y restricciones" data-check-text="El expediente debe explicar el problema público, qué formas institucionales ya existen, qué responsabilidades se cruzan y qué limitaciones reales impiden cumplir."><span>Diagnóstico</span></button>
+          <button class="check-card" type="button" data-check-item data-check-title="Alternativas" data-check-meta="Ajustar, absorber, coordinar, cerrar, pilotear o crear" data-check-text="Antes de crear una forma nueva, el expediente debe comparar alternativas y justificar por qué una opción es más razonable, viable y proporcional que otra."><span>Alternativas</span></button>
+          <button class="check-card" type="button" data-check-item data-check-title="Impacto fiscal" data-check-meta="Costos, fuente, sostenibilidad y articulación presupuestal" data-check-text="La decisión debe mostrar de dónde salen los recursos, cuánto cuesta sostenerla y qué riesgos fiscales aparecen en operación."><span>Impacto fiscal</span></button>
+          <button class="check-card" type="button" data-check-item data-check-title="Soporte laboral" data-check-meta="Planta, perfiles, cargas y contratación recurrente" data-check-text="El expediente debe revisar si existe talento suficiente, si hay funciones permanentes contratadas de manera recurrente y qué capacidades internas se requieren."><span>Soporte laboral</span></button>
+          <button class="check-card" type="button" data-check-item data-check-title="Datos" data-check-meta="Interoperabilidad, calidad, metadatos, seguridad y uso decisorio" data-check-text="La transformación debe saber qué datos necesita, cómo se integran, quién los custodia y cómo sirven para tomar decisiones."><span>Datos</span></button>
+          <button class="check-card" type="button" data-check-item data-check-title="Archivo" data-check-meta="Gestión documental, versiones, trazabilidad y memoria" data-check-text="Sin memoria institucional, cada reforma vuelve a empezar. El expediente debe guardar versiones, soportes, decisiones y evidencia para consulta futura."><span>Archivo</span></button>
+          <button class="check-card" type="button" data-check-item data-check-title="Riesgos" data-check-meta="Captura, duplicidad, opacidad, centralismo y simulación" data-check-text="El expediente debe anticipar cómo puede fallar la transformación y qué blindajes reducen captura, opacidad o reforma simbólica."><span>Riesgos</span></button>
+          <button class="check-card" type="button" data-check-item data-check-title="Participación" data-check-meta="Actores afectados, comentarios y respuesta institucional" data-check-text="La participación incidente requiere que los aportes tengan tema, respuesta y trazabilidad, no solo un espacio formal de recepción."><span>Participación</span></button>
+          <button class="check-card" type="button" data-check-item data-check-title="Instrumento jurídico" data-check-meta="Directiva, decreto, CONPES, PND, ley, acuerdo u otro canal" data-check-text="El expediente debe explicar qué instrumento corresponde y qué actor tiene competencia para tomar la decisión."><span>Instrumento jurídico</span></button>
+          <button class="check-card" type="button" data-check-item data-check-title="Cronograma" data-check-meta="Fases, responsables, entregables y plazos" data-check-text="Una transformación sin fases ni responsables claros se vuelve una promesa difícil de controlar. El cronograma hace visible el cumplimiento."><span>Cronograma</span></button>
+          <button class="check-card" type="button" data-check-item data-check-title="Indicadores" data-check-meta="Línea base, proceso, resultado, aprendizaje y memoria" data-check-text="Los indicadores deben ayudar a corregir decisiones, no decorar la reforma con cifras sin uso público."><span>Indicadores</span></button>
+          <button class="check-card" type="button" data-check-item data-check-title="Evaluación posterior" data-check-meta="Ajustar, escalar, absorber, cerrar o archivar" data-check-text="Después de implementar, el expediente debe permitir evaluar si la decisión cumplió, si debe modificarse o si conviene cerrarla."><span>Evaluación posterior</span></button>
+        </div>
+        <aside class="checklist-detail" aria-live="polite">
+          <p class="overline">Elemento del expediente</p>
+          <h3 data-check-title>Diagnóstico</h3>
+          <strong data-check-meta>Problema, funciones, duplicidades, vacíos y restricciones</strong>
+          <p data-check-text>El expediente debe explicar el problema público, qué formas institucionales ya existen, qué responsabilidades se cruzan y qué limitaciones reales impiden cumplir.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="metodologias">
+      <div class="section-title wide">
+        <p class="overline">Metodologías de análisis</p>
+        <h2>El expediente no se limita a diagnóstico general: cruza dimensiones operativas que suelen fallar.</h2>
+      </div>
+      <div class="method-grid">
+        <article><span>Fiscal</span><h3>Sostenibilidad y fuente</h3><p>Costos de creación, operación, inversión, mantenimiento, transición y riesgos de financiación insuficiente.</p></article>
+        <article><span>Laboral</span><h3>Talento y funciones permanentes</h3><p>Planta, perfiles, cargas, provisionalidad, contratación recurrente y capacidades internas.</p></article>
+        <article><span>Territorial</span><h3>Capacidad subnacional</h3><p>Condiciones de departamentos, distritos y municipios para operar, coordinar y sostener la decisión.</p></article>
+        <article><span>Documental</span><h3>Archivo y memoria</h3><p>Expedientes, versiones, trazabilidad, gestión documental y continuidad entre administraciones.</p></article>
+        <article><span>Datos</span><h3>Interoperabilidad y calidad</h3><p>Estándares, metadatos, seguridad, responsables y utilidad real de los datos para decidir.</p></article>
+        <article><span>Captura</span><h3>Prevención y control</h3><p>Conflictos de interés, concentración de beneficios, opacidad contractual y blindajes de participación.</p></article>
       </div>
     </section>
 
