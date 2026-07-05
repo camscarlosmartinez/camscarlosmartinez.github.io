@@ -11,6 +11,10 @@ Sitio público de CAMS: archivo documental, laboratorio institucional y marca de
 - `/bitacora/` notas breves para debate público.
 - `/archivo/` repositorios, redes y enlaces de publicación.
 
+## Documento publicado
+
+- `assets/documentos/estado-que-cumple-2026-2030.pdf`: documento programático, técnico-político y de discusión presidencial para el periodo 2026-2030.
+
 ## Publicación
 
 El sitio se publica con GitHub Pages desde la rama `main` del repositorio `camscarlosmartinez.github.io`.
