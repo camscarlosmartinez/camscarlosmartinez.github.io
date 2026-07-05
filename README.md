@@ -1,27 +1,23 @@
-# CAMS | Estado que Cumple — Web v3
+# CAMS | Estado que Cumple
 
-Versión corregida para evitar apariencia genérica.
+Sitio público de CAMS: archivo documental, laboratorio institucional y marca de política pública orientada a capacidad estatal verificable.
 
-## Cambios principales
+## Estructura
 
-- Header más compacto: el logo ya no ocupa tanto espacio.
-- Hero más editorial, con riel lateral y sistema visual propio.
-- Menos aire muerto y mejor jerarquía de contenidos.
-- Micrositios reales:
-  - Estado que Cumple
-  - Documentos
-  - Observatorio
-  - Bitácora
-  - Archivo público
-- Mejor uso de colores CAMS: azul profundo, crema, dorado y rojo.
-- Buscador y filtro en la biblioteca de documentos.
-- Estructura preparada para subir documentos reales y enlazar Zenodo, OSF, GitHub, Academia.edu e Internet Archive.
+- `/` portada institucional y rutas principales.
+- `/estado-que-cumple/` tesis, método y componentes RAÍCES, SAVIA y SEMILLAS.
+- `/documentos/` archivo de trabajos, informes, matrices y policy papers.
+- `/observatorio/` indicadores y matrices de lectura pública.
+- `/bitacora/` notas breves para debate público.
+- `/archivo/` repositorios, redes y enlaces de publicación.
 
-## Cómo subir
+## Publicación
 
-Sube el contenido interno de este ZIP al repositorio `camscarlosmartinez.github.io`.
-Acepta reemplazar archivos existentes.
+El sitio se publica con GitHub Pages desde la rama `main` del repositorio `camscarlosmartinez.github.io`.
 
-Mensaje de commit sugerido:
+## Reglas editoriales
 
-`Actualizar diseño CAMS web v3`
+- No publicar datos personales sensibles, cédulas, teléfonos ni información de terceros.
+- Todo documento público debe tener fecha, versión, resumen, palabras clave y forma de citación.
+- Evitar enlaces falsos: si una plataforma aún no existe, marcarla como pendiente sin `href`.
+- Mantener la estética de archivo público: grillas sobrias, metadatos, fichas y lenguaje institucional.

@@ -31,7 +31,3 @@ function applyDocFilter() {
 }
 search?.addEventListener("input", applyDocFilter);
 filter?.addEventListener("change", applyDocFilter);
-
-document.querySelectorAll(".moving-line div").forEach((el) => {
-  el.innerHTML = el.innerHTML + el.innerHTML;
-});
