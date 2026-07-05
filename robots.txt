@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://camscarlosmartinez.github.io/sitemap.xml

@@ -1,62 +1,27 @@
-# CAMS | Estado que Cumple
+# CAMS | Estado que Cumple — Web v3
 
-Sitio web estático para la marca personal de Carlos Arturo Martínez Sánchez.
+Versión corregida para evitar apariencia genérica.
 
-## Marca
+## Cambios principales
 
-CAMS  
-Estado que Cumple  
+- Header más compacto: el logo ya no ocupa tanto espacio.
+- Hero más editorial, con riel lateral y sistema visual propio.
+- Menos aire muerto y mejor jerarquía de contenidos.
+- Micrositios reales:
+  - Estado que Cumple
+  - Documentos
+  - Observatorio
+  - Bitácora
+  - Archivo público
+- Mejor uso de colores CAMS: azul profundo, crema, dorado y rojo.
+- Buscador y filtro en la biblioteca de documentos.
+- Estructura preparada para subir documentos reales y enlazar Zenodo, OSF, GitHub, Academia.edu e Internet Archive.
 
-Versión extendida:
+## Cómo subir
 
-CAMS  
-Estado que Cumple  
-Del Estado de papel a la capacidad pública real.
+Sube el contenido interno de este ZIP al repositorio `camscarlosmartinez.github.io`.
+Acepta reemplazar archivos existentes.
 
-## Qué contiene
+Mensaje de commit sugerido:
 
-- `index.html`: página principal.
-- `styles.css`: diseño responsive.
-- `script.js`: menú móvil.
-- `.nojekyll`: evita que GitHub Pages procese el sitio con Jekyll.
-- `assets/`: favicon, vista previa para redes e imágenes seleccionadas del branding.
-
-## Cómo subirlo a GitHub Pages
-
-No subas este ZIP completo al repositorio. Descomprímelo y sube el contenido.
-
-La estructura correcta en la raíz del repositorio debe quedar así:
-
-```text
-index.html
-styles.css
-script.js
-.nojekyll
-README.md
-assets/
-```
-
-Si subes una carpeta completa por encima, por ejemplo `cams_estado_que_cumple_web_branding/index.html`, GitHub Pages puede no encontrar la página principal.
-
-## Enlaces por ajustar
-
-En `index.html`, reemplaza los enlaces con `#` por tus enlaces reales:
-
-- LinkedIn
-- Academia.edu
-- Zenodo
-- OSF
-- GitHub
-- Correo público si decides usarlo
-
-## Seguridad
-
-Antes de subir documentos públicos, revisa que no tengan:
-
-- cédula
-- dirección
-- teléfono personal
-- correos privados de terceros
-- datos de compañeros o profesores
-- comentarios internos
-- versiones con notas o correcciones privadas
+`Actualizar diseño CAMS web v3`
