@@ -4,278 +4,285 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CAMS | Estado que Cumple</title>
-  <meta name="description" content="Sitio público de CAMS: documentos, datos y propuestas para pasar del Estado de papel a la capacidad pública real." />
+  <meta name="description" content="CAMS es un archivo público y laboratorio ciudadano para explorar Estado que Cumple, documentos, seguimiento, análisis y participación." />
   <meta name="author" content="Carlos Arturo Martínez Sánchez" />
-  <meta name="keywords" content="CAMS, Carlos Arturo Martínez Sánchez, Estado que Cumple, administración pública, capacidad estatal, Bogotá, juventud, política pública, ESAP, documentos, datos públicos" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
-  <meta name="theme-color" content="#071D33" />
+  <meta name="theme-color" content="#071d33" />
   <link rel="canonical" href="https://camscarlosmartinez.github.io/" />
-
   <meta property="og:title" content="CAMS | Estado que Cumple" />
-  <meta property="og:description" content="Sitio público de CAMS: documentos, datos y propuestas para pasar del Estado de papel a la capacidad pública real." />
+  <meta property="og:description" content="Del Estado de papel a la capacidad pública real: propuesta, herramientas y archivo público." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://camscarlosmartinez.github.io/" />
   <meta property="og:image" content="https://camscarlosmartinez.github.io/assets/og-cams-v3.png" />
   <meta property="og:locale" content="es_CO" />
   <meta name="twitter:card" content="summary_large_image" />
-
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <link rel="manifest" href="/site.webmanifest" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
-<body>
+<body class="page-home">
+  <div class="reading-progress" data-reading-progress aria-hidden="true"><span></span></div>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
-  <div class="paper-noise" aria-hidden="true"></div>
-  <header class="topbar">
-    <a class="brand-lockup" href="/" aria-label="CAMS Estado que Cumple">
+
+  <header class="site-header">
+    <a class="brand-lockup" href="/" aria-label="CAMS, inicio">
       <img src="/assets/branding/logo-cams.png" alt="CAMS Estado que Cumple" width="1200" height="414" />
     </a>
-
-    <button class="menu-button" type="button" aria-label="Abrir menú" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-
-    <nav class="nav orbit-nav" aria-label="Navegación principal">
-      <a class="active" aria-current="page" href="/">Inicio</a>
-      <a href="/estado-que-cumple/">Propuesta</a>
-      <a href="/documentos/">Documentos</a>
-      <a href="/observatorio/">Observatorio</a>
-      <a href="/bitacora/">Bitácora</a>
-      <a href="/participar/">Participar</a>
-      <a href="/archivo/">Archivo</a>
+    <div class="header-actions">
+      <button class="command-trigger button button--icon" type="button" data-command-trigger aria-label="Buscar en CAMS" aria-controls="command-palette" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="6"></circle><path d="m16 16 4 4"></path></svg>
+        <span class="visually-hidden">Buscar</span>
+      </button>
+      <button class="menu-toggle button button--icon" type="button" data-menu-toggle aria-label="Abrir menú" aria-controls="primary-navigation" aria-expanded="false">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+    </div>
+    <nav class="site-nav" id="primary-navigation" data-site-nav aria-label="Navegación principal">
+      <a class="nav-link" aria-current="page" href="/">Inicio</a>
+      <a class="nav-link" href="/estado-que-cumple/">Estado que Cumple</a>
+      <div class="explore-menu" data-explore-menu>
+        <button class="nav-link explore-toggle" type="button" data-explore-toggle aria-expanded="false" aria-controls="explore-panel">
+          Explorar
+          <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="m3 6 5 5 5-5"></path></svg>
+        </button>
+        <div class="explore-panel" id="explore-panel" data-explore-panel>
+          <a class="explore-item" href="/documentos/">
+            <svg class="explore-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M8 4h12l5 5v19H8z"></path><path d="M20 4v6h6M12 16h9M12 21h9"></path></svg>
+            <span><strong>Documentos</strong><small>Biblioteca · publicada</small><em>Buscar, citar y descargar versiones.</em></span>
+          </a>
+          <a class="explore-item" href="/observatorio/">
+            <svg class="explore-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 26h22M8 23V13h4v10m4 0V7h4v16m4 0v-6h4v6"></path></svg>
+            <span><strong>Observatorio</strong><small>Seguimiento · prototipo</small><em>Métodos, fuentes e indicadores propuestos.</em></span>
+          </a>
+          <a class="explore-item" href="/bitacora/">
+            <svg class="explore-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M7 5h18v22H7zM11 10h10M11 15h10M11 20h7"></path></svg>
+            <span><strong>Bitácora</strong><small>Publicación · en desarrollo</small><em>Notas, series y análisis editorial.</em></span>
+          </a>
+          <a class="explore-item" href="/archivo/">
+            <svg class="explore-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 9h22v18H5zM3 5h26v5H3zM12 15h8"></path></svg>
+            <span><strong>Archivo público</strong><small>Preservación · activo</small><em>Repositorios, versiones y trazabilidad.</em></span>
+          </a>
+        </div>
+      </div>
+      <a class="nav-link" href="/participar/">Participar</a>
+      <a class="nav-link" href="/cams/">CAMS</a>
     </nav>
   </header>
 
+  <dialog class="command-palette" id="command-palette" data-command-palette aria-labelledby="command-title">
+    <div data-command-content>
+      <h2 id="command-title">Buscar en CAMS</h2>
+      <p>El buscador se activa con Ctrl + K.</p>
+    </div>
+  </dialog>
+
   <main id="contenido">
-    <section class="hero home-hero" data-search-title="CAMS | Estado que Cumple" data-search-group="Inicio" data-search-keywords="portada propuesta ciudadana técnica archivo público laboratorio institucional">
-      <div class="hero-main">
-        <p class="overline">@cams.carlosmartinez · Bogotá D.C.</p>
-        <h1><span>CAMS</span><strong>Estado que Cumple</strong></h1>
-        <p class="claim">Del Estado de papel a la capacidad pública real.</p>
-        <p class="intro">
-          Propuesta ciudadana y técnica, archivo público y laboratorio institucional para discutir
-          cómo revisar, madurar, pilotear y evaluar capacidades públicas. No está adoptada oficialmente:
-          queda abierta a crítica, evidencia y mejora.
+    <section class="home-hero" data-search-title="CAMS: Estado que Cumple" data-search-group="Propuestas" data-search-keywords="portada propuesta ciudadana técnica programática capacidad pública" data-reveal>
+      <div class="hero-copy">
+        <p class="eyebrow">CAMS · Archivo público independiente</p>
+        <h1 class="hero-title"><span>CAMS</span> <strong>Estado que Cumple</strong></h1>
+        <p class="hero-claim">Del Estado de papel a la capacidad pública real.</p>
+        <p class="hero-disclaimer">
+          Propuesta ciudadana, técnica y programática. No adoptada oficialmente.
+          Abierta a crítica, adaptación e incidencia pública.
         </p>
-        <div class="actions">
-          <a class="button primary" href="/estado-que-cumple/">Explorar propuesta</a>
-          <a class="button secondary" href="/assets/documentos/estado-que-cumple-2026-2030.pdf" target="_blank" rel="noopener">Abrir PDF</a>
-          <a class="button tertiary" href="/participar/">Participar</a>
+        <div class="hero-actions" aria-label="Acciones principales">
+          <a class="button button--primary" href="/estado-que-cumple/">Explorar Estado que Cumple</a>
+          <a class="button button--secondary" href="/assets/documentos/estado-que-cumple-2026-2030.pdf" target="_blank" rel="noopener">Abrir documento</a>
+          <a class="button button--ring" href="#recorrido" aria-label="Iniciar recorrido por CAMS">Iniciar<br />recorrido</a>
+          <a class="button button--text" href="/participar/">Participar <span aria-hidden="true">→</span></a>
         </div>
       </div>
-
-      <aside class="hero-dossier" aria-label="Ficha rápida de la propuesta">
-        <img src="/assets/branding/emblema-cams.png" alt="" width="799" height="1082" />
-        <dl>
-          <div><dt>Carácter</dt><dd>Ciudadano, técnico y programático.</dd></div>
-          <div><dt>Autor</dt><dd>Carlos Arturo Martínez Sánchez.</dd></div>
-          <div><dt>Estado</dt><dd>Propuesta no oficial en discusión pública.</dd></div>
-          <div><dt>Horizonte</dt><dd>2026-2030 como referencia programática.</dd></div>
-          <div><dt>Fuente</dt><dd>Documento técnico-político publicado en PDF.</dd></div>
-        </dl>
-      </aside>
+      <div class="hero-visual" aria-labelledby="hero-diagram-title">
+        <p id="hero-diagram-title" class="eyebrow">Secuencia de capacidad</p>
+        <svg viewBox="0 0 540 420" role="img" aria-label="La propuesta conecta problema público, revisión, madurez, decisión y evaluación">
+          <path class="hero-path" d="M72 82 C190 18 358 18 468 82 S520 260 426 334 S166 406 72 318 S-12 154 72 82Z"></path>
+          <path class="hero-path hero-path--inner" d="M132 124 C230 70 348 82 410 150 S414 298 326 330 S142 292 116 212 S82 154 132 124Z"></path>
+          <g class="hero-point"><circle cx="72" cy="82" r="22"></circle><text x="72" y="88">01</text><text class="hero-label" x="34" y="48">Problema</text></g>
+          <g class="hero-point"><circle cx="468" cy="82" r="22"></circle><text x="468" y="88">02</text><text class="hero-label" x="425" y="48">RAÍCES</text></g>
+          <g class="hero-point"><circle cx="426" cy="334" r="22"></circle><text x="426" y="340">03</text><text class="hero-label" x="388" y="382">SAVIA</text></g>
+          <g class="hero-point"><circle cx="72" cy="318" r="22"></circle><text x="72" y="324">04</text><text class="hero-label" x="20" y="366">Decisión</text></g>
+          <g class="hero-center"><circle cx="270" cy="210" r="72"></circle><text x="270" y="204">CAPACIDAD</text><text x="270" y="226">PÚBLICA REAL</text></g>
+        </svg>
+        <p class="hero-caption"><span>EQC–00</span> Revisar lo existente, probar cuando haga falta y decidir con evidencia.</p>
+      </div>
     </section>
 
-    <section class="section interactive-toolkit" aria-labelledby="toolkit-title" data-search-title="Exploración interactiva" data-search-group="Herramientas" data-search-keywords="diagnóstico árbol problema arquitectura sistema simulador decisión ruta institucional">
-      <div class="section-title wide">
-        <p class="overline">Exploración interactiva</p>
-        <h2 id="toolkit-title">
-          No solo lea la propuesta: recórrala como problema, sistema y decisión.
-        </h2>
-        <p>
-          Estado que Cumple puede explorarse desde tres perspectivas complementarias:
-          el problema institucional que busca resolver, la arquitectura propuesta y la
-          ruta preliminar para transformar capacidades públicas.
-        </p>
+    <section class="section visitor-selector panel panel--interactive" id="recorrido" data-visitor-selector data-search-title="Selector de perfil de visita" data-search-group="Herramientas" data-search-keywords="ciudadanía servidor público investigación organización gobierno congreso" data-reveal>
+      <div class="section-header">
+        <p class="eyebrow">Punto de entrada</p>
+        <h2>¿Desde dónde llega?</h2>
+        <p class="lede">Elija una perspectiva. La selección solo ajusta esta orientación y se guarda en su navegador.</p>
       </div>
+      <div class="visitor-layout">
+        <div class="visitor-options" role="group" aria-label="Perfil de visita">
+          <button type="button" data-visitor-option="citizen" aria-pressed="true">Ciudadanía</button>
+          <button type="button" data-visitor-option="public-servant" aria-pressed="false">Servidor público</button>
+          <button type="button" data-visitor-option="researcher" aria-pressed="false">Investigador/a</button>
+          <button type="button" data-visitor-option="civil-society" aria-pressed="false">Organización social</button>
+          <button type="button" data-visitor-option="territorial" aria-pressed="false">Gobierno territorial</button>
+          <button type="button" data-visitor-option="congress" aria-pressed="false">Congreso</button>
+          <button type="button" data-visitor-option="government" aria-pressed="false">Equipo de gobierno</button>
+        </div>
+        <article class="visitor-panel" aria-live="polite">
+          <p class="eyebrow">Ruta sugerida</p>
+          <h3 data-visitor-title>Una lectura ciudadana de la propuesta</h3>
+          <dl class="meta-list">
+            <div><dt>Qué puede explorar</dt><dd data-visitor-explore>El problema público, sus efectos y las decisiones que propone Estado que Cumple.</dd></div>
+            <div><dt>Herramienta relevante</dt><dd data-visitor-tool>Árbol del problema técnico.</dd></div>
+            <div><dt>Recorrido</dt><dd data-visitor-route>Comprender el diagnóstico, seleccionar síntomas y revisar la ruta resultante.</dd></div>
+          </dl>
+          <a class="button button--text" data-visitor-link href="/estado-que-cumple/#arbol-problema">Abrir ruta recomendada <span aria-hidden="true">→</span></a>
+          <small>No se solicita ni se envía información personal.</small>
+        </article>
+      </div>
+    </section>
 
-      <div class="toolkit-grid">
-        <a href="/estado-que-cumple/#arbol-problema">
-          <span>01 · Diagnóstico</span>
-          <h3>Árbol del problema técnico</h3>
-          <p>
-            Explore las causas, el problema central y los efectos de la brecha entre
-            las formas institucionales y la capacidad pública real.
-          </p>
-          <em>Abrir árbol</em>
-        </a>
+    <section class="section ecosystem-map" data-ecosystem-map data-search-title="Mapa CAMS" data-search-group="Propuestas" data-search-keywords="ecosistema documentos observatorio bitácora participación archivo" data-reveal>
+      <div class="section-header">
+        <p class="eyebrow">Mapa CAMS</p>
+        <h2>Un núcleo público, seis superficies conectadas.</h2>
+        <p class="lede">Seleccione un nodo para entender su función. La navegación ocurre solo al pulsar Abrir.</p>
+      </div>
+      <div class="ecosystem-layout">
+        <div class="ecosystem-stage">
+          <svg class="ecosystem-connectors" viewBox="0 0 720 560" aria-hidden="true">
+            <path d="M360 280 160 92M360 280 360 48M360 280 560 92M360 280 610 310M360 280 360 510M360 280 110 310"></path>
+          </svg>
+          <div class="ecosystem-core" aria-hidden="true"><span>CAMS</span><small>núcleo</small></div>
+          <div class="ecosystem-nodes" role="group" aria-label="Nodos del ecosistema CAMS">
+            <button class="ecosystem-node ecosystem-node--proposal" type="button" data-ecosystem-node="proposal" aria-pressed="true"><span>EQC</span>Estado que Cumple</button>
+            <button class="ecosystem-node ecosystem-node--documents" type="button" data-ecosystem-node="documents" aria-pressed="false"><span>DOC</span>Documentos</button>
+            <button class="ecosystem-node ecosystem-node--observatory" type="button" data-ecosystem-node="observatory" aria-pressed="false"><span>OBS</span>Observatorio</button>
+            <button class="ecosystem-node ecosystem-node--log" type="button" data-ecosystem-node="log" aria-pressed="false"><span>BIT</span>Bitácora</button>
+            <button class="ecosystem-node ecosystem-node--participation" type="button" data-ecosystem-node="participation" aria-pressed="false"><span>PAR</span>Participación</button>
+            <button class="ecosystem-node ecosystem-node--archive" type="button" data-ecosystem-node="archive" aria-pressed="false"><span>ARC</span>Archivo</button>
+          </div>
+        </div>
+        <aside class="ecosystem-detail panel panel--technical" aria-live="polite">
+          <p class="eyebrow">Nodo seleccionado</p>
+          <h3 data-ecosystem-title>Estado que Cumple</h3>
+          <dl class="meta-list">
+            <div><dt>Función</dt><dd data-ecosystem-function>Propuesta central y arquitectura de transformación pública.</dd></div>
+            <div><dt>Estado</dt><dd data-ecosystem-status>Publicada como propuesta no oficial.</dd></div>
+          </dl>
+          <p data-ecosystem-description>Permite comprender el problema, explorar las herramientas y construir rutas pedagógicas.</p>
+          <a class="button button--primary" data-ecosystem-link href="/estado-que-cumple/">Abrir</a>
+        </aside>
+      </div>
+      <details class="textual-alternative">
+        <summary>Alternativa textual del mapa CAMS</summary>
+        <ul>
+          <li><a href="/estado-que-cumple/">Estado que Cumple</a>: propuesta central.</li>
+          <li><a href="/documentos/">Documentos</a>: biblioteca documental.</li>
+          <li><a href="/observatorio/">Observatorio</a>: seguimiento y visualización.</li>
+          <li><a href="/bitacora/">Bitácora</a>: publicación editorial.</li>
+          <li><a href="/participar/">Participación</a>: comentarios y colaboración.</li>
+          <li><a href="/archivo/">Archivo</a>: versiones, repositorios y preservación.</li>
+        </ul>
+      </details>
+    </section>
 
-        <a href="/estado-que-cumple/#arquitectura">
-          <span>02 · Sistema</span>
+    <section class="section" data-search-title="Experiencias interactivas" data-search-group="Herramientas" data-search-keywords="comprender diseñar decidir árbol mapa simulador" data-reveal>
+      <div class="section-header">
+        <p class="eyebrow">Experiencias interactivas</p>
+        <h2>Tres modos para entrar en la propuesta.</h2>
+      </div>
+      <div class="experience-modes">
+        <article class="experience-mode experience-mode--understand">
+          <p class="experience-code">01 · Comprender</p>
+          <h3>Árbol del problema</h3>
+          <p>Identifique causas, síntomas y efectos; filtre dimensiones y construya un recorrido diagnóstico local.</p>
+          <a class="button button--text" href="/estado-que-cumple/#arbol-problema">Abrir diagnóstico <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="experience-mode experience-mode--design">
+          <p class="experience-code">02 · Diseñar</p>
           <h3>Mapa institucional</h3>
-          <p>
-            Comprenda cómo se conectan el sistema administrativo, la comisión,
-            la secretaría técnica, la ventanilla, los instrumentos metodológicos,
-            el expediente y el tablero público.
-          </p>
-          <em>Abrir mapa</em>
-        </a>
-
-        <a href="/estado-que-cumple/#simulador">
-          <span>03 · Decisión</span>
-          <h3>Laboratorio de ruta institucional</h3>
-          <p>
-            Responda preguntas orientadoras y obtenga una secuencia pedagógica de
-            revisión, madurez, piloto, expediente e instrumento competente.
-          </p>
-          <em>Probar simulador</em>
-        </a>
-      </div>
-    </section>
-
-    <section class="section summary-chain" aria-labelledby="mapa-resumido-title" data-search-title="Mapa resumido de Estado que Cumple" data-search-group="Propuesta" data-search-keywords="problema público RAÍCES SAVIA SEMILLAS expediente instrumento implementación evaluación">
-      <div class="section-title wide">
-        <p class="overline">Mapa resumido</p>
-        <h2 id="mapa-resumido-title">La propuesta funciona como una cadena de revisión, decisión y aprendizaje.</h2>
-      </div>
-      <div class="chain-map" aria-label="Cadena resumida de Estado que Cumple">
-        <a href="/estado-que-cumple/#problema-publico"><span>01</span><strong>Problema público</strong></a>
-        <a href="/estado-que-cumple/#nucleo-metodologico"><span>02</span><strong>RAÍCES</strong></a>
-        <a href="/estado-que-cumple/#nucleo-metodologico"><span>03</span><strong>SAVIA</strong></a>
-        <a href="/estado-que-cumple/#nucleo-metodologico"><span>04</span><strong>SEMILLAS cuando proceda</strong></a>
-        <a href="/estado-que-cumple/#expediente"><span>05</span><strong>Expediente Técnico Integrado</strong></a>
-        <a href="/estado-que-cumple/#instrumentos"><span>06</span><strong>Instrumento competente</strong></a>
-        <a href="/estado-que-cumple/#ruta-integrada"><span>07</span><strong>Implementación</strong></a>
-        <a href="/estado-que-cumple/#tablero"><span>08</span><strong>Evaluación pública</strong></a>
-      </div>
-    </section>
-
-    <section class="section ecosystem-section" aria-labelledby="ecosistema-title" data-search-title="Ecosistema CAMS" data-search-group="Sitio" data-search-keywords="propuesta documentos observatorio bitácora participar archivo">
-      <div class="section-title wide">
-        <p class="overline">Ecosistema CAMS</p>
-        <h2 id="ecosistema-title">Cada módulo cumple una función dentro del archivo público.</h2>
-      </div>
-      <div class="ecosystem-grid">
-        <a class="ecosystem-card primary-card" href="/estado-que-cumple/">
-          <span>EQC-01</span><h3>Estado que Cumple</h3>
-          <p><strong>Función:</strong> propuesta central.</p>
-          <p><strong>Estado:</strong> publicada como propuesta no oficial.</p>
-          <em>Abrir propuesta</em>
-        </a>
-        <a class="ecosystem-card" href="/documentos/">
-          <span>DOC-02</span><h3>Documentos</h3>
-          <p><strong>Función:</strong> publicaciones y materiales citables.</p>
-          <p><strong>Estado:</strong> biblioteca inicial.</p>
-          <em>Explorar documentos</em>
-        </a>
-        <a class="ecosystem-card" href="/observatorio/">
-          <span>OBS-03</span><h3>Observatorio</h3>
-          <p><strong>Función:</strong> seguimiento ciudadano sin datos simulados.</p>
-          <p><strong>Estado:</strong> prototipo conceptual.</p>
-          <em>Ver observatorio</em>
-        </a>
-        <a class="ecosystem-card" href="/bitacora/">
-          <span>BIT-04</span><h3>Bitácora</h3>
-          <p><strong>Función:</strong> análisis público y notas de coyuntura.</p>
-          <p><strong>Estado:</strong> entradas en preparación.</p>
-          <em>Leer bitácora</em>
-        </a>
-        <a class="ecosystem-card" href="/participar/">
-          <span>PAR-05</span><h3>Participar</h3>
-          <p><strong>Función:</strong> comentarios, suscripción futura y voluntariado.</p>
-          <p><strong>Estado:</strong> canales por habilitar con trazabilidad.</p>
-          <em>Ver canales</em>
-        </a>
-        <a class="ecosystem-card" href="/archivo/">
-          <span>ARC-06</span><h3>Archivo</h3>
-          <p><strong>Función:</strong> redes, repositorios y enlaces públicos.</p>
-          <p><strong>Estado:</strong> redes confirmadas y repositorios futuros.</p>
-          <em>Abrir archivo</em>
-        </a>
-      </div>
-    </section>
-
-    <section class="section featured-documents" aria-labelledby="documentos-destacados-title" data-search-title="Documentos destacados" data-search-group="Documentos" data-search-keywords="PDF estado que cumple trabajos académicos matrices datos investigaciones">
-      <div class="section-title wide">
-        <p class="overline">Documentos destacados</p>
-        <h2 id="documentos-destacados-title">Publicaciones y materiales del archivo CAMS.</h2>
-      </div>
-      <div class="document-tiles">
-        <article class="doc-tile is-available">
-          <span>Disponible</span>
-          <h3>Estado que Cumple 2026-2030</h3>
-          <p>Documento técnico-político de discusión pública.</p>
-          <a href="/assets/documentos/estado-que-cumple-2026-2030.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+          <p>Explore dirección, soporte técnico, herramientas y control como un sistema de relaciones.</p>
+          <a class="button button--text" href="/estado-que-cumple/#arquitectura">Abrir arquitectura <span aria-hidden="true">→</span></a>
         </article>
-        <article class="doc-tile">
-          <span>En preparación</span>
-          <h3>Trabajos académicos</h3>
-          <p>Textos sobre administración pública, movilidad, juventud y capacidad estatal.</p>
-        </article>
-        <article class="doc-tile">
-          <span>En preparación</span>
-          <h3>Matrices y datos</h3>
-          <p>Estructuras para seguimiento ciudadano y lectura de capacidad pública.</p>
-        </article>
-        <article class="doc-tile">
-          <span>En preparación</span>
-          <h3>Investigaciones</h3>
-          <p>Materiales largos y anexos metodológicos por publicar con fuentes verificables.</p>
+        <article class="experience-mode experience-mode--decide">
+          <p class="experience-code">03 · Decidir</p>
+          <h3>Laboratorio de ruta</h3>
+          <p>Responda diez preguntas y obtenga una ruta preliminar, condicionada y no jurídica.</p>
+          <a class="button button--text" href="/estado-que-cumple/#simulador">Probar laboratorio <span aria-hidden="true">→</span></a>
         </article>
       </div>
     </section>
 
-    <section class="section profile-panel author-brief" data-search-title="Perfil y autoría" data-search-group="Autoría" data-search-keywords="Carlos Arturo Martínez Sánchez administración pública ESAP participación análisis institucional">
+    <section class="section worktable" data-search-title="Publicaciones y proyectos" data-search-group="Documentos" data-search-keywords="mesa trabajo proyectos publicaciones estado responsable fecha" data-reveal>
+      <div class="section-header">
+        <p class="eyebrow">Mesa de trabajo</p>
+        <h2>Publicaciones y líneas activas con estado visible.</h2>
+      </div>
+      <div class="worktable-body" role="list" aria-label="Proyectos y publicaciones CAMS">
+        <article class="worktable-row" role="listitem">
+          <div class="worktable-code"><span>EQC–2026</span><span class="badge badge--published">Publicado</span></div>
+          <div class="worktable-main"><h3>Estado que Cumple 2026–2030</h3><p>Documento técnico-político de discusión pública.</p></div>
+          <dl class="worktable-meta"><div><dt>Tipo</dt><dd>Propuesta</dd></div><div><dt>Fecha</dt><dd>2026</dd></div><div><dt>Responsable</dt><dd>CAMS</dd></div></dl>
+          <a class="button button--icon" href="/assets/documentos/estado-que-cumple-2026-2030.pdf" target="_blank" rel="noopener" aria-label="Abrir PDF Estado que Cumple">↗</a>
+        </article>
+        <article class="worktable-row" role="listitem">
+          <div class="worktable-code"><span>OBS–001</span><span class="badge badge--prototype">Prototipo</span></div>
+          <div class="worktable-main"><h3>Observatorio de capacidad pública</h3><p>Diseño de líneas, fuentes, métodos e indicadores sin datos simulados.</p></div>
+          <dl class="worktable-meta"><div><dt>Tipo</dt><dd>Seguimiento</dd></div><div><dt>Fecha</dt><dd>2026</dd></div><div><dt>Responsable</dt><dd>CAMS</dd></div></dl>
+          <a class="button button--icon" href="/observatorio/" aria-label="Abrir Observatorio">→</a>
+        </article>
+        <article class="worktable-row" role="listitem">
+          <div class="worktable-code"><span>BIT–SERIE</span><span class="badge badge--draft">Borrador</span></div>
+          <div class="worktable-main"><h3>Notas sobre capacidad y decisión pública</h3><p>Serie editorial en preparación con fechas y estados de publicación.</p></div>
+          <dl class="worktable-meta"><div><dt>Tipo</dt><dd>Editorial</dd></div><div><dt>Fecha</dt><dd>2026</dd></div><div><dt>Responsable</dt><dd>CAMS</dd></div></dl>
+          <a class="button button--icon" href="/bitacora/" aria-label="Abrir Bitácora">→</a>
+        </article>
+        <article class="worktable-row" role="listitem">
+          <div class="worktable-code"><span>ARC–WEB</span><span class="badge badge--active">Activo</span></div>
+          <div class="worktable-main"><h3>Archivo público CAMS</h3><p>Trazabilidad del sitio, repositorios confirmados y preservación planeada.</p></div>
+          <dl class="worktable-meta"><div><dt>Tipo</dt><dd>Archivo</dd></div><div><dt>Fecha</dt><dd>Continua</dd></div><div><dt>Responsable</dt><dd>CAMS</dd></div></dl>
+          <a class="button button--icon" href="/archivo/" aria-label="Abrir Archivo público">→</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section profile-brief card card--profile" data-search-title="Autoría CAMS" data-search-group="Propuestas" data-search-keywords="Carlos Arturo Martínez Sánchez autoría independencia criterios" data-reveal>
       <img src="/assets/branding/sello-cams.png" alt="" width="800" height="814" loading="lazy" />
       <div>
-        <p class="overline">Perfil y autoría</p>
+        <p class="eyebrow">Autoría e independencia</p>
         <h2>Carlos Arturo Martínez Sánchez</h2>
-        <p>
-          Estudiante de Administración Pública en la ESAP, con trabajo en participación juvenil,
-          análisis institucional, política pública y debates sobre capacidad estatal. CAMS organiza
-          su archivo público y la propuesta Estado que Cumple como materiales abiertos a revisión.
-        </p>
+        <p>Estudiante de Administración Pública en la ESAP. CAMS reúne propuesta, análisis y archivo público bajo criterios de trazabilidad, prudencia y discusión abierta.</p>
+        <a class="button button--text" href="/cams/">Conocer quién produce el archivo <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
-    <section class="section participation-cta" aria-labelledby="participacion-title" data-search-title="Participación CAMS" data-search-group="Participar" data-search-keywords="comentarios suscripción voluntariado redes participación">
+    <section class="section participation-hub panel panel--navy" data-search-title="Participar en CAMS" data-search-group="Participación" data-search-keywords="comentar colaborar suscribirse compartir" data-reveal>
       <div>
-        <p class="overline">Participación</p>
-        <h2 id="participacion-title">La propuesta se mejora con comentarios, evidencia y objeciones trazables.</h2>
+        <p class="eyebrow">Participación</p>
+        <h2>Una propuesta pública debe poder recibir objeciones y colaboración.</h2>
+        <p>Los canales tienen estados visibles: no se simulan formularios ni se capturan datos en este sitio.</p>
       </div>
       <div class="participation-actions">
-        <a href="/participar/#comentarios"><span>Comentar</span><strong>Enviar observaciones cuando el canal esté habilitado.</strong></a>
-        <a href="/participar/#suscripcion"><span>Suscribirse</span><strong>Seguir futuras actualizaciones del archivo CAMS.</strong></a>
-        <a href="/participar/#voluntariado"><span>Voluntariado</span><strong>Apoyar documentos, datos, pedagogía o territorio.</strong></a>
-        <a href="/archivo/#redes"><span>Redes</span><strong>Conectar por canales públicos confirmados.</strong></a>
+        <a href="/participar/#comentarios"><span>01</span><strong>Comentar</strong></a>
+        <a href="/participar/#colaboracion"><span>02</span><strong>Colaborar</strong></a>
+        <a href="/participar/#suscripcion"><span>03</span><strong>Suscribirse</strong></a>
+        <a href="/participar/#compartir"><span>04</span><strong>Compartir</strong></a>
       </div>
     </section>
+
+    <nav class="context-nav" aria-label="Continuidad de navegación">
+      <div class="context-step"><span>Viene de</span><strong>Archivo público CAMS</strong></div>
+      <div class="context-step"><span>Está explorando</span><strong>Inicio</strong></div>
+      <div class="context-step"><span>Continúe con</span><a href="/estado-que-cumple/">Estado que Cumple</a> o <a href="/documentos/">Documentos</a></div>
+    </nav>
   </main>
 
-  <aside class="floating-panel" id="floatingPanel" aria-label="Contacto y participación" hidden>
-    <button class="floating-close" type="button" aria-label="Cerrar panel">x</button>
-    <p class="overline">Contacto y PQRS</p>
-    <h2>Participar en CAMS</h2>
-    <a href="/participar/#comentarios">Comentar propuesta</a>
-    <a href="/participar/#suscripcion">Suscribirse</a>
-    <a href="/participar/#voluntariado">Ser voluntario/a</a>
-    <a href="/archivo/#redes">Ver redes</a>
-    <a href="/assets/documentos/estado-que-cumple-2026-2030.pdf" target="_blank" rel="noopener">Abrir PDF</a>
-  </aside>
-  <button class="floating-ring" type="button" aria-controls="floatingPanel" aria-expanded="false">
-    <span>Contacto y PQRS</span>
-  </button>
-
   <footer class="site-footer">
-    <div class="footer-logo">
-      <img src="/assets/branding/emblema-cams.png" alt="" width="799" height="1082" loading="lazy" />
-      <div>
-        <strong>CAMS</strong>
-        <span>Estado que Cumple</span>
-      </div>
-    </div>
-    <p>Archivo público, propuesta ciudadana y laboratorio de capacidad pública.</p>
-    <div class="footer-links">
-      <a href="/estado-que-cumple/">Propuesta</a>
-      <a href="/documentos/">Documentos</a>
+    <div><strong>CAMS</strong><p>Archivo público independiente. Propuesta abierta, no oficial.</p></div>
+    <nav class="footer-nav" aria-label="Navegación del pie">
+      <a href="/cams/">Autoría y criterios</a>
+      <a href="/archivo/">Versiones y archivo</a>
       <a href="/participar/">Participar</a>
-      <a href="https://github.com/camscarlosmartinez" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.instagram.com/cams.carlosmartinez/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://co.linkedin.com/in/cams0802" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://www.facebook.com/CAMS.CarlosMartinez/" target="_blank" rel="noopener">Facebook</a>
-    </div>
+    </nav>
   </footer>
 
-  <script src="/script.js"></script>
+  <script type="module" src="/script.js"></script>
 </body>
 </html>

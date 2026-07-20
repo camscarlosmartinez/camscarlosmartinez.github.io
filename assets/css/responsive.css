@@ -1,0 +1,605 @@
+@media (max-width: 78rem) {
+  .home-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(21rem, 0.72fr);
+    gap: var(--space-5);
+  }
+
+  .ecosystem-layout,
+  .core-layout,
+  .institutional-layout,
+  .decision-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ecosystem-stage {
+    max-width: 46rem;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .ecosystem-detail,
+  .core-detail,
+  .institution-detail,
+  .decision-output {
+    position: static;
+    min-height: 0;
+  }
+
+  .core-diagram {
+    max-width: 46rem;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .legal-ledger,
+  .route-ledger {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .worktable-row {
+    grid-template-columns: minmax(7.5rem, 0.25fr) minmax(0, 1fr) auto;
+  }
+
+  .worktable-meta {
+    grid-column: 2;
+  }
+
+  .library-controls {
+    grid-template-columns: minmax(14rem, 1fr) repeat(2, minmax(9rem, 0.5fr));
+  }
+
+  .library-controls .button {
+    grid-column: 1 / -1;
+  }
+
+  .technical-steps,
+  .indicator-register,
+  .methodology-sources__grid,
+  .source-list,
+  .timeline-board,
+  .work-lines__list,
+  .evidence-list,
+  .preservation-board,
+  .status-register,
+  .volunteer-ledger {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 68rem) {
+  .site-header {
+    padding-inline: 1rem;
+  }
+
+  .nav-link,
+  .site-nav > a,
+  .site-nav__explore {
+    padding-inline: 0.6rem;
+    font-size: 0.82rem;
+  }
+
+  .home-hero,
+  .proposal-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .home-hero {
+    min-height: auto;
+  }
+
+  .hero-visual {
+    max-width: 42rem;
+  }
+
+  .proposal-facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .proposal-facts > div:nth-child(odd) {
+    padding-inline-end: var(--space-3);
+    border-inline-end: 1px solid var(--line);
+  }
+
+  .proposal-facts > div:nth-child(even) {
+    padding-inline-start: var(--space-3);
+  }
+
+  .view-mode-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .mode-status {
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  .problem-tree-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .problem-detail {
+    position: static;
+  }
+
+  .decision-register,
+  .monitoring-line {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .card--document__content,
+  .identity-brief__layout,
+  .cams-identity {
+    grid-template-columns: 1fr;
+  }
+
+  .observation-line,
+  .archive-ledger__rows > *,
+  .project-desk__rows > *,
+  .editorial-ledger__entries > * {
+    grid-template-columns: minmax(6rem, 0.22fr) minmax(0, 1fr);
+  }
+
+  .observation-line > :last-child,
+  .archive-ledger__rows > * > :last-child,
+  .project-desk__rows > * > :last-child,
+  .editorial-ledger__entries > * > :last-child {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 56.25rem) {
+  :root {
+    --header-height: 4.25rem;
+  }
+
+  .site-header {
+    grid-template-columns: minmax(8rem, auto) 1fr;
+    grid-template-areas:
+      "brand actions"
+      "nav nav";
+    min-height: var(--header-height);
+  }
+
+  .header-actions,
+  .site-header__actions {
+    justify-self: end;
+  }
+
+  .site-header .menu-toggle {
+    display: inline-grid;
+  }
+
+  .site-nav {
+    grid-column: 1 / -1;
+    grid-area: nav;
+    justify-self: stretch;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.6rem;
+    border: 1px solid var(--line);
+    background: var(--surface);
+  }
+
+  .js .site-nav {
+    position: fixed;
+    inset: calc(var(--header-height) + 0.5rem) 0.75rem auto;
+    z-index: 110;
+    max-height: calc(100dvh - var(--header-height) - 1.25rem);
+    overflow-y: auto;
+    box-shadow: var(--shadow-float);
+  }
+
+  .js .site-nav:not(.is-open) {
+    display: none;
+  }
+
+  .nav-link,
+  .site-nav > a,
+  .site-nav__explore {
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.8rem;
+    border-bottom: 1px solid var(--line-soft);
+    text-align: start;
+  }
+
+  .explore-menu {
+    width: 100%;
+  }
+
+  .explore-panel {
+    position: static;
+    width: 100%;
+    grid-template-columns: 1fr;
+    margin-block: 0.25rem 0.6rem;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  .js .explore-panel[hidden] {
+    display: none !important;
+  }
+
+  .context-nav,
+  .context-cta,
+  .site-footer,
+  .page-hero,
+  .participation-hub,
+  .participation-path {
+    grid-template-columns: 1fr;
+  }
+
+  .context-step + .context-step,
+  .context-nav > * + * {
+    border-inline-start: 0;
+    border-block-start: 1px solid var(--line);
+  }
+
+  .footer-nav,
+  .site-footer > nav {
+    justify-content: flex-start;
+  }
+
+  .page-hero__aside {
+    max-width: 36rem;
+  }
+
+  .visitor-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .visitor-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-left: 1px solid var(--line);
+  }
+
+  .visitor-options button {
+    border-right: 1px solid var(--line);
+  }
+
+  .experience-modes {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .experience-mode--understand {
+    grid-row: auto;
+    min-height: 18rem;
+  }
+
+  .experience-mode--design,
+  .experience-mode--decide {
+    border-inline-start: 0;
+    border-block-start: 0.3rem solid var(--accent-sage);
+  }
+
+  .experience-mode--decide {
+    border-block-start-color: var(--accent);
+  }
+
+  .worktable-row {
+    grid-template-columns: minmax(7rem, 0.25fr) minmax(0, 1fr) auto;
+  }
+
+  .worktable-meta {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .segmented-control {
+    grid-template-columns: 1fr;
+  }
+
+  .segmented-control button {
+    border-right: 0;
+    border-bottom: 1px solid var(--line-inverse);
+  }
+
+  .segmented-control button:last-child {
+    border-bottom: 0;
+  }
+
+  .problem-filters,
+  .art-filters,
+  .question-grid,
+  .library-controls,
+  .normative-schema__fields {
+    grid-template-columns: 1fr;
+  }
+
+  .problem-tree-column,
+  .art-grid,
+  .expediente-grid,
+  .problem-brief,
+  .decision-register {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .diagnostic-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .mode-section.is-priority::before {
+    position: static;
+    width: fit-content;
+    display: block;
+    margin: 0 0 var(--space-3) auto;
+  }
+
+  .institution-layer {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .institution-layer h3 {
+    grid-column: 1 / -1;
+  }
+
+  .traceability-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section-heading--split {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .series-list,
+  .technical-steps,
+  .methodology-sources__grid,
+  .source-list,
+  .timeline-board,
+  .work-lines__list,
+  .evidence-list,
+  .status-register,
+  .volunteer-ledger {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .preservation-board .status-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .participation-path__content,
+  .channel-list,
+  .share-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 48rem) {
+  .section,
+  .home-hero,
+  .proposal-hero,
+  .view-mode-bar,
+  .context-cta,
+  .page-hero,
+  .site-footer {
+    padding-inline: 1.1rem;
+  }
+
+  .section {
+    padding-block: var(--space-6);
+  }
+
+  .home-hero,
+  .proposal-hero {
+    padding-block: var(--space-5) var(--space-6);
+  }
+
+  .ecosystem-stage {
+    min-height: auto;
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .ecosystem-connectors,
+  .ecosystem-core {
+    display: none;
+  }
+
+  .ecosystem-nodes {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .ecosystem-node,
+  .ecosystem-node--proposal,
+  .ecosystem-node--documents,
+  .ecosystem-node--observatory,
+  .ecosystem-node--log,
+  .ecosystem-node--participation,
+  .ecosystem-node--archive,
+  .ecosystem-node--proposal[aria-pressed="true"],
+  .ecosystem-node--log[aria-pressed="true"] {
+    position: static;
+    width: 100%;
+    transform: none;
+  }
+
+  .core-diagram {
+    min-height: auto;
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .core-center,
+  .core-orbit {
+    position: static;
+    width: 100%;
+    height: auto;
+    transform: none;
+    border-radius: var(--radius-small);
+  }
+
+  .core-center {
+    min-height: 7rem;
+  }
+
+  .core-orbit {
+    display: grid;
+    gap: 0.55rem;
+    padding: 0.65rem;
+  }
+
+  .core-node,
+  .core-orbit--primary .core-node:nth-child(n),
+  .core-orbit--secondary .core-node:nth-child(n) {
+    position: static;
+    width: 100%;
+    transform: none;
+  }
+
+  .legal-ledger,
+  .route-ledger,
+  .monitoring-line,
+  .problem-tree-column,
+  .art-grid,
+  .expediente-grid,
+  .problem-brief,
+  .decision-register {
+    grid-template-columns: 1fr;
+  }
+
+  .worktable-row {
+    grid-template-columns: 1fr auto;
+  }
+
+  .worktable-main,
+  .worktable-meta {
+    grid-column: 1 / -1;
+  }
+
+  .worktable-meta {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .card--profile {
+    grid-template-columns: 6rem minmax(0, 1fr);
+    gap: var(--space-3);
+  }
+
+  .participation-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .document-metadata > div,
+  .identity-facts > div,
+  .meta-list > div {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+
+  .observation-line,
+  .archive-ledger__rows > *,
+  .project-desk__rows > *,
+  .editorial-ledger__entries > * {
+    grid-template-columns: 1fr;
+  }
+
+  .observation-line > :last-child,
+  .archive-ledger__rows > * > :last-child,
+  .project-desk__rows > * > :last-child,
+  .editorial-ledger__entries > * > :last-child {
+    grid-column: 1;
+  }
+
+  .archive-ledger__rows,
+  .project-desk__rows,
+  .editorial-ledger__entries,
+  .preservation-board .status-list {
+    grid-template-columns: 1fr;
+  }
+
+  .normative-schema__flow {
+    grid-template-columns: 1fr;
+  }
+
+  .normative-schema__flow > svg {
+    width: 2rem;
+    margin-inline: auto;
+    transform: rotate(90deg);
+  }
+
+  .relation-map__flow {
+    flex-direction: column;
+  }
+
+  .relation-map__flow > i {
+    align-self: center;
+    transform: rotate(90deg);
+  }
+
+  .series-list,
+  .technical-steps,
+  .methodology-sources__grid,
+  .source-list,
+  .timeline-board,
+  .work-lines__list,
+  .evidence-list,
+  .status-register,
+  .volunteer-ledger,
+  .traceability-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .command-result {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+}
+
+@media (max-width: 34rem) {
+  .brand-lockup {
+    width: 8.8rem;
+  }
+
+  .site-header__actions .command-trigger span,
+  .site-header__actions .command-trigger kbd {
+    display: none;
+  }
+
+  .site-header__actions .command-trigger {
+    width: 2.85rem;
+    padding: 0;
+  }
+
+  .hero-actions,
+  .actions,
+  .tool-actions {
+    align-items: stretch;
+  }
+
+  .hero-actions .button:not(.button--ring),
+  .actions .button,
+  .tool-actions .button {
+    width: 100%;
+  }
+
+  .visitor-options,
+  .ecosystem-nodes {
+    grid-template-columns: 1fr;
+  }
+
+  .worktable-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .card--profile {
+    grid-template-columns: 1fr;
+  }
+
+  .card--profile img {
+    width: 6rem;
+  }
+
+  .progress-label,
+  .status-list li {
+    flex-direction: column;
+  }
+}

@@ -4,15 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Observatorio | CAMS</title>
-  <meta name="description" content="Observatorio CAMS: matrices, tableros temáticos y seguimiento ciudadano de Estado que Cumple, capacidad pública, normas, rutas y expedientes sin porcentajes ficticios." />
+  <meta name="description" content="Diseño público del Observatorio CAMS: líneas de observación, fuentes previstas, indicadores propuestos y tableros todavía en construcción." />
   <meta name="author" content="Carlos Arturo Martínez Sánchez" />
-  <meta name="keywords" content="CAMS, observatorio ciudadano, Estado que Cumple, capacidad pública, seguimiento normativo, matrices, tablero público" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#071D33" />
   <link rel="canonical" href="https://camscarlosmartinez.github.io/observatorio/" />
 
   <meta property="og:title" content="Observatorio | CAMS" />
-  <meta property="og:description" content="Matrices, tableros futuros y seguimiento ciudadano de Estado que Cumple sin datos simulados." />
+  <meta property="og:description" content="Metodologías, fuentes e indicadores propuestos para un observatorio público aún sin datos reales publicados." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://camscarlosmartinez.github.io/observatorio/" />
   <meta property="og:image" content="https://camscarlosmartinez.github.io/assets/og-cams-v3.png" />
@@ -23,153 +22,267 @@
   <link rel="manifest" href="/site.webmanifest" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
-<body>
+<body class="page-observatorio">
+  <div class="reading-progress" data-reading-progress aria-hidden="true"><span></span></div>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
-  <div class="paper-noise" aria-hidden="true"></div>
-  <header class="topbar">
-    <a class="brand-lockup" href="/" aria-label="CAMS Estado que Cumple">
-      <img src="/assets/branding/logo-cams.png" alt="CAMS Estado que Cumple" width="1200" height="414" />
-    </a>
 
-    <button class="menu-button" type="button" aria-label="Abrir menú" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-
-    <nav class="nav orbit-nav" aria-label="Navegación principal">
+  <header class="site-header">
+    <a class="brand-lockup" href="/" aria-label="CAMS, ir al inicio"><img src="/assets/branding/logo-cams.png" alt="CAMS Estado que Cumple" width="1200" height="414" /></a>
+    <div class="site-header__actions">
+      <button class="button button--icon command-trigger" type="button" data-command-trigger aria-controls="command-palette" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4 4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>Buscar</span><kbd>Ctrl K</kbd></button>
+      <button class="button button--icon menu-toggle" type="button" data-menu-toggle aria-controls="primary-navigation" aria-expanded="false" aria-label="Abrir menú principal"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
+    </div>
+    <nav id="primary-navigation" class="site-nav" data-site-nav aria-label="Navegación principal">
       <a href="/">Inicio</a>
-      <a href="/estado-que-cumple/">Propuesta</a>
-      <a href="/documentos/">Documentos</a>
-      <a class="active" aria-current="page" href="/observatorio/">Observatorio</a>
-      <a href="/bitacora/">Bitácora</a>
+      <a href="/estado-que-cumple/">Estado que Cumple</a>
+      <div class="explore-menu" data-explore-menu>
+        <button class="site-nav__explore is-current-section" type="button" data-explore-toggle aria-controls="explore-panel" aria-expanded="false" aria-current="location">Explorar <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+        <div id="explore-panel" class="explore-panel" data-explore-panel>
+          <a class="explore-item" href="/documentos/"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M6 3h9l3 3v15H6zM9 11h6M9 15h6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span><strong>Documentos</strong><small>Biblioteca documental</small><span class="badge badge--published">Activa</span><em>Busque publicaciones, versiones y formas de citación.</em></span></a>
+          <a class="explore-item" href="/observatorio/" aria-current="page"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M4 20V10m6 10V4m6 16v-7m4 7H2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span><strong>Observatorio</strong><small>Seguimiento público</small><span class="badge badge--prototype">Prototipo</span><em>Conozca líneas, fuentes e indicadores propuestos.</em></span></a>
+          <a class="explore-item" href="/bitacora/"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span><strong>Bitácora</strong><small>Publicación editorial</small><span class="badge badge--draft">En preparación</span><em>Revise series, notas y estados de publicación.</em></span></a>
+          <a class="explore-item" href="/archivo/"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M4 7h16v13H4zM7 4h10v3M9 11h6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span><strong>Archivo público</strong><small>Memoria y preservación</small><span class="badge badge--active">Activo</span><em>Consulte repositorios, versiones y trazabilidad.</em></span></a>
+        </div>
+      </div>
       <a href="/participar/">Participar</a>
-      <a href="/archivo/">Archivo</a>
+      <a href="/cams/">CAMS</a>
     </nav>
   </header>
 
   <main id="contenido">
-    <section class="page-hero" data-search-title="Observatorio" data-search-group="Observatorio" data-search-keywords="seguimiento ciudadano matrices tableros expedientes alertas fuentes">
-      <p class="overline">Prototipo de seguimiento ciudadano</p>
-      <h1>Observatorio</h1>
-      <p>
-        Espacio para convertir Estado que Cumple en seguimiento público: matrices, línea normativa,
-        expedientes, alertas y tableros temáticos. No presenta porcentajes ficticios ni datos oficiales simulados.
-      </p>
+    <section class="page-hero page-hero--observatory" aria-labelledby="page-title" data-search-title="Observatorio" data-search-group="Observatorio" data-search-keywords="seguimiento fuentes indicadores propuestos metodología tableros en construcción normativa">
+      <div class="page-hero__content">
+        <p class="overline">CAMS · Infraestructura de seguimiento</p>
+        <h1 id="page-title">Observatorio</h1>
+        <p>Diseño público de las preguntas, fuentes y métodos con los que podría seguirse la capacidad institucional sin confundir una intención de medición con evidencia disponible.</p>
+      </div>
+      <aside class="panel panel--technical page-hero__aside" aria-label="Estado actual del observatorio">
+        <span class="badge badge--prototype">Prototipo metodológico</span>
+        <p><strong>Aún no hay datos reales publicados.</strong> No existen aquí series medidas, porcentajes de desempeño ni tableros operativos. Los elementos siguientes son propuestas en construcción.</p>
+      </aside>
     </section>
 
-    <section class="section concept-note" data-search-title="Relación con Estado que Cumple" data-search-group="Observatorio" data-search-keywords="rutas matrices capacidad memoria pública">
+    <nav class="context-nav" aria-label="Contexto de navegación">
+      <a href="/estado-que-cumple/"><span>Viene de</span><strong>Estado que Cumple</strong></a>
+      <span aria-current="location"><span>Está explorando</span><strong>Diseño del seguimiento</strong></span>
+      <a href="/bitacora/"><span>Continúe con</span><strong>Bitácora</strong></a>
+    </nav>
+
+    <section class="section observatory-disclosure card card--warning" aria-labelledby="disclosure-title" data-search-title="Alcance actual del Observatorio" data-search-group="Observatorio" data-search-keywords="sin datos reales prototipo no oficial tableros construcción">
+      <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true" focusable="false"><path d="M24 5 44 41H4L24 5Z" fill="none" stroke="currentColor" stroke-width="2" /><path d="M24 17v12M24 35v1" fill="none" stroke="currentColor" stroke-width="2.5" /></svg>
       <div>
-        <p class="overline">Relación con Estado que Cumple</p>
-        <h2>El observatorio mira si las formas institucionales tienen capacidad real para cumplir.</h2>
-      </div>
-      <div class="note-grid">
-        <article><span>01</span><strong>Seguimiento de rutas</strong><p>Ejecutivo, Congreso, sociedad civil y territorio pueden activar casos de manera distinta.</p></article>
-        <article><span>02</span><strong>Matrices de capacidad</strong><p>Cada caso se lee con problema, entidad, competencia, datos, financiación, talento y riesgo.</p></article>
-        <article><span>03</span><strong>Memoria pública</strong><p>El tablero debe guardar decisiones, versiones, expedientes, fuentes y aprendizajes.</p></article>
+        <p class="overline">Declaración de alcance</p>
+        <h2 id="disclosure-title">Esta página no reporta resultados observados.</h2>
+        <p>Expone una arquitectura futura de seguimiento. Cualquier dato que se publique después deberá tener fuente identificable, fecha de corte, definición, método, limitaciones y registro de versión.</p>
       </div>
     </section>
 
-    <section class="section dashboard-grid status-dashboard" data-search-title="Panel de temas del observatorio" data-search-group="Observatorio" data-search-keywords="estado que cumple normativa capacidad institucional función pública Bogotá juventud">
-      <article>
-        <span class="status-badge">Base conceptual</span>
-        <h2>Estado que Cumple</h2>
-        <p>Matriz para seguir activaciones, expedientes, decisiones, pilotos y evaluación posterior de la propuesta.</p>
-      </article>
-      <article>
-        <span class="status-badge">Línea normativa</span>
-        <h2>Seguimiento normativo</h2>
-        <p>Proyectos de ley, debates, audiencias, CONPES, PND, decretos, acuerdos y decisiones relacionadas.</p>
-      </article>
-      <article>
-        <span class="status-badge">Matriz base</span>
-        <h2>Capacidad institucional</h2>
-        <p>Lectura de competencias, duplicidades, datos, talento, presupuesto, archivo, control y territorio.</p>
-      </article>
-      <article>
-        <span class="status-badge">Por publicar</span>
-        <h2>Función pública</h2>
-        <p>Talento humano, provisionalidad, meritocracia, contratación recurrente y capacidades administrativas.</p>
-      </article>
-      <article>
-        <span class="status-badge">Matriz base</span>
-        <h2>Bogotá y territorio</h2>
-        <p>Problemas urbanos, coordinación territorial, restricciones de implementación y seguimiento local.</p>
-      </article>
-      <article>
-        <span class="status-badge">Pendiente de fuente</span>
-        <h2>Juventud y participación</h2>
-        <p>Compromisos, respuestas institucionales, control social e incidencia juvenil con fuentes verificables.</p>
-      </article>
-    </section>
+    <section class="section" aria-labelledby="lines-title" data-search-title="Líneas de observación" data-search-group="Observatorio" data-search-keywords="capacidad institucional normativa territorio empleo público datos participación">
+      <header class="section-heading section-heading--split">
+        <div>
+          <p class="overline">01 · Alcance</p>
+          <h2 id="lines-title">Líneas de observación</h2>
+        </div>
+        <p>Cada línea comienza como una pregunta verificable. Ninguna se presenta como medición activa.</p>
+      </header>
 
-    <section class="section" data-search-title="Tableros temáticos" data-search-group="Observatorio" data-search-keywords="rutas activación expedientes técnicos árbol problema seguimiento normativo">
-      <div class="section-title wide">
-        <p class="overline">Tableros temáticos</p>
-        <h2>Lo que se publicará cuando existan fuentes, metodología y revisión.</h2>
-      </div>
-      <div class="matrix-board">
-        <article><span>Tablero 01</span><h3>Rutas de activación</h3><p>Casos por fuente, instrumento, actor, estado de revisión y salida esperada.</p><strong>En preparación</strong></article>
-        <article><span>Tablero 02</span><h3>Expedientes técnicos</h3><p>Diagnóstico, alternativas, impacto fiscal, soporte laboral, datos, riesgos e indicadores.</p><strong>Por estructurar</strong></article>
-        <article><span>Tablero 03</span><h3>Árbol del problema</h3><p>Causas y efectos identificados por caso, con evidencia y fuente pública.</p><strong>En preparación</strong></article>
-        <article><span>Tablero 04</span><h3>Seguimiento normativo</h3><p>Normas, proyectos, debates, conceptos, decisiones y cambios de versión.</p><strong>Por publicar</strong></article>
+      <div class="observation-ledger">
+        <article class="observation-line">
+          <span class="observation-line__code">OBS-CAP</span>
+          <div><h3>Capacidad institucional</h3><p>¿La entidad cuenta con competencias claras, personas, presupuesto, datos, archivo y operación suficientes para cumplir?</p></div>
+          <span class="badge badge--planned">Diseño de línea</span>
+        </article>
+        <article class="observation-line">
+          <span class="observation-line__code">OBS-NOR</span>
+          <div><h3>Seguimiento normativo</h3><p>¿Qué instrumento se propone, quién tiene competencia, cómo cambia de versión y en qué etapa pública se encuentra?</p></div>
+          <span class="badge badge--prototype">Esquema inicial</span>
+        </article>
+        <article class="observation-line">
+          <span class="observation-line__code">OBS-TER</span>
+          <div><h3>Implementación territorial</h3><p>¿Qué condiciones nacionales y locales explican diferencias de implementación, acceso y sostenibilidad?</p></div>
+          <span class="badge badge--planned">Por estructurar</span>
+        </article>
+        <article class="observation-line">
+          <span class="observation-line__code">OBS-LAB</span>
+          <div><h3>Empleo y capacidades públicas</h3><p>¿La transformación reconoce cargas, perfiles, formas de vinculación, aprendizaje y continuidad del talento humano?</p></div>
+          <span class="badge badge--planned">Por estructurar</span>
+        </article>
+        <article class="observation-line">
+          <span class="observation-line__code">OBS-DAT</span>
+          <div><h3>Datos, expediente y evaluación</h3><p>¿La decisión deja evidencia trazable, línea de base, responsables, indicadores y condiciones de evaluación posterior?</p></div>
+          <span class="badge badge--planned">Diseño de línea</span>
+        </article>
+        <article class="observation-line">
+          <span class="observation-line__code">OBS-PAR</span>
+          <div><h3>Participación y control social</h3><p>¿Las observaciones públicas quedan registradas, respondidas y conectadas con decisiones verificables?</p></div>
+          <span class="badge badge--planned">Por estructurar</span>
+        </article>
       </div>
     </section>
 
-    <section class="section" data-search-title="Matriz mínima del observatorio" data-search-group="Observatorio" data-search-keywords="problema actor instrumento capacidad fuente salida">
-      <div class="section-title wide">
-        <p class="overline">Matriz mínima</p>
-        <h2>Cada caso debe ser legible antes de entrar a un tablero.</h2>
-      </div>
-      <div class="instrument-matrix">
-        <article><span>Problema</span><h3>Qué falla</h3><p>Brecha entre forma institucional, competencia y capacidad real.</p></article>
-        <article><span>Actor</span><h3>Quién responde</h3><p>Entidad, instancia, sector, territorio o actor que activa seguimiento.</p></article>
-        <article><span>Instrumento</span><h3>Por dónde se tramita</h3><p>Directiva, decreto, CONPES, PND, ley, acuerdo, derecho de petición o matriz ciudadana.</p></article>
-        <article><span>Capacidad</span><h3>Qué se verifica</h3><p>Talento, financiación, datos, archivo, operación territorial, control y evaluación.</p></article>
-        <article><span>Fuente</span><h3>Qué lo soporta</h3><p>Documento, norma, respuesta oficial, base de datos, acta, expediente o comentario público.</p></article>
-        <article><span>Salida</span><h3>Qué decisión produce</h3><p>Ajuste, cierre, piloto, absorción, escalamiento, archivo o evaluación posterior.</p></article>
+    <section class="section methodology-sources" aria-labelledby="method-title" data-search-title="Metodologías futuras y fuentes" data-search-group="Observatorio" data-search-keywords="método ficha fuente diccionario datos línea base actualización trazabilidad">
+      <header class="section-heading">
+        <p class="overline">02 · Condiciones de publicación</p>
+        <h2 id="method-title">Métodos futuros y fuentes previstas</h2>
+        <p>Antes de calcular un indicador, el observatorio deberá publicar cómo se construye y qué evidencia lo soporta.</p>
+      </header>
+
+      <div class="methodology-sources__grid">
+        <article class="panel panel--paper methodology-sheet">
+          <span class="folio-code">MÉTODO / BORRADOR</span>
+          <h3>Secuencia metodológica propuesta</h3>
+          <ol class="technical-steps">
+            <li><span>01</span><div><strong>Delimitar el caso</strong><p>Pregunta, unidad de análisis, territorio, periodo y responsables.</p></div></li>
+            <li><span>02</span><div><strong>Registrar las fuentes</strong><p>Origen, fecha de corte, cobertura, licencia y restricciones.</p></div></li>
+            <li><span>03</span><div><strong>Definir variables</strong><p>Diccionario de datos, fórmula, denominador y reglas de ausencia.</p></div></li>
+            <li><span>04</span><div><strong>Revisar calidad</strong><p>Completitud, consistencia, comparabilidad y sesgos conocidos.</p></div></li>
+            <li><span>05</span><div><strong>Publicar con versión</strong><p>Resultado, método reproducible, límites y fecha de actualización.</p></div></li>
+          </ol>
+        </article>
+
+        <article class="panel panel--navy source-register">
+          <span class="folio-code">FUENTES / PREVISTAS</span>
+          <h3>Familias de fuentes por verificar</h3>
+          <ul class="source-list">
+            <li><strong>Normativa:</strong> textos oficiales, gacetas, diarios, proyectos, ponencias y actos administrativos.</li>
+            <li><strong>Planeación y presupuesto:</strong> planes, marcos fiscales, proyectos de inversión y reportes de ejecución.</li>
+            <li><strong>Gestión pública:</strong> directorios, manuales, estructuras, empleo público e instrumentos de desempeño.</li>
+            <li><strong>Contratación:</strong> procesos y documentos disponibles en sistemas oficiales de compra pública.</li>
+            <li><strong>Territorio:</strong> datos abiertos nacionales y territoriales con cobertura y fecha comparables.</li>
+            <li><strong>Control social:</strong> actas, respuestas oficiales, observaciones y documentos con trazabilidad pública.</li>
+          </ul>
+          <p class="source-register__note">La mención de una familia no significa que sus datos ya hayan sido integrados, validados o autorizados para comparación.</p>
+        </article>
       </div>
     </section>
 
-    <section class="section line-table compact">
-      <article><span>01</span><h3>Qué se publicará</h3><p>Matrices, fichas de seguimiento, fuentes consultadas, versiones, criterios de lectura y notas metodológicas.</p></article>
-      <article><span>02</span><h3>Qué no se publicará</h3><p>Datos personales sensibles, cifras sin fuente, indicadores inventados o afirmaciones oficiales no verificadas.</p></article>
-      <article><span>03</span><h3>Cómo participar</h3><p>Comentarios técnicos, revisión de fuentes, propuestas territoriales y apoyo en datos o visualización.</p></article>
+    <section class="section proposed-indicators" aria-labelledby="indicators-title" data-search-title="Indicadores propuestos" data-search-group="Observatorio" data-search-keywords="indicadores fórmula fuente capacidad expediente normativa territorio participación">
+      <header class="section-heading section-heading--split">
+        <div>
+          <p class="overline">03 · Diseño de medición</p>
+          <h2 id="indicators-title">Indicadores propuestos</h2>
+        </div>
+        <p>Son definiciones de trabajo sin valores calculados. Su adopción depende de revisar fuentes, pertinencia y sesgos.</p>
+      </header>
+
+      <div class="card card--metric indicator-register">
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Tabla desplazable de indicadores propuestos">
+          <table>
+            <caption>Registro preliminar; todos los indicadores están sin medición.</caption>
+            <thead>
+              <tr><th scope="col">Código</th><th scope="col">Indicador propuesto</th><th scope="col">Definición de trabajo</th><th scope="col">Fuente requerida</th><th scope="col">Estado</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">CAP-01</th><td>Expedientes con soporte completo</td><td>Casos con competencia, alternativas, impacto fiscal, datos, riesgos e indicadores revisados / casos evaluados.</td><td>Expediente y registro de revisión</td><td><span class="badge badge--planned">Sin medir</span></td></tr>
+              <tr><th scope="row">NOR-01</th><td>Trazabilidad de hitos normativos</td><td>Hitos con documento fuente y versión identificada / hitos registrados.</td><td>Fuentes normativas oficiales</td><td><span class="badge badge--planned">Sin medir</span></td></tr>
+              <tr><th scope="row">TER-01</th><td>Pilotos con línea de base territorial</td><td>Pilotos que documentan condiciones iniciales comparables / pilotos incluidos.</td><td>Ficha de piloto y fuente territorial</td><td><span class="badge badge--planned">Sin medir</span></td></tr>
+              <tr><th scope="row">PAR-01</th><td>Observaciones con respuesta trazable</td><td>Observaciones públicas con respuesta o decisión vinculada / observaciones recibidas por el canal definido.</td><td>Registro público de participación</td><td><span class="badge badge--planned">Sin medir</span></td></tr>
+              <tr><th scope="row">EVA-01</th><td>Decisiones con evaluación prevista</td><td>Decisiones que fijan responsable, plazo, indicador y revisión posterior / decisiones registradas.</td><td>Acto, expediente y plan de evaluación</td><td><span class="badge badge--planned">Sin medir</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dashboards-roadmap" aria-labelledby="dashboards-title" data-search-title="Tableros en construcción" data-search-group="Observatorio" data-search-keywords="tablero rutas expedientes normativa territorio prototipo construcción">
+      <header class="section-heading">
+        <p class="overline">04 · Visualización</p>
+        <h2 id="dashboards-title">Tableros en construcción</h2>
+        <p>Estos tableros describen productos futuros. No son enlaces a visualizaciones activas ni contienen cifras simuladas.</p>
+      </header>
+
+      <div class="timeline-board">
+        <article class="card card--timeline">
+          <span class="timeline-board__index">T-01</span>
+          <div><h3>Rutas de activación</h3><p>Casos por actor, transformación, instrumento preliminar, condiciones pendientes y estado de revisión.</p></div>
+          <span class="badge badge--prototype">Modelo conceptual</span>
+        </article>
+        <article class="card card--timeline">
+          <span class="timeline-board__index">T-02</span>
+          <div><h3>Expedientes técnicos</h3><p>Completitud de dimensiones, fuentes revisadas, riesgos y decisiones, sin publicar notas personales.</p></div>
+          <span class="badge badge--planned">Por diseñar</span>
+        </article>
+        <article class="card card--timeline">
+          <span class="timeline-board__index">T-03</span>
+          <div><h3>Capacidad territorial</h3><p>Líneas de base y diferencias de implementación solo cuando existan unidades comparables.</p></div>
+          <span class="badge badge--planned">Por diseñar</span>
+        </article>
+        <article class="card card--timeline">
+          <span class="timeline-board__index">T-04</span>
+          <div><h3>Seguimiento normativo</h3><p>Versiones, hitos, actores competentes, documentos fuente y cambios sustantivos.</p></div>
+          <span class="badge badge--draft">Ficha inicial</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section normative-tracking" aria-labelledby="normative-title" data-search-title="Seguimiento normativo" data-search-group="Observatorio" data-search-keywords="proyecto ley decreto CONPES PND acuerdo versión competencia fuente oficial">
+      <header class="section-heading section-heading--split">
+        <div>
+          <p class="overline">05 · Línea normativa</p>
+          <h2 id="normative-title">Seguimiento normativo con trazabilidad</h2>
+        </div>
+        <p>La línea seguirá documentos y cambios verificables; no calificará una iniciativa solo por su nombre o por su promotor.</p>
+      </header>
+
+      <div class="normative-schema panel panel--interactive">
+        <div class="normative-schema__flow" aria-label="Secuencia propuesta de seguimiento normativo">
+          <span>Identificar instrumento</span>
+          <svg viewBox="0 0 48 16" width="48" height="16" aria-hidden="true" focusable="false"><path d="M1 8h42m-6-5 6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg>
+          <span>Verificar competencia</span>
+          <svg viewBox="0 0 48 16" width="48" height="16" aria-hidden="true" focusable="false"><path d="M1 8h42m-6-5 6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg>
+          <span>Registrar versión y fuente</span>
+          <svg viewBox="0 0 48 16" width="48" height="16" aria-hidden="true" focusable="false"><path d="M1 8h42m-6-5 6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg>
+          <span>Comparar cambios</span>
+          <svg viewBox="0 0 48 16" width="48" height="16" aria-hidden="true" focusable="false"><path d="M1 8h42m-6-5 6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg>
+          <span>Documentar el siguiente hito</span>
+        </div>
+        <div class="normative-schema__fields">
+          <h3>Campos mínimos de cada registro futuro</h3>
+          <ul>
+            <li>Identificador, título y tipo de instrumento.</li>
+            <li>Actor que activa y autoridad competente.</li>
+            <li>Etapa, fecha de corte y estado verificable.</li>
+            <li>Documento fuente, enlace estable y versión.</li>
+            <li>Cambio sustantivo frente a la versión anterior.</li>
+            <li>Condiciones fiscales, laborales o territoriales por revisar.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="normative-note"><strong>Estado de esta línea:</strong> existe una ficha conceptual inicial; todavía no se publica un registro de actos o proyectos.</p>
+    </section>
+
+    <section class="section publication-threshold" aria-labelledby="threshold-title">
+      <div class="card card--evidence">
+        <p class="overline">Se publicará</p>
+        <h2 id="threshold-title">Evidencia que pueda revisarse</h2>
+        <ul><li>Fuente y fecha de corte.</li><li>Método y definición.</li><li>Versión y responsable de revisión.</li><li>Limitaciones y vacíos conocidos.</li></ul>
+      </div>
+      <div class="card card--warning">
+        <p class="overline">No se publicará</p>
+        <h2>Precisión aparente sin soporte</h2>
+        <ul><li>Cifras inventadas o sin fuente.</li><li>Datos personales sensibles.</li><li>Comparaciones con unidades incompatibles.</li><li>Afirmaciones oficiales no verificadas.</li></ul>
+      </div>
+    </section>
+
+    <section class="section context-cta panel panel--navy" aria-labelledby="observatory-cta-title">
+      <div>
+        <p class="overline">Colaboración metodológica</p>
+        <h2 id="observatory-cta-title">¿Puede ayudar a revisar una fuente o definición?</h2>
+        <p>Comparta una observación técnica y señale el documento que la respalda.</p>
+      </div>
+      <a class="button button--secondary" href="/participar/#colaboracion">Proponer una revisión</a>
     </section>
   </main>
 
-  <aside class="floating-panel" id="floatingPanel" aria-label="Contacto y participación" hidden>
-    <button class="floating-close" type="button" aria-label="Cerrar panel">x</button>
-    <p class="overline">Contacto y PQRS</p>
-    <h2>Participar en CAMS</h2>
-    <a href="/participar/#comentarios">Comentar propuesta</a>
-    <a href="/participar/#suscripcion">Suscribirse</a>
-    <a href="/participar/#voluntariado">Ser voluntario/a</a>
-    <a href="/archivo/#redes">Ver redes</a>
-    <a href="/assets/documentos/estado-que-cumple-2026-2030.pdf" target="_blank" rel="noopener">Abrir PDF</a>
-  </aside>
-  <button class="floating-ring" type="button" aria-controls="floatingPanel" aria-expanded="false">
-    <span>Contacto y PQRS</span>
-  </button>
+  <dialog id="command-palette" class="command-palette" data-command-palette aria-labelledby="command-title">
+    <div class="command-palette__header"><h2 id="command-title">Buscar en CAMS</h2><button class="button button--icon" type="button" data-command-close aria-label="Cerrar buscador">×</button></div>
+    <label for="command-input">Buscar páginas, documentos, herramientas y conceptos</label><input id="command-input" type="search" data-command-input autocomplete="off" />
+    <div class="command-palette__filters" data-command-filters role="group" aria-label="Filtrar resultados"><button type="button" data-command-filter="all" aria-pressed="true">Todo</button><button type="button" data-command-filter="propuestas" aria-pressed="false">Propuestas</button><button type="button" data-command-filter="documentos" aria-pressed="false">Documentos</button><button type="button" data-command-filter="herramientas" aria-pressed="false">Herramientas</button><button type="button" data-command-filter="estado-del-arte" aria-pressed="false">Estado del arte</button><button type="button" data-command-filter="participacion" aria-pressed="false">Participación</button></div>
+    <div class="command-palette__results" data-command-results aria-live="polite"></div>
+  </dialog>
 
-  <footer class="site-footer">
-    <div class="footer-logo">
-      <img src="/assets/branding/emblema-cams.png" alt="" width="799" height="1082" loading="lazy" />
-      <div>
-        <strong>CAMS</strong>
-        <span>Estado que Cumple</span>
-      </div>
-    </div>
-    <p>Archivo público, propuesta ciudadana y laboratorio de capacidad pública.</p>
-    <div class="footer-links">
-      <a href="/estado-que-cumple/">Propuesta</a>
-      <a href="/documentos/">Documentos</a>
-      <a href="/participar/">Participar</a>
-      <a href="https://github.com/camscarlosmartinez" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.instagram.com/cams.carlosmartinez/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://co.linkedin.com/in/cams0802" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://www.facebook.com/CAMS.CarlosMartinez/" target="_blank" rel="noopener">Facebook</a>
-    </div>
-  </footer>
+  <footer class="site-footer site-footer--compact"><p><strong>CAMS</strong> · Archivo público independiente. Estado que Cumple es una propuesta ciudadana no adoptada oficialmente.</p><nav aria-label="Enlaces del pie"><a href="/cams/">CAMS</a><a href="/archivo/">Archivo</a><a href="/participar/">Participar</a></nav></footer>
 
-  <script src="/script.js"></script>
+  <script type="module" src="/script.js"></script>
 </body>
 </html>
