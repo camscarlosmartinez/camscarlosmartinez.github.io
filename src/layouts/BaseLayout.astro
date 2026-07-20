@@ -1,0 +1,37 @@
+---
+import '../styles/global.css';
+import SkipLink from '../components/global/SkipLink.astro';
+import Header from '../components/global/Header.astro';
+import Footer from '../components/global/Footer.astro';
+
+const {
+  title = 'CAMS',
+  description = 'Plataforma pública de investigación, propuestas y participación de CAMS.',
+  currentPath = '/',
+} = Astro.props;
+
+const siteTitle = title === 'CAMS' ? 'CAMS — Carlos Arturo Martínez Sánchez' : `${title} · CAMS`;
+const canonicalPath = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/$/, '');
+const canonicalUrl = new URL(canonicalPath, Astro.site ?? 'https://camscarlosmartinez.github.io').toString();
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalUrl} />
+    <title>{siteTitle}</title>
+  </head>
+  <body>
+    <SkipLink />
+    <div class="site-shell">
+      <Header currentPath={currentPath} />
+      <main id="main-content" tabindex="-1">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

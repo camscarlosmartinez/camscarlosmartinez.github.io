@@ -1,0 +1,114 @@
+---
+const { currentPath = '/' } = Astro.props;
+
+const links = [
+  { href: '/', label: 'Inicio', current: currentPath === '/' },
+  { href: '/cams/', label: 'CAMS', current: currentPath.startsWith('/cams') },
+  { href: '/estado-que-cumple/', label: 'Estado que Cumple', current: currentPath.startsWith('/estado-que-cumple') },
+  { href: '/propuestas/', label: 'Propuestas', current: currentPath.startsWith('/propuestas') },
+  { href: '/conocimiento/', label: 'Conocimiento', current: currentPath.startsWith('/conocimiento') },
+  { href: '/participar/', label: 'Participar', current: currentPath.startsWith('/participar') },
+];
+
+const knowledgeLinks = [
+  { href: '/conocimiento/investigaciones/', label: 'Investigaciones' },
+  { href: '/conocimiento/documentos/', label: 'Documentos' },
+  { href: '/conocimiento/bitacora/', label: 'Bitácora' },
+  { href: '/conocimiento/observatorio/', label: 'Observatorio' },
+  { href: '/archivo/', label: 'Archivo' },
+];
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="CAMS Inicio">
+      <span class="brand__mark">CAMS</span>
+      <span class="brand__text">Carlos Arturo Martínez Sánchez</span>
+    </a>
+
+    <button class="mobile-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" data-menu-toggle>
+      Menú
+    </button>
+
+    <nav class="site-nav" id="site-navigation" aria-label="Navegación principal">
+      <ul class="nav-list">
+        {links.map((link) => (
+          <li class:list={link.label === 'Conocimiento' ? ['nav-item', 'has-submenu'] : ['nav-item']}>
+            {link.label === 'Conocimiento' ? (
+              <div>
+                <button class="nav-link--button" type="button" aria-expanded="false" aria-controls={`submenu-${link.label.toLowerCase()}`} data-submenu-trigger>
+                  {link.label}
+                  <span aria-hidden="true">▾</span>
+                </button>
+                <ul class="submenu" id={`submenu-${link.label.toLowerCase()}`} hidden>
+                  {knowledgeLinks.map((subLink) => (
+                    <li>
+                      <a class="submenu-link" href={subLink.href}>{subLink.label}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <a class="nav-link" href={link.href} aria-current={link.current ? 'page' : undefined}>
+                {link.label}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector('[data-menu-toggle]');
+  const nav = document.getElementById('site-navigation');
+  const submenuTriggers = Array.from(document.querySelectorAll('[data-submenu-trigger]'));
+  const closeMenus = () => {
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+    nav?.classList.remove('is-open');
+    submenuTriggers.forEach((trigger) => trigger.setAttribute('aria-expanded', 'false'));
+    document.querySelectorAll('.submenu').forEach((submenu) => submenu.setAttribute('hidden', ''));
+  };
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = nav?.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(Boolean(isOpen)));
+    if (!isOpen) {
+      closeMenus();
+    }
+  });
+
+  submenuTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const nextState = trigger.getAttribute('aria-expanded') === 'true' ? 'false' : 'true';
+      trigger.setAttribute('aria-expanded', nextState);
+      const targetId = trigger.getAttribute('aria-controls');
+      const submenu = document.getElementById(targetId ?? '');
+      if (submenu) {
+        submenu.hidden = nextState === 'false';
+      }
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeMenus();
+      const activeTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      if (activeTrigger && activeTrigger instanceof HTMLElement && activeTrigger.dataset.menuToggle) {
+        activeTrigger.focus();
+      }
+    }
+  });
+
+  nav?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      closeMenus();
+      if (toggle) {
+        toggle.focus();
+      }
+    });
+  });
+</script>

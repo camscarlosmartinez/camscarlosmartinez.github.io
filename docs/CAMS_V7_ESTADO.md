@@ -267,9 +267,48 @@ Se recomienda mantener estas URLs como rutas canónicas de referencia y evitar r
 - Se conservaron los archivos HTML existentes y se mantuvo la web publicada actual como referencia paralela.
 - Se instalaron las dependencias mínimas de Astro y @astrojs/sitemap.
 - Se configuró la salida estática y la URL de GitHub Pages.
-- Se creó una página mínima de prueba para verificar la compilación.
-- Se creó el workflow de GitHub Actions para Pages sin activar aún el despliegue.
-- La build completó correctamente con npm run build.
+- Se creó la infraestructura visual compartida para la primera ola de migración.
+- Se incorporó navegación principal, submenú de Conocimiento, skip link, foco visible y layouts base.
+- Se validó que la build de Astro puede ejecutarse correctamente en el entorno actual.
+
+## 10. Componentes creados en esta sesión
+
+- Layout base: BaseLayout.astro.
+- Layout de contenido: ContentLayout.astro.
+- Encabezado y navegación principal: Header.astro.
+- Pie de página: Footer.astro.
+- Migas de pan: Breadcrumbs.astro.
+- Skip link: SkipLink.astro.
+- Estilos globales compartidos: src/styles/global.css.
+
+## 11. Decisiones visuales adoptadas
+
+- Identidad editorial CAMS con una propuesta visual contemporánea y no institucional.
+- Uso de rojo CAMS para tesis y decisión, azul para evidencia y análisis, dorado para autoría y archivo, verde sobrio para participación y resultados.
+- Fondos neutros cálidos para lectura y jerarquía editorial.
+- Enfoque en una estructura de lectura clara, con ancho de contenido controlado y sin depender de tarjetas como contenedor universal.
+
+## 12. Decisiones responsive adoptadas
+
+- Menú de escritorio claro y menú móvil accesible, con botón de activación visible en pantallas pequeñas.
+- Navegación operable por teclado, con cierre por Escape y cierre al seleccionar enlaces.
+- Diseño sin desplazamiento horizontal y con adaptación fluida para pantallas pequeñas y zoom alto.
+- Estructura responsive basada en contenido y espacio disponible, no solo en breakpoints genéricos.
+
+## 13. Pruebas realizadas
+
+- Verificación de existencia de src/pages/index.astro, src/env.d.ts y .github/workflows/deploy-pages.yml.
+- Verificación de que node_modules/, dist/ y .astro/ están ignorados por Git.
+- Verificación de la configuración de Astro y TypeScript base.
+- Ejecución de la build de Astro para confirmar que la infraestructura compartida compila.
+- Revisión manual de navegación, foco visible y estructura de lectura en los layouts base.
+
+## 14. Elementos pendientes
+
+- Migrar contenido real de portada, CAMS, Estado que Cumple, propuestas, documentos, investigaciones, bitácora, observatorio y participación.
+- Reemplazar los textos de ejemplo por contenido editorial definitivo.
+- Completar la migración de interacciones específicas como buscador, biblioteca documental y árbol de problema.
+- Preparar la revisión visual y de accesibilidad en rutas completas una vez el contenido se haya migrado.
 
 ## 10. Pruebas obligatorias antes de considerar la migración completa
 

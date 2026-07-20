@@ -1,17 +1,40 @@
 ---
-const title = 'CAMS — Astro preview';
+import ContentLayout from '../layouts/ContentLayout.astro';
 ---
 
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-  </head>
-  <body>
-    <main>
-      <h1>{title}</h1>
-      <p>Esta página mínima confirma que Astro está inicializado sin modificar la web HTML actual.</p>
-    </main>
-  </body>
-</html>
+<ContentLayout
+  title="Inicio"
+  description="Infraestructura visual compartida para CAMS, con navegación base, identidad editorial y layouts accesibles."
+  currentPath="/"
+  breadcrumbs={[{ label: 'Inicio' }]}
+>
+  <Fragment slot="hero">
+    <p class="eyebrow">Infraestructura visual compartida</p>
+    <h1>Una plataforma pública de investigación, propuesta y participación.</h1>
+    <p>La arquitectura base ya ofrece identidad editorial CAMS, navegación accesible, metadatos SEO y una estructura responsive preparada para las secciones futuras.</p>
+    <div class="hero-actions">
+      <a class="button button--primary" href="/estado-que-cumple/">Ver Estado que Cumple</a>
+      <a class="button button--secondary" href="/conocimiento/">Explorar Conocimiento</a>
+    </div>
+  </Fragment>
+
+  <section class="note-panel">
+    <h2>Qué se incorporó</h2>
+    <ul class="stack-list">
+      <li>Tokens de diseño y estilos base con identidad editorial CAMS.</li>
+      <li>Layouts compartidos para estructura general y contenido editorial.</li>
+      <li>Navegación principal y submenú de Conocimiento con enfoque accesible.</li>
+      <li>Metadatos SEO base, skip link y foco visible.</li>
+    </ul>
+  </section>
+
+  <Fragment slot="sidebar">
+    <h2>Estado de la migración</h2>
+    <ul class="stack-list">
+      <li>Portada mínima activa en Astro.</li>
+      <li>HTML antiguo preservado intacto.</li>
+      <li>Rutas base de navegación disponibles.</li>
+      <li>Build pendiente de verificación final.</li>
+    </ul>
+  </Fragment>
+</ContentLayout>

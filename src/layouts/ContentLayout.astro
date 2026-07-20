@@ -1,0 +1,30 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/global/Breadcrumbs.astro';
+
+const {
+  title,
+  description,
+  currentPath = '/',
+  breadcrumbs = [],
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description} currentPath={currentPath}>
+  <div class="page">
+    <div class="container content-layout">
+      {breadcrumbs.length > 0 && <Breadcrumbs items={breadcrumbs} />}
+      <header class="content-hero">
+        <slot name="hero" />
+      </header>
+      <div class="content-body">
+        <div class="content-main prose">
+          <slot />
+        </div>
+        <aside class="content-side" aria-label="Contexto de la página">
+          <slot name="sidebar" />
+        </aside>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
