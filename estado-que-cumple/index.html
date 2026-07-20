@@ -339,6 +339,109 @@
       <div class="route-panel" data-route-panel="territorio"><span>Territorio</span><h3>Fuente local: gobiernos y comunidades</h3><p><strong>Instrumentos:</strong> planes territoriales, acuerdos, pilotos, tableros locales y observatorios. <strong>Salida:</strong> aprendizaje situado y capacidad territorial.</p></div>
     </section>
 
+    <section class="section decision-lab" id="simulador" data-decision-lab aria-labelledby="decision-lab-title">
+      <div class="section-title wide">
+        <p class="overline">Laboratorio de decisión</p>
+        <h2 id="decision-lab-title">Explore qué ruta institucional podría corresponder antes de crear una forma permanente.</h2>
+        <p>
+          Esta herramienta es pedagógica: organiza preguntas de RAÍCES, SAVIA y SEMILLAS, pero no reemplaza
+          conceptos jurídicos, fiscales, laborales ni administrativos de las autoridades competentes.
+        </p>
+      </div>
+
+      <div class="decision-layout">
+        <form class="decision-form" data-decision-form>
+          <fieldset>
+            <legend>1. Punto de partida</legend>
+            <label>
+              ¿Ya existe una entidad, función, fondo, sistema o programa que atienda algo equivalente?
+              <select name="existing">
+                <option value="unknown">No está claro</option>
+                <option value="yes">Sí</option>
+                <option value="no">No</option>
+              </select>
+            </label>
+            <label>
+              ¿La transformación parece requerir reserva de ley o cambio de competencias legales?
+              <select name="legal">
+                <option value="unknown">Debe estudiarse</option>
+                <option value="yes">Sí</option>
+                <option value="no">No necesariamente</option>
+              </select>
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>2. Capacidad disponible</legend>
+            <label>
+              Madurez institucional actual
+              <select name="maturity">
+                <option value="low">Baja o desconocida</option>
+                <option value="medium">Intermedia</option>
+                <option value="high">Alta y demostrable</option>
+              </select>
+            </label>
+            <label>
+              Calidad de evidencia, datos y línea base
+              <select name="evidence">
+                <option value="low">Insuficiente</option>
+                <option value="medium">Parcial</option>
+                <option value="high">Suficiente y verificable</option>
+              </select>
+            </label>
+            <label>
+              Capacidad territorial para implementar
+              <select name="territory">
+                <option value="low">Débil o desigual</option>
+                <option value="medium">Parcial</option>
+                <option value="high">Suficiente</option>
+              </select>
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>3. Tipo de decisión</legend>
+            <label>
+              Actor que busca activar la propuesta
+              <select name="actor">
+                <option value="executive">Ejecutivo</option>
+                <option value="legislative">Legislativo</option>
+                <option value="territorial">Entidad territorial</option>
+                <option value="citizen">Ciudadanía / academia / control social</option>
+              </select>
+            </label>
+            <label>
+              Urgencia y permanencia esperada
+              <select name="urgency">
+                <option value="pilot">Conviene probar antes</option>
+                <option value="structural">Se busca una transformación estructural</option>
+                <option value="corrective">Se busca corregir algo existente</option>
+              </select>
+            </label>
+          </fieldset>
+
+          <button class="button primary" type="submit">Construir ruta preliminar</button>
+        </form>
+
+        <aside class="decision-output" aria-live="polite">
+          <p class="overline">Resultado pedagógico</p>
+          <h3 data-decision-title>Complete las preguntas para generar una ruta preliminar.</h3>
+          <p data-decision-summary>
+            El resultado combinará revisión RAÍCES, análisis SAVIA, posible piloto SEMILLAS,
+            expediente técnico e instrumento competente.
+          </p>
+          <ol class="decision-sequence" data-decision-sequence>
+            <li>Delimitar el problema público.</li>
+            <li>Revisar qué existe.</li>
+            <li>Evaluar madurez y viabilidad.</li>
+          </ol>
+          <div class="decision-badges" data-decision-badges></div>
+          <button class="button secondary decision-copy" type="button" data-decision-copy disabled>Copiar resultado</button>
+          <small>No constituye concepto jurídico ni decisión administrativa.</small>
+        </aside>
+      </div>
+    </section>
+
     <section class="section stepper-section" id="ruta-integrada" data-stepper aria-labelledby="ruta-title">
       <div class="section-title wide">
         <p class="overline">Ruta integrada de transformación institucional</p>

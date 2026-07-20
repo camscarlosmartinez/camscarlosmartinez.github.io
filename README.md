@@ -87,3 +87,14 @@ git push
 - Mantener lenguaje de propuesta ciudadana, discusión técnica, incidencia y seguimiento público.
 - Todo documento público debe tener fecha, versión, resumen, palabras clave y forma de citación.
 - Los módulos de participación deben aclarar si están habilitados, por conectar o en preparación.
+
+## Mejoras CAMS v4
+
+- Barra de progreso de lectura.
+- Buscador global con `Ctrl + K`.
+- Navegación contextual de la propuesta.
+- Laboratorio pedagógico de decisión institucional.
+- Accesos directos a árbol del problema, mapa institucional y simulador.
+- Conectores visuales mejorados en el árbol técnico.
+
+La herramienta de decisión no emite conceptos jurídicos ni administrativos. Organiza preguntas de la propuesta para facilitar discusión, diagnóstico e incidencia.
