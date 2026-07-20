@@ -11,8 +11,7 @@ const {
 } = Astro.props;
 
 const siteTitle = title === 'CAMS' ? 'CAMS — Carlos Arturo Martínez Sánchez' : `${title} · CAMS`;
-const canonicalPath = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/$/, '');
-const canonicalUrl = new URL(canonicalPath, Astro.site ?? 'https://camscarlosmartinez.github.io').toString();
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://camscarlosmartinez.github.io').toString();
 ---
 
 <html lang="es">

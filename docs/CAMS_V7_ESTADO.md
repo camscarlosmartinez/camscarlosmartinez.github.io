@@ -338,3 +338,80 @@ Estas decisiones son límites de la migración y deben respetarse:
 ## Recomendación inicial
 
 La primera fase recomendable es la infraestructura Astro con despliegue estático en GitHub Pages, manteniendo el sitio actual paralelo y sin eliminar los archivos HTML existentes. Esa fase permite introducir el motor nuevo sin romper la web pública ni perder la trazabilidad del contenido actual.
+
+## Fase 2.5 — Estabilización y seguridad de la migración
+
+Fecha de validación: 20 de julio de 2026.
+
+### Seguridad de publicación
+
+- No existe ningún `.yml` o `.yaml` activo dentro de `.github/workflows/`; el directorio está vacío.
+- El workflow permanece en `.github/disabled/deploy-pages.yml.disabled`, fuera del directorio reconocido por GitHub Actions y con extensión `.disabled`.
+- No se modificaron Settings de GitHub Pages, no se activó ningún despliegue y no se hizo commit ni push.
+- Los HTML, CSS, JavaScript, JSON, imágenes y PDF heredados permanecen intactos en sus ubicaciones originales.
+- `dist/` está ignorado y solo representa una compilación local; no contiene todavía el sitio público completo.
+
+### Riesgos detectados
+
+- La portada Astro temporal podía confundirse con una portada terminada y afirmaba que el build estaba pendiente pese a estar verificado.
+- La portada producía breadcrumbs duplicados (`Inicio / Inicio`).
+- Conocimiento era solo un botón y no funcionaba como enlace de escritorio.
+- Conocimiento no reconocía las rutas heredadas `/documentos/`, `/bitacora/`, `/observatorio/` y `/archivo/` como parte de su estado activo.
+- Escape cerraba menús, pero no devolvía el foco al activador correcto.
+- `public/` está vacío: la build no incluye recursos heredados, PDF, favicon, manifest ni robots.
+- La navegación base enlaza rutas aún no generadas; publicar `dist/` rompería la mayor parte del sitio.
+- `npm install` informó 2 vulnerabilidades en el árbol de dependencias (1 baja y 1 alta). No se ejecutó `npm audit fix --force` por su riesgo de cambios incompatibles; queda pendiente una revisión específica.
+- La comprobación conserva un hint por el fallback heredado `document.execCommand('copy')`; no es un error de compilación y corresponde a una herramienta aún no migrada.
+
+### Correcciones realizadas
+
+- Breadcrumbs normalizados: Inicio aparece una sola vez y el último elemento usa `aria-current="page"`.
+- Conocimiento conserva un enlace navegable y un botón explícito para abrir sus secciones.
+- Estado activo añadido a Conocimiento, sus subrutas nuevas y alias heredados mediante `aria-current`.
+- `aria-expanded` y `aria-controls` permanecen sincronizados en navegación principal y submenú.
+- Escape cierra la navegación y devuelve el foco al activador correcto; la operación no depende de hover.
+- Navegación móvil adaptada al grupo enlace/botón.
+- Protección adicional frente a desbordamiento horizontal y palabras largas.
+- La portada muestra “Infraestructura Astro en migración. Esta no es la portada pública final.” y ya no afirma que el build esté pendiente.
+- El canonical base conserva la barra final de las rutas de directorio.
+- `.gitignore` quedó sin BOM ni duplicados, ignora dependencias, salidas, caché de Astro, temporales y `artifacts/`, y no excluye fuentes, configuración, `public/`, `.github/` ni documentación.
+- Se instalaron `@astrojs/check` y `typescript` como `devDependencies` y se actualizó el lockfile.
+
+### Estado real de `dist/`
+
+- Generadas: `/` y `/sitemap-index.xml`.
+- Ausentes: las otras 14 páginas obligatorias de la matriz.
+- Ausentes: favicon, imagen Open Graph, branding, PDF, manifest y robots.
+- La portada temporal contiene enlaces a 10 rutas todavía no generadas.
+- `node tools/audit_dist.mjs`: `31 ERROR`, `0 WARNING`; el fallo es esperado y se conserva visible porque la migración está incompleta.
+
+### Rutas que todavía faltan
+
+- `/cams/`
+- `/estado-que-cumple/`
+- `/documentos/`
+- `/observatorio/`
+- `/bitacora/`
+- `/participar/`
+- `/archivo/`
+- `/propuestas/`
+- `/conocimiento/`
+- `/conocimiento/investigaciones/`
+- `/conocimiento/documentos/`
+- `/conocimiento/bitacora/`
+- `/conocimiento/observatorio/`
+- `/conocimiento/archivo/`
+
+Las subrutas futuras del micrositio Estado que Cumple también siguen pendientes, reservadas para su fase específica.
+
+### Resultados de validación
+
+- `npm.cmd run check`: PASS, 0 errores, 0 warnings y 1 hint heredado por API de copia deprecada.
+- `npm.cmd run build`: PASS, 1 página generada y sitemap creado.
+- `node tools/audit_dist.mjs`: ERROR esperado, 31 errores y 0 advertencias.
+- `git diff --check`: PASS, sin errores de espacios en blanco.
+
+### Documentos de control creados
+
+- `docs/CAMS_V7_MATRIZ_RUTAS.md`: rutas actuales, futuras, recursos, scripts, datos, canonical, prioridad, riesgos y pruebas.
+- `tools/audit_dist.mjs`: auditoría de páginas, recursos obligatorios y enlaces internos de la salida Astro.

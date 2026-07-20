@@ -1,22 +1,27 @@
 ---
-const { currentPath = '/' } = Astro.props;
+const { currentPath = '/' } = Astro.props as { currentPath?: string };
+
+const knowledgePaths = ['/conocimiento', '/documentos', '/bitacora', '/observatorio', '/archivo'];
+const isKnowledgeCurrent = knowledgePaths.some((path) => currentPath.startsWith(path));
 
 const links = [
   { href: '/', label: 'Inicio', current: currentPath === '/' },
   { href: '/cams/', label: 'CAMS', current: currentPath.startsWith('/cams') },
   { href: '/estado-que-cumple/', label: 'Estado que Cumple', current: currentPath.startsWith('/estado-que-cumple') },
   { href: '/propuestas/', label: 'Propuestas', current: currentPath.startsWith('/propuestas') },
-  { href: '/conocimiento/', label: 'Conocimiento', current: currentPath.startsWith('/conocimiento') },
+  { href: '/conocimiento/', label: 'Conocimiento', current: isKnowledgeCurrent },
   { href: '/participar/', label: 'Participar', current: currentPath.startsWith('/participar') },
 ];
 
 const knowledgeLinks = [
-  { href: '/conocimiento/investigaciones/', label: 'Investigaciones' },
-  { href: '/conocimiento/documentos/', label: 'Documentos' },
-  { href: '/conocimiento/bitacora/', label: 'Bitácora' },
-  { href: '/conocimiento/observatorio/', label: 'Observatorio' },
-  { href: '/archivo/', label: 'Archivo' },
+  { href: '/conocimiento/investigaciones/', label: 'Investigaciones', aliases: [] },
+  { href: '/conocimiento/documentos/', label: 'Documentos', aliases: ['/documentos'] },
+  { href: '/conocimiento/bitacora/', label: 'Bitácora', aliases: ['/bitacora'] },
+  { href: '/conocimiento/observatorio/', label: 'Observatorio', aliases: ['/observatorio'] },
+  { href: '/conocimiento/archivo/', label: 'Archivo', aliases: ['/archivo'] },
 ];
+
+const isCurrent = (href: string, aliases: string[] = []) => [href.replace(/\/$/, ''), ...aliases].some((path) => currentPath.startsWith(path));
 ---
 
 <header class="site-header">
@@ -35,15 +40,15 @@ const knowledgeLinks = [
         {links.map((link) => (
           <li class:list={link.label === 'Conocimiento' ? ['nav-item', 'has-submenu'] : ['nav-item']}>
             {link.label === 'Conocimiento' ? (
-              <div>
-                <button class="nav-link--button" type="button" aria-expanded="false" aria-controls={`submenu-${link.label.toLowerCase()}`} data-submenu-trigger>
-                  {link.label}
+              <div class="nav-link-group">
+                <a class="nav-link" href={link.href} aria-current={link.current ? 'page' : undefined}>{link.label}</a>
+                <button class="nav-link--button" type="button" aria-label="Mostrar secciones de Conocimiento" aria-expanded="false" aria-controls={`submenu-${link.label.toLowerCase()}`} data-submenu-trigger>
                   <span aria-hidden="true">▾</span>
                 </button>
                 <ul class="submenu" id={`submenu-${link.label.toLowerCase()}`} hidden>
                   {knowledgeLinks.map((subLink) => (
                     <li>
-                      <a class="submenu-link" href={subLink.href}>{subLink.label}</a>
+                      <a class="submenu-link" href={subLink.href} aria-current={isCurrent(subLink.href, subLink.aliases) ? 'page' : undefined}>{subLink.label}</a>
                     </li>
                   ))}
                 </ul>
@@ -61,9 +66,10 @@ const knowledgeLinks = [
 </header>
 
 <script>
-  const toggle = document.querySelector('[data-menu-toggle]');
+  const toggle = document.querySelector<HTMLElement>('[data-menu-toggle]');
   const nav = document.getElementById('site-navigation');
-  const submenuTriggers = Array.from(document.querySelectorAll('[data-submenu-trigger]'));
+  const submenuTriggers = Array.from(document.querySelectorAll<HTMLElement>('[data-submenu-trigger]'));
+  let lastActivator: HTMLElement | null = null;
   const closeMenus = () => {
     if (toggle) {
       toggle.setAttribute('aria-expanded', 'false');
@@ -74,6 +80,7 @@ const knowledgeLinks = [
   };
 
   toggle?.addEventListener('click', () => {
+    lastActivator = toggle;
     const isOpen = nav?.classList.toggle('is-open');
     toggle.setAttribute('aria-expanded', String(Boolean(isOpen)));
     if (!isOpen) {
@@ -83,6 +90,7 @@ const knowledgeLinks = [
 
   submenuTriggers.forEach((trigger) => {
     trigger.addEventListener('click', () => {
+      lastActivator = trigger;
       const nextState = trigger.getAttribute('aria-expanded') === 'true' ? 'false' : 'true';
       trigger.setAttribute('aria-expanded', nextState);
       const targetId = trigger.getAttribute('aria-controls');
@@ -95,20 +103,16 @@ const knowledgeLinks = [
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
+      const focusTarget = lastActivator;
       closeMenus();
-      const activeTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-      if (activeTrigger && activeTrigger instanceof HTMLElement && activeTrigger.dataset.menuToggle) {
-        activeTrigger.focus();
-      }
+      focusTarget?.focus();
+      lastActivator = null;
     }
   });
 
   nav?.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
       closeMenus();
-      if (toggle) {
-        toggle.focus();
-      }
     });
   });
 </script>

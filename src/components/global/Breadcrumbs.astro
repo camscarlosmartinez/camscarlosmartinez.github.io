@@ -1,5 +1,11 @@
 ---
-const { items = [] } = Astro.props;
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+const { items = [] } = Astro.props as { items?: BreadcrumbItem[] };
+const trail = items.filter((item) => item.href !== '/' && item.label !== 'Inicio');
 ---
 
 <nav class="breadcrumbs" aria-label="Ruta de navegación">
@@ -7,9 +13,11 @@ const { items = [] } = Astro.props;
     <li class="breadcrumbs__item">
       <a href="/">Inicio</a>
     </li>
-    {items.map((item) => (
+    {trail.map((item, index) => (
       <li class="breadcrumbs__item">
-        {item.href ? <a href={item.href}>{item.label}</a> : <span>{item.label}</span>}
+        {item.href && index < trail.length - 1
+          ? <a href={item.href}>{item.label}</a>
+          : <span aria-current="page">{item.label}</span>}
       </li>
     ))}
   </ol>

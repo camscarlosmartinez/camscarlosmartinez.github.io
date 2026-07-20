@@ -6,7 +6,6 @@ import ContentLayout from '../layouts/ContentLayout.astro';
   title="Inicio"
   description="Infraestructura visual compartida para CAMS, con navegación base, identidad editorial y layouts accesibles."
   currentPath="/"
-  breadcrumbs={[{ label: 'Inicio' }]}
 >
   <Fragment slot="hero">
     <p class="eyebrow">Infraestructura visual compartida</p>
@@ -19,6 +18,7 @@ import ContentLayout from '../layouts/ContentLayout.astro';
   </Fragment>
 
   <section class="note-panel">
+    <p class="migration-notice">Infraestructura Astro en migración. Esta no es la portada pública final.</p>
     <h2>Qué se incorporó</h2>
     <ul class="stack-list">
       <li>Tokens de diseño y estilos base con identidad editorial CAMS.</li>
@@ -34,7 +34,7 @@ import ContentLayout from '../layouts/ContentLayout.astro';
       <li>Portada mínima activa en Astro.</li>
       <li>HTML antiguo preservado intacto.</li>
       <li>Rutas base de navegación disponibles.</li>
-      <li>Build pendiente de verificación final.</li>
+      <li>Infraestructura base verificada mediante check y build local.</li>
     </ul>
   </Fragment>
 </ContentLayout>

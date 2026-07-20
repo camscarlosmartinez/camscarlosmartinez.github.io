@@ -37,6 +37,13 @@ body {
   background: var(--color-neutral-50);
   line-height: 1.6;
   min-height: 100vh;
+  overflow-wrap: anywhere;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 a {
@@ -150,6 +157,11 @@ a:focus-visible {
   position: relative;
 }
 
+.nav-link-group {
+  display: flex;
+  align-items: center;
+}
+
 .nav-link,
 .nav-link--button {
   display: inline-flex;
@@ -164,6 +176,16 @@ a:focus-visible {
   cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
+}
+
+.nav-link-group .nav-link {
+  border-radius: 999px 0 0 999px;
+  padding-right: 0.45rem;
+}
+
+.nav-link-group .nav-link--button {
+  border-radius: 0 999px 999px 0;
+  padding-left: 0.45rem;
 }
 
 .nav-link:hover,
@@ -214,6 +236,19 @@ a:focus-visible {
 .submenu-link:focus-visible {
   background: var(--color-cams-blue-soft);
   color: var(--color-cams-red);
+}
+
+.submenu-link[aria-current="page"] {
+  background: var(--color-cams-blue-soft);
+  color: var(--color-cams-red);
+  font-weight: 700;
+}
+
+.migration-notice {
+  border-left: 4px solid var(--color-cams-red);
+  padding: 0.75rem 1rem;
+  background: var(--color-cams-gold-soft);
+  font-weight: 700;
 }
 
 main {
@@ -389,6 +424,16 @@ main {
   .nav-link--button {
     width: 100%;
     justify-content: space-between;
+  }
+
+  .nav-link-group {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .nav-link-group .nav-link,
+  .nav-link-group .nav-link--button {
+    border-radius: var(--radius-sm);
   }
 
   .submenu {
