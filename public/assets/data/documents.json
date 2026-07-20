@@ -1,0 +1,69 @@
+{
+  "version": "1.0",
+  "documents": [
+    {
+      "id": "estado-que-cumple-2026-2030",
+      "code": "CAMS–EQC–001",
+      "title": "Estado que Cumple 2026–2030",
+      "type": "propuesta",
+      "typeLabel": "Propuesta programática",
+      "status": "published",
+      "version": "Documento público vigente",
+      "date": "2026",
+      "responsible": "Carlos Arturo Martínez Sánchez · CAMS",
+      "summary": "Documento fuente de la propuesta ciudadana, técnica y programática para pasar de la forma institucional a capacidad pública verificable.",
+      "keywords": ["capacidad pública", "RAÍCES", "SAVIA", "SEMILLAS", "expediente técnico", "evaluación"],
+      "download": "/assets/documentos/estado-que-cumple-2026-2030.pdf",
+      "citation": "Martínez Sánchez, Carlos Arturo. (2026). Estado que Cumple 2026–2030. CAMS. Documento público independiente.",
+      "featured": true
+    },
+    {
+      "id": "matriz-capacidad-publica",
+      "code": "CAMS–MAT–002",
+      "title": "Matriz de capacidad pública",
+      "type": "matriz",
+      "typeLabel": "Matriz / datos",
+      "status": "draft",
+      "version": "Borrador de estructura",
+      "date": "En preparación",
+      "responsible": "CAMS",
+      "summary": "Estructura futura para relacionar problemas, competencias, restricciones, fuentes e indicadores propuestos.",
+      "keywords": ["matriz", "indicadores", "competencias", "fuentes", "observatorio"],
+      "download": null,
+      "citation": "CAMS. Matriz de capacidad pública. Borrador en preparación; no disponible para citación definitiva.",
+      "featured": false
+    },
+    {
+      "id": "movilidad-infraestructura-bogota",
+      "code": "CAMS–ACA–003",
+      "title": "Movilidad e infraestructura en Bogotá",
+      "type": "academico",
+      "typeLabel": "Trabajo académico",
+      "status": "planned",
+      "version": "Planeado",
+      "date": "Sin fecha de publicación",
+      "responsible": "Carlos Arturo Martínez Sánchez",
+      "summary": "Línea académica anunciada para examinar planeación, movilidad e infraestructura desde la capacidad institucional.",
+      "keywords": ["Bogotá", "movilidad", "infraestructura", "planeación", "capacidad institucional"],
+      "download": null,
+      "citation": "Registro planeado; no existe todavía un documento público para citar.",
+      "featured": false
+    },
+    {
+      "id": "juventud-participacion-control-social",
+      "code": "CAMS–ARC–004",
+      "title": "Juventud, participación y control social",
+      "type": "archivo",
+      "typeLabel": "Documento de archivo",
+      "status": "planned",
+      "version": "Planeado",
+      "date": "Sin fecha de publicación",
+      "responsible": "CAMS",
+      "summary": "Registro futuro para ordenar materiales verificables sobre juventud, participación y control social.",
+      "keywords": ["juventud", "participación", "control social", "Bogotá", "archivo"],
+      "download": null,
+      "citation": "Registro planeado; no existe todavía un documento público para citar.",
+      "featured": false
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "CAMS | Estado que Cumple",
+  "short_name": "CAMS",
+  "description": "Del Estado de papel a la capacidad pública real.",
+  "lang": "es-CO",
+  "dir": "ltr",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fbf7ef",
+  "theme_color": "#071d33",
+  "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "version": "1.0",
+  "disclaimer": "Resultado pedagógico, no constituye concepto jurídico.",
+  "activators": {
+    "executive": "Gobierno nacional, sector competente, DAFP, DNP y autoridades que deban emitir conceptos.",
+    "congress": "Congreso, autores de la iniciativa y autoridades técnicas convocadas según la materia.",
+    "civil": "Ciudadanía, academia u organizaciones y la autoridad pública destinataria competente.",
+    "territorial": "Entidad territorial, concejo o asamblea cuando corresponda y sector competente."
+  },
+  "commonActors": [
+    "equipos responsables de implementación",
+    "actores afectados y mecanismos de control aplicables"
+  ],
+  "defaultInstruments": [
+    "instrumento por clasificar mediante expediente técnico"
+  ],
+  "routePrinciples": [
+    "No asumir que toda transformación requiere una entidad nueva.",
+    "Verificar competencia, reserva de ley y conceptos especializados.",
+    "Vincular gasto, empleo, datos, territorio e implementación.",
+    "Usar pilotos cuando la incertidumbre impida una decisión permanente.",
+    "Cerrar con seguimiento, evaluación y memoria pública."
+  ]
+}

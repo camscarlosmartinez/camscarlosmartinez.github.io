@@ -415,3 +415,45 @@ Las subrutas futuras del micrositio Estado que Cumple también siguen pendientes
 
 - `docs/CAMS_V7_MATRIZ_RUTAS.md`: rutas actuales, futuras, recursos, scripts, datos, canonical, prioridad, riesgos y pruebas.
 - `tools/audit_dist.mjs`: auditoría de páginas, recursos obligatorios y enlaces internos de la salida Astro.
+
+## Fase 2.6 — Recursos públicos, metadatos y autosuficiencia de dist
+
+### Recursos incorporados selectivamente
+
+- Favicon SVG e imagen Open Graph.
+- Logo, sello y emblema CAMS originales, sin compresión ni conversión.
+- PDF Estado que Cumple 2026–2030.
+- `site.webmanifest` y `robots.txt`; la copia pública de robots referencia el `sitemap-index.xml` generado por Astro.
+- Los cinco JSON actuales en `public/assets/data/` como duplicación transitoria y documentada para los `fetch` de las herramientas.
+- Todos los originales de la raíz permanecen intactos.
+
+### Recursos deliberadamente no incorporados
+
+- `styles.css`, `script.js`, `assets/css/` y `assets/js/`: la portada Astro no los consume y su copia completa duplicaría la infraestructura heredada.
+- `sitemap.xml`: no se copia para evitar conflicto con `@astrojs/sitemap`, que genera el sitemap final.
+- El resto de `assets/`: se mantiene fuera de `public/` hasta que una página migrada demuestre que lo necesita.
+
+### Estrategia de datos
+
+Los JSON de árbol del problema, arquitectura, estado del arte, documentos y rutas de activación se mantienen temporalmente tanto en `assets/data/` como en `public/assets/data/`. Los originales sirven a la web HTML vigente y son la fuente de verdad; las copias públicas permiten los `fetch` dentro de `dist/`. Cada conjunto deberá migrarse posteriormente a `src/data/` o colecciones tipadas y eliminar su duplicación cuando las herramientas correspondientes dejen de depender del archivo público.
+
+### Metadatos implementados
+
+- Se creó `SeoHead.astro` con título, descripción, canonical, imagen, tipo, robots, locale y autor configurables.
+- `BaseLayout.astro` incorpora favicon, manifest, theme-color, canonical HTTPS, Open Graph, Twitter Card, `og:locale`, autor, robots e imagen social predeterminada.
+- No se añadió JSON-LD de Person ni CreativeWork.
+- El manifest conserva únicamente el favicon SVG real. Los tamaños raster siguen pendientes y no se declararon archivos inexistentes.
+
+### Optimización y decisiones pendientes
+
+- Tamaños: logo 379.540 bytes; sello 890.250 bytes; emblema 855.167 bytes; OG 38.291 bytes; PDF 5.057.879 bytes.
+- No se aplicó compresión con pérdida ni conversión. Se recomienda evaluar WebP/AVIF en una fase posterior, comparando calidad y manteniendo los PNG como respaldo.
+- Falta confirmar si `og-cams-v3.png` será la imagen social definitiva y producir iconos raster reales solo si se necesitan para instalación.
+- La build continúa no publicable mientras falten páginas obligatorias; el workflow permanece desactivado y no se realizó commit ni push.
+
+### Validación de la Fase 2.6
+
+- `npm.cmd run check`: PASS, 0 errores, 0 warnings y 1 hint heredado por `document.execCommand`.
+- `npm.cmd run build`: PASS, 1 página generada; todos los recursos públicos selectivos y `sitemap-index.xml` quedaron en `dist/`.
+- `node tools/audit_dist.mjs`: 24 errores, frente a 31 en la Fase 2.5. Los 7 errores de recursos faltantes quedaron corregidos; los restantes corresponden exclusivamente a 14 páginas obligatorias ausentes y 10 enlaces hacia rutas todavía no generadas.
+- Verificaciones nuevas en PASS: archivos no vacíos, PDF de tamaño razonable, icono del manifest existente, imagen Open Graph presente, robots sin bloqueo global, canonical HTTPS y metadatos esenciales en `dist/index.html`.
