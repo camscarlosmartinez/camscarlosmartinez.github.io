@@ -221,6 +221,7 @@ Se recomienda mantener estas URLs como rutas canónicas de referencia y evitar r
    - Configurar salida estática.
    - Crear workflow de GitHub Actions para Pages.
    - Mantener el contenido actual en paralelo.
+   - Validado con build de Astro exitosa en esta sesión.
 
 2. Fase 2 — Estructura base y rutas
    - Crear layouts base, navegación compartida, footer y páginas estáticas.
@@ -250,7 +251,27 @@ Se recomienda mantener estas URLs como rutas canónicas de referencia y evitar r
    - Validar rendimiento y accesibilidad básica.
    - Preparar la transferencia del sitio a producción.
 
-## 9. Pruebas obligatorias antes de considerar la migración completa
+8. Fase 8 — Revisión visual automatizada
+   - Ejecutar esta fase solo después de completar la migración y de disponer de la build de Astro.
+   - Usar Playwright para recorrer todas las rutas producidas por Astro.
+   - Capturar cada página en 390x844, 768x1024, 1366x768, 1440x900 y 1920x1080.
+   - Registrar errores de consola y solicitudes de red fallidas.
+   - Detectar elementos más anchos que el viewport.
+   - Generar el reporte estructurado en artifacts/site-review/report.json.
+   - Generar el paquete comprimido en artifacts/site-review/site-review.zip.
+   - Mantener esta fase como una revisión posterior a la migración, sin ejecutar capturas ni instalaciones en este momento.
+
+## 9. Estado de la fase 1 ejecutada en esta sesión
+
+- Se inicializó Astro con TypeScript en el repositorio actual.
+- Se conservaron los archivos HTML existentes y se mantuvo la web publicada actual como referencia paralela.
+- Se instalaron las dependencias mínimas de Astro y @astrojs/sitemap.
+- Se configuró la salida estática y la URL de GitHub Pages.
+- Se creó una página mínima de prueba para verificar la compilación.
+- Se creó el workflow de GitHub Actions para Pages sin activar aún el despliegue.
+- La build completó correctamente con npm run build.
+
+## 10. Pruebas obligatorias antes de considerar la migración completa
 
 - Ejecutar la build de Astro y verificar que no haya errores de compilación.
 - Verificar que todas las rutas públicas actuales respondan correctamente.
@@ -262,7 +283,7 @@ Se recomienda mantener estas URLs como rutas canónicas de referencia y evitar r
 - Probar responsive en móvil y con zoom alto.
 - Comparar que el contenido esencial siga disponible tras la migración.
 
-## 10. Decisiones que no pueden inventarse
+## 11. Decisiones que no pueden inventarse
 
 Estas decisiones son límites de la migración y deben respetarse:
 
