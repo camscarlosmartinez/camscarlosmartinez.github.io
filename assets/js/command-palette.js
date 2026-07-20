@@ -50,13 +50,13 @@ function createDialog() {
 }
 
 function ensurePaletteUi(dialog) {
-  if (dialog.querySelector("[data-command-input]")) {
-    dialog.querySelector(".command-palette__header")?.classList.add("command-head");
-    dialog.querySelector("[data-command-filters]")?.classList.add("command-filters");
-    dialog.querySelector("[data-command-results]")?.classList.add("command-results");
-    return;
+  if (dialog.querySelector(".command-shell")) return;
+  let content = dialog.querySelector("[data-command-content]");
+  if (!content) {
+    content = makeElement("div", { attributes: { "data-command-content": "" } });
+    dialog.replaceChildren(content);
   }
-  const content = dialog.querySelector("[data-command-content]") || dialog;
+  dialog.setAttribute("aria-labelledby", "command-title");
 
   const shell = makeElement("form", { className: "command-shell" });
   shell.method = "dialog";

@@ -2,7 +2,7 @@
 <html lang="es-CO">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>CAMS | Estado que Cumple</title>
   <meta name="description" content="CAMS es un archivo público y laboratorio ciudadano para explorar Estado que Cumple, documentos, seguimiento, análisis y participación." />
   <meta name="author" content="Carlos Arturo Martínez Sánchez" />
@@ -151,20 +151,23 @@
           </svg>
           <div class="ecosystem-core" aria-hidden="true"><span>CAMS</span><small>núcleo</small></div>
           <div class="ecosystem-nodes" role="group" aria-label="Nodos del ecosistema CAMS">
-            <button class="ecosystem-node ecosystem-node--proposal" type="button" data-ecosystem-node="proposal" aria-pressed="true"><span>EQC</span>Estado que Cumple</button>
-            <button class="ecosystem-node ecosystem-node--documents" type="button" data-ecosystem-node="documents" aria-pressed="false"><span>DOC</span>Documentos</button>
-            <button class="ecosystem-node ecosystem-node--observatory" type="button" data-ecosystem-node="observatory" aria-pressed="false"><span>OBS</span>Observatorio</button>
-            <button class="ecosystem-node ecosystem-node--log" type="button" data-ecosystem-node="log" aria-pressed="false"><span>BIT</span>Bitácora</button>
-            <button class="ecosystem-node ecosystem-node--participation" type="button" data-ecosystem-node="participation" aria-pressed="false"><span>PAR</span>Participación</button>
-            <button class="ecosystem-node ecosystem-node--archive" type="button" data-ecosystem-node="archive" aria-pressed="false"><span>ARC</span>Archivo</button>
+            <button class="ecosystem-node ecosystem-node--proposal" type="button" data-ecosystem-node="proposal" aria-pressed="true" aria-controls="ecosystem-detail"><span>EQC</span>Estado que Cumple</button>
+            <button class="ecosystem-node ecosystem-node--documents" type="button" data-ecosystem-node="documents" aria-pressed="false" aria-controls="ecosystem-detail"><span>DOC</span>Documentos</button>
+            <button class="ecosystem-node ecosystem-node--observatory" type="button" data-ecosystem-node="observatory" aria-pressed="false" aria-controls="ecosystem-detail"><span>OBS</span>Observatorio</button>
+            <button class="ecosystem-node ecosystem-node--log" type="button" data-ecosystem-node="log" aria-pressed="false" aria-controls="ecosystem-detail"><span>BIT</span>Bitácora</button>
+            <button class="ecosystem-node ecosystem-node--participation" type="button" data-ecosystem-node="participation" aria-pressed="false" aria-controls="ecosystem-detail"><span>PAR</span>Participación</button>
+            <button class="ecosystem-node ecosystem-node--archive" type="button" data-ecosystem-node="archive" aria-pressed="false" aria-controls="ecosystem-detail"><span>ARC</span>Archivo</button>
           </div>
         </div>
-        <aside class="ecosystem-detail panel panel--technical" aria-live="polite">
+        <aside class="ecosystem-detail panel panel--technical" id="ecosystem-detail" aria-live="polite">
           <p class="eyebrow">Nodo seleccionado</p>
           <h3 data-ecosystem-title>Estado que Cumple</h3>
           <dl class="meta-list">
             <div><dt>Función</dt><dd data-ecosystem-function>Propuesta central y arquitectura de transformación pública.</dd></div>
             <div><dt>Estado</dt><dd data-ecosystem-status>Publicada como propuesta no oficial.</dd></div>
+            <div><dt>Recibe</dt><dd data-ecosystem-input>Problemas públicos, evidencia, competencias y participación.</dd></div>
+            <div><dt>Produce</dt><dd data-ecosystem-output>Arquitectura, rutas y herramientas pedagógicas.</dd></div>
+            <div><dt>Conecta con</dt><dd data-ecosystem-connect>Documentos, Observatorio, Participación y Archivo.</dd></div>
           </dl>
           <p data-ecosystem-description>Permite comprender el problema, explorar las herramientas y construir rutas pedagógicas.</p>
           <a class="button button--primary" data-ecosystem-link href="/estado-que-cumple/">Abrir</a>

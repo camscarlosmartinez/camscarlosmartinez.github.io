@@ -1,5 +1,14 @@
 /** Pedagogical normative-route simulator. It never returns a legal opinion. */
-import { buttonFeedback, copyText, fetchJson, makeElement } from "./utilities.js";
+import {
+  buttonFeedback,
+  copyText,
+  fetchJson,
+  makeElement,
+  safeStorageGet,
+  safeStorageRemove,
+  safeStorageSet,
+  scrollToElement
+} from "./utilities.js";
 
 const FIELD_NAMES = [
   "activator",
@@ -15,6 +24,8 @@ const FIELD_NAMES = [
 ];
 
 const DISCLAIMER = "Resultado pedagógico, no constituye concepto jurídico.";
+const STORAGE_KEY = "cams:decisionLab:v1";
+const COMPACT_QUERY = "(max-width: 47.99rem)";
 
 function unique(items) {
   return [...new Set(items.filter(Boolean))];
@@ -166,6 +177,62 @@ function loadUrlValues(form) {
   return found;
 }
 
+function loadSavedProgress(form) {
+  try {
+    const saved = JSON.parse(safeStorageGet(STORAGE_KEY, "{}"));
+    FIELD_NAMES.forEach((name) => {
+      const value = saved.values?.[name];
+      const control = form.elements.namedItem(name);
+      if (value && control instanceof HTMLSelectElement && [...control.options].some((option) => option.value === value)) {
+        control.value = value;
+      }
+    });
+    return Number.isInteger(saved.step) ? saved.step : 0;
+  } catch {
+    return 0;
+  }
+}
+
+function saveProgress(form, step) {
+  safeStorageSet(STORAGE_KEY, JSON.stringify({ values: valuesFromForm(form), step }));
+}
+
+function createStepper(form, questions) {
+  const progress = makeElement("div", { className: "decision-step-progress" });
+  const progressLabel = makeElement("p", { className: "progress-label" });
+  const progressText = makeElement("strong", { attributes: { "data-decision-step-label": "" } });
+  const progressTitle = makeElement("span", { attributes: { "data-decision-step-title": "" } });
+  progressLabel.append(progressText, progressTitle);
+  const meter = makeElement("div", {
+    className: "progress-meter",
+    attributes: {
+      role: "progressbar",
+      "aria-label": "Progreso del simulador",
+      "aria-valuemin": "1",
+      "aria-valuemax": String(questions.length),
+      "aria-valuenow": "1"
+    }
+  });
+  meter.append(makeElement("span", { attributes: { "data-decision-step-bar": "" } }));
+  progress.append(progressLabel, meter);
+
+  const controls = makeElement("div", { className: "decision-stepper" });
+  const previous = makeElement("button", {
+    className: "button button--secondary",
+    text: "Pregunta anterior",
+    attributes: { type: "button", "data-decision-previous": "" }
+  });
+  const next = makeElement("button", {
+    className: "button button--primary",
+    text: "Pregunta siguiente",
+    attributes: { type: "button", "data-decision-next": "" }
+  });
+  controls.append(previous, next);
+  form.prepend(progress);
+  form.querySelector(".question-grid")?.after(controls);
+  return { progress, progressText, progressTitle, meter, previous, next };
+}
+
 export async function initDecisionLab() {
   const catalogue = await fetchJson("/assets/data/activation-routes.json");
   document.querySelectorAll("[data-decision-lab]").forEach((lab) => {
@@ -176,7 +243,41 @@ export async function initDecisionLab() {
     const shareButton = lab.querySelector("[data-decision-share]");
     const resetButton = lab.querySelector("[data-decision-reset]");
     if (!form || !output) return;
+    const questions = [...form.querySelectorAll(".question-grid > label")];
+    const submitButton = form.querySelector("[type='submit']");
+    const compactQuery = window.matchMedia(COMPACT_QUERY);
+    questions.forEach((question, index) => {
+      question.classList.add("decision-question");
+      question.dataset.decisionStep = String(index + 1);
+      question.id ||= `decision-question-${index + 1}`;
+    });
+    const stepper = createStepper(form, questions);
+    const hasUrlProgress = loadUrlValues(form);
+    let currentStep = hasUrlProgress ? questions.length - 1 : loadSavedProgress(form);
+    currentStep = Math.max(0, Math.min(questions.length - 1, currentStep));
     let currentResult = null;
+
+    const renderStep = (focus = false) => {
+      const compact = compactQuery.matches;
+      questions.forEach((question, index) => {
+        question.hidden = compact && index !== currentStep;
+      });
+      stepper.progress.hidden = !compact;
+      stepper.previous.parentElement.hidden = !compact;
+      stepper.previous.disabled = currentStep === 0;
+      stepper.next.hidden = currentStep === questions.length - 1;
+      if (submitButton) submitButton.hidden = compact && currentStep !== questions.length - 1;
+      form.classList.toggle("is-compact-steps", compact);
+      form.classList.toggle("is-last-step", compact && currentStep === questions.length - 1);
+      stepper.progressText.textContent = `Pregunta ${currentStep + 1} de ${questions.length}`;
+      stepper.progressTitle.textContent = questions[currentStep]?.querySelector("span")?.textContent || "Ruta normativa";
+      stepper.meter.setAttribute("aria-valuenow", String(currentStep + 1));
+      stepper.meter.setAttribute("aria-valuetext", `Pregunta ${currentStep + 1} de ${questions.length}`);
+      const bar = stepper.meter.querySelector("[data-decision-step-bar]");
+      if (bar) bar.style.width = `${Math.round(((currentStep + 1) / questions.length) * 100)}%`;
+      saveProgress(form, currentStep);
+      if (focus && compact) questions[currentStep]?.querySelector("select")?.focus();
+    };
 
     const enableActions = (enabled) => {
       [copyButton, printButton, shareButton].forEach((button) => {
@@ -192,6 +293,8 @@ export async function initDecisionLab() {
       currentResult = makeResult(values, catalogue);
       renderResult(output, currentResult);
       enableActions(true);
+      saveProgress(form, currentStep);
+      if (compactQuery.matches) scrollToElement(output, "start");
       return values;
     };
 
@@ -209,10 +312,19 @@ export async function initDecisionLab() {
       calculate();
     });
     form.addEventListener("change", () => {
+      saveProgress(form, currentStep);
       if (!currentResult) return;
       currentResult = null;
       enableActions(false);
       showPendingCalculation("Las respuestas cambiaron. Vuelva a calcular la ruta.");
+    });
+    stepper.previous.addEventListener("click", () => {
+      currentStep = Math.max(0, currentStep - 1);
+      renderStep(true);
+    });
+    stepper.next.addEventListener("click", () => {
+      currentStep = Math.min(questions.length - 1, currentStep + 1);
+      renderStep(true);
     });
     copyButton?.addEventListener("click", async () => {
       const copied = currentResult && await copyText(resultAsText(currentResult));
@@ -228,15 +340,20 @@ export async function initDecisionLab() {
     });
     resetButton?.addEventListener("click", () => {
       form.reset();
+      safeStorageRemove(STORAGE_KEY);
+      currentStep = 0;
       currentResult = null;
       enableActions(false);
       const url = new URL(window.location.href);
       FIELD_NAMES.forEach((name) => url.searchParams.delete(name));
       history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
       showPendingCalculation();
+      renderStep(true);
     });
 
     enableActions(false);
-    if (loadUrlValues(form)) calculate();
+    renderStep();
+    compactQuery.addEventListener?.("change", () => renderStep());
+    if (hasUrlProgress) calculate();
   });
 }

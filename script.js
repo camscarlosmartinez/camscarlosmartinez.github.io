@@ -89,7 +89,7 @@ async function initSite() {
       "initDocumentLibrary"
     ),
     whenPresent(
-      "[data-share-site], [data-copy-link]",
+      "body",
       "las acciones de participación",
       () => import("./assets/js/participation.js"),
       "initParticipation"

@@ -54,7 +54,7 @@
 }
 
 .button--text {
-  min-height: 2.4rem;
+  min-height: 2.75rem;
   padding-inline: 0;
   border-bottom-color: var(--accent-gold);
   border-radius: 0;
@@ -93,7 +93,7 @@
   background: radial-gradient(circle, var(--surface) 0 56%, var(--color-gold-100) 57% 68%, var(--brand) 69%);
   color: var(--brand);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -240,7 +240,7 @@
   border: 1px solid currentColor;
   border-radius: var(--radius-round);
   font-family: var(--font-mono);
-  font-size: 0.64rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.045em;
   line-height: 1;
@@ -335,7 +335,7 @@
 .meta-list dt {
   color: var(--accent);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;

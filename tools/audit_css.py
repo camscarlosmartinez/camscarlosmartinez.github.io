@@ -223,6 +223,10 @@ def main() -> int:
             warnings += 1
             report("WARNING", path, line, f"Bloque CSS vacío: {prelude}")
 
+    # Preserve cross-file duplicate detection. The one deliberate exception is
+    # an adaptive override in responsive.css over a single structural layer;
+    # that is normal cascade, while overlap between structural layers (or a
+    # repeated declaration inside one file) remains reportable.
     selector_occurrences: dict[tuple[tuple[str, ...], str], list[Rule]] = defaultdict(list)
     variable_occurrences: dict[tuple[tuple[str, ...], str, str], list[Rule]] = defaultdict(list)
     for rule in all_rules:
@@ -236,7 +240,21 @@ def main() -> int:
             for occurrence in occurrences:
                 for property_name in declaration_names(occurrence.body):
                     properties[property_name].append(occurrence)
-            overlapping = sorted(name for name, rules in properties.items() if len(rules) > 1)
+            overlapping: list[str] = []
+            for name, rules in properties.items():
+                if len(rules) < 2:
+                    continue
+                rules_by_path: dict[Path, list[Rule]] = defaultdict(list)
+                for rule in rules:
+                    rules_by_path[rule.path].append(rule)
+                repeated_in_one_file = any(len(file_rules) > 1 for file_rules in rules_by_path.values())
+                structural_paths = {
+                    path for path in rules_by_path if path.name != "responsive.css"
+                }
+                overlaps_structural_layers = len(structural_paths) > 1
+                if repeated_in_one_file or overlaps_structural_layers:
+                    overlapping.append(name)
+            overlapping.sort()
             if overlapping:
                 warnings += 1
                 first = occurrences[0]

@@ -2,7 +2,7 @@
 <html lang="es-CO">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Observatorio | CAMS</title>
   <meta name="description" content="Diseño público del Observatorio CAMS: líneas de observación, fuentes previstas, indicadores propuestos y tableros todavía en construcción." />
   <meta name="author" content="Carlos Arturo Martínez Sánchez" />
@@ -29,7 +29,7 @@
   <header class="site-header">
     <a class="brand-lockup" href="/" aria-label="CAMS, ir al inicio"><img src="/assets/branding/logo-cams.png" alt="CAMS Estado que Cumple" width="1200" height="414" /></a>
     <div class="site-header__actions">
-      <button class="button button--icon command-trigger" type="button" data-command-trigger aria-controls="command-palette" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4 4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>Buscar</span><kbd>Ctrl K</kbd></button>
+      <button class="button button--icon command-trigger" type="button" data-command-trigger aria-label="Buscar en CAMS" aria-controls="command-palette" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4 4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>Buscar</span><kbd>Ctrl K</kbd></button>
       <button class="button button--icon menu-toggle" type="button" data-menu-toggle aria-controls="primary-navigation" aria-expanded="false" aria-label="Abrir menú principal"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
     </div>
     <nav id="primary-navigation" class="site-nav" data-site-nav aria-label="Navegación principal">
@@ -167,20 +167,21 @@
 
       <div class="card card--metric indicator-register">
         <div class="table-scroll" tabindex="0" role="region" aria-label="Tabla desplazable de indicadores propuestos">
-          <table>
+          <table class="data-table responsive-data-table">
             <caption>Registro preliminar; todos los indicadores están sin medición.</caption>
             <thead>
               <tr><th scope="col">Código</th><th scope="col">Indicador propuesto</th><th scope="col">Definición de trabajo</th><th scope="col">Fuente requerida</th><th scope="col">Estado</th></tr>
             </thead>
             <tbody>
-              <tr><th scope="row">CAP-01</th><td>Expedientes con soporte completo</td><td>Casos con competencia, alternativas, impacto fiscal, datos, riesgos e indicadores revisados / casos evaluados.</td><td>Expediente y registro de revisión</td><td><span class="badge badge--planned">Sin medir</span></td></tr>
-              <tr><th scope="row">NOR-01</th><td>Trazabilidad de hitos normativos</td><td>Hitos con documento fuente y versión identificada / hitos registrados.</td><td>Fuentes normativas oficiales</td><td><span class="badge badge--planned">Sin medir</span></td></tr>
-              <tr><th scope="row">TER-01</th><td>Pilotos con línea de base territorial</td><td>Pilotos que documentan condiciones iniciales comparables / pilotos incluidos.</td><td>Ficha de piloto y fuente territorial</td><td><span class="badge badge--planned">Sin medir</span></td></tr>
-              <tr><th scope="row">PAR-01</th><td>Observaciones con respuesta trazable</td><td>Observaciones públicas con respuesta o decisión vinculada / observaciones recibidas por el canal definido.</td><td>Registro público de participación</td><td><span class="badge badge--planned">Sin medir</span></td></tr>
-              <tr><th scope="row">EVA-01</th><td>Decisiones con evaluación prevista</td><td>Decisiones que fijan responsable, plazo, indicador y revisión posterior / decisiones registradas.</td><td>Acto, expediente y plan de evaluación</td><td><span class="badge badge--planned">Sin medir</span></td></tr>
+              <tr><th scope="row" data-label="Código">CAP-01</th><td data-label="Indicador propuesto">Expedientes con soporte completo</td><td data-label="Definición de trabajo">Casos con competencia, alternativas, impacto fiscal, datos, riesgos e indicadores revisados / casos evaluados.</td><td data-label="Fuente requerida">Expediente y registro de revisión</td><td data-label="Estado"><span class="badge badge--planned">Sin medir</span></td></tr>
+              <tr><th scope="row" data-label="Código">NOR-01</th><td data-label="Indicador propuesto">Trazabilidad de hitos normativos</td><td data-label="Definición de trabajo">Hitos con documento fuente y versión identificada / hitos registrados.</td><td data-label="Fuente requerida">Fuentes normativas oficiales</td><td data-label="Estado"><span class="badge badge--planned">Sin medir</span></td></tr>
+              <tr><th scope="row" data-label="Código">TER-01</th><td data-label="Indicador propuesto">Pilotos con línea de base territorial</td><td data-label="Definición de trabajo">Pilotos que documentan condiciones iniciales comparables / pilotos incluidos.</td><td data-label="Fuente requerida">Ficha de piloto y fuente territorial</td><td data-label="Estado"><span class="badge badge--planned">Sin medir</span></td></tr>
+              <tr><th scope="row" data-label="Código">PAR-01</th><td data-label="Indicador propuesto">Observaciones con respuesta trazable</td><td data-label="Definición de trabajo">Observaciones públicas con respuesta o decisión vinculada / observaciones recibidas por el canal definido.</td><td data-label="Fuente requerida">Registro público de participación</td><td data-label="Estado"><span class="badge badge--planned">Sin medir</span></td></tr>
+              <tr><th scope="row" data-label="Código">EVA-01</th><td data-label="Indicador propuesto">Decisiones con evaluación prevista</td><td data-label="Definición de trabajo">Decisiones que fijan responsable, plazo, indicador y revisión posterior / decisiones registradas.</td><td data-label="Fuente requerida">Acto, expediente y plan de evaluación</td><td data-label="Estado"><span class="badge badge--planned">Sin medir</span></td></tr>
             </tbody>
           </table>
         </div>
+        <p class="table-scroll-hint">En tableta puede desplazar la tabla dentro de esta región. En móvil, cada fila se presenta como ficha.</p>
       </div>
     </section>
 

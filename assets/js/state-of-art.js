@@ -51,6 +51,10 @@ function renderMatrix(host, records) {
     host.append(makeElement("p", { text: "La matriz aparecerá cuando seleccione exactamente dos experiencias." }));
     return;
   }
+  const tableRegion = makeElement("div", {
+    className: "comparison-table-region",
+    attributes: { role: "region", tabindex: "0", "aria-label": "Matriz comparativa de dos experiencias" }
+  });
   const table = makeElement("table", { className: "data-table comparison-table" });
   const caption = makeElement("caption", { text: `Comparación: ${records[0].experience} y ${records[1].experience}` });
   const head = makeElement("thead");
@@ -72,7 +76,35 @@ function renderMatrix(host, records) {
     body.append(row);
   });
   table.append(caption, head, body);
-  host.append(table);
+  tableRegion.append(table);
+
+  const cards = makeElement("div", { className: "comparison-cards" });
+  records.forEach((record, index) => {
+    const article = makeElement("article", { className: "comparison-experience" });
+    article.append(
+      makeElement("p", { className: "eyebrow", text: `Experiencia ${index === 0 ? "A" : "B"}` }),
+      makeElement("h4", { text: record.experience })
+    );
+    const definitions = makeElement("dl", { className: "meta-list" });
+    COMPARISON_ROWS.forEach(([label, key]) => {
+      definitions.append(makeDefinition(label, record.comparison?.[key] || "Por documentar"));
+    });
+    article.append(definitions);
+    cards.append(article);
+  });
+  const synthesis = makeElement("article", { className: "comparison-synthesis" });
+  synthesis.append(
+    makeElement("p", { className: "eyebrow", text: "Síntesis" }),
+    makeElement("h4", { text: "Adaptar capacidades, no copiar formas" }),
+    makeElement("p", { text: "Contraste las fortalezas y riesgos de ambas experiencias con las competencias, capacidades territoriales y controles que Colombia puede sostener." })
+  );
+  const adaptations = makeElement("ul");
+  records.forEach((record) => adaptations.append(
+    makeElement("li", { text: `${record.experience}: ${record.comparison?.adaptation || "adaptación por documentar"}` })
+  ));
+  synthesis.append(adaptations);
+  cards.append(synthesis);
+  host.append(tableRegion, cards);
 }
 
 export async function initStateOfArt() {
@@ -122,6 +154,10 @@ export async function initStateOfArt() {
       }
       updateStatus();
       render();
+      requestAnimationFrame(() => {
+        [...results.querySelectorAll("[data-art-select]")]
+          .find((button) => button.dataset.artSelect === id)?.focus();
+      });
     };
 
     approachFilter?.addEventListener("change", render);

@@ -72,13 +72,55 @@ const VISITOR_ALIASES = {
 };
 
 const ECOSYSTEM = {
-  eqc: { title: "Estado que Cumple", function: "Propuesta integral", status: "Propuesta abierta", description: "Explica, prueba y conecta la arquitectura de capacidad pública.", href: "/estado-que-cumple/" },
-  documents: { title: "Documentos", function: "Biblioteca documental", status: "Activa", description: "Reúne versiones, metadatos, descargas y formas de citación.", href: "/documentos/" },
-  observatory: { title: "Observatorio", function: "Seguimiento y visualización", status: "En construcción", description: "Define fuentes, líneas de observación e indicadores sin simular datos inexistentes.", href: "/observatorio/" },
-  log: { title: "Bitácora", function: "Publicación editorial", status: "En preparación", description: "Ordena notas, categorías, fechas y estados de publicación.", href: "/bitacora/" },
-  participation: { title: "Participación", function: "Colaboración pública", status: "Canales parciales", description: "Distingue lo disponible de comentarios, suscripción y voluntariado aún por conectar.", href: "/participar/" },
-  archive: { title: "Archivo público", function: "Preservación y trazabilidad", status: "Activo", description: "Conecta repositorios, redes confirmadas, versiones y memoria pública.", href: "/archivo/" },
-  cams: { title: "CAMS", function: "Autoría y criterios", status: "Independiente", description: "Explica quién produce el archivo, sus líneas de trabajo y su relación con la propuesta.", href: "/cams/" }
+  eqc: {
+    title: "Estado que Cumple", function: "Propuesta integral", status: "Propuesta abierta",
+    input: "Problemas públicos, evidencia, competencias y participación.",
+    output: "Arquitectura, rutas y herramientas pedagógicas.",
+    connect: "Documentos, Observatorio, Participación y Archivo.",
+    description: "Explica, prueba y conecta la arquitectura de capacidad pública.", href: "/estado-que-cumple/"
+  },
+  documents: {
+    title: "Documentos", function: "Biblioteca documental", status: "Activa",
+    input: "Publicaciones, versiones, metadatos y archivos disponibles.",
+    output: "Consulta, descarga, citación y trazabilidad documental.",
+    connect: "Estado que Cumple, Observatorio y Archivo público.",
+    description: "Reúne versiones, metadatos, descargas y formas de citación.", href: "/documentos/"
+  },
+  observatory: {
+    title: "Observatorio", function: "Seguimiento y visualización", status: "En construcción",
+    input: "Fuentes verificables, líneas de observación y definiciones metodológicas.",
+    output: "Indicadores propuestos y tableros claramente marcados como futuros.",
+    connect: "Documentos, rutas de decisión y Archivo público.",
+    description: "Define fuentes, líneas de observación e indicadores sin simular datos inexistentes.", href: "/observatorio/"
+  },
+  log: {
+    title: "Bitácora", function: "Publicación editorial", status: "En preparación",
+    input: "Notas, series, categorías y decisiones editoriales.",
+    output: "Entradas fechadas con resumen, estado y lectura estimada.",
+    connect: "Estado que Cumple, Observatorio y Participación.",
+    description: "Ordena notas, categorías, fechas y estados de publicación.", href: "/bitacora/"
+  },
+  participation: {
+    title: "Participación", function: "Colaboración pública", status: "Canales parciales",
+    input: "Comentarios, propuestas de colaboración e interés ciudadano.",
+    output: "Rutas claras para comentar, colaborar, suscribirse y compartir.",
+    connect: "Todas las superficies del ecosistema CAMS.",
+    description: "Distingue lo disponible de comentarios, suscripción y voluntariado aún por conectar.", href: "/participar/"
+  },
+  archive: {
+    title: "Archivo público", function: "Preservación y trazabilidad", status: "Activo",
+    input: "Repositorios, versiones, redes y soportes públicos.",
+    output: "Memoria verificable y rutas de preservación.",
+    connect: "Documentos, Observatorio, Bitácora y CAMS.",
+    description: "Conecta repositorios, redes confirmadas, versiones y memoria pública.", href: "/archivo/"
+  },
+  cams: {
+    title: "CAMS", function: "Autoría y criterios", status: "Independiente",
+    input: "Trayectoria pública, líneas de trabajo y criterios editoriales.",
+    output: "Identidad, autoría y declaración de independencia.",
+    connect: "Estado que Cumple y el conjunto del archivo público.",
+    description: "Explica quién produce el archivo, sus líneas de trabajo y su relación con la propuesta.", href: "/cams/"
+  }
 };
 
 const ECOSYSTEM_ALIASES = {
@@ -161,6 +203,9 @@ function initEcosystemMap(root) {
     setText(root, "[data-ecosystem-title]", node.title);
     setText(root, "[data-ecosystem-function]", node.function);
     setText(root, "[data-ecosystem-status]", node.status);
+    setText(root, "[data-ecosystem-input]", node.input);
+    setText(root, "[data-ecosystem-output]", node.output);
+    setText(root, "[data-ecosystem-connect]", node.connect);
     setText(root, "[data-ecosystem-description]", node.description);
     const link = root.querySelector("[data-ecosystem-link]");
     if (link) link.href = node.href;

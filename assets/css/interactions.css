@@ -17,8 +17,8 @@
 }
 
 .command-palette {
-  width: min(46rem, calc(100vw - 2rem));
-  max-height: min(46rem, calc(100dvh - 2rem));
+  width: min(46rem, calc(100dvw - max(1.25rem, env(safe-area-inset-left)) - max(1.25rem, env(safe-area-inset-right))));
+  max-height: min(46rem, calc(100dvh - max(1.25rem, env(safe-area-inset-top)) - max(1.25rem, env(safe-area-inset-bottom))));
   padding: 0;
   overflow: hidden;
   border: 1px solid var(--color-gold-300);
@@ -35,7 +35,10 @@
 
 .command-shell {
   display: grid;
+  grid-template-rows: auto auto auto minmax(0, 1fr) auto;
   gap: 0.75rem;
+  max-height: inherit;
+  overflow: hidden;
   padding: var(--space-4);
 }
 
@@ -85,7 +88,7 @@
 .command-filters button,
 .command-palette__filters button {
   flex: 0 0 auto;
-  min-height: 2.4rem;
+  min-height: 2.75rem;
   padding: 0.45rem 0.7rem;
   border: 1px solid var(--line);
   border-radius: var(--radius-round);
@@ -106,7 +109,8 @@
 .command-palette__results {
   display: grid;
   gap: 1px;
-  max-height: min(52vh, 26rem);
+  min-height: 0;
+  max-height: min(52dvh, 26rem);
   overflow-y: auto;
   border: 1px solid var(--line-soft);
   background: var(--line-soft);
@@ -126,7 +130,7 @@
 .command-result span {
   color: var(--accent);
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -192,7 +196,7 @@
   border: 1px solid var(--line);
   border-bottom-width: 2px;
   color: var(--text-soft);
-  font: 0.62rem var(--font-mono);
+  font: 0.75rem var(--font-mono);
 }
 
 .command-empty {
@@ -254,7 +258,7 @@
   background: var(--surface);
   color: var(--color-gold-700);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;

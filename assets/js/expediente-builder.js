@@ -6,7 +6,8 @@ import {
   makeElement,
   safeStorageGet,
   safeStorageRemove,
-  safeStorageSet
+  safeStorageSet,
+  scrollToElement
 } from "./utilities.js";
 
 const STORAGE_KEY = "cams:expedienteBuilder:v1";
@@ -44,8 +45,18 @@ function readState() {
 }
 
 function createItem(dimension, saved, persist) {
-  const article = makeElement("article", { className: "card card--interactive expediente-item" });
-  const heading = makeElement("h3", { text: dimension.title });
+  const articleId = `expediente-dimension-${dimension.id}`;
+  const headingId = `${articleId}-titulo`;
+  const article = makeElement("article", {
+    className: "card card--interactive expediente-item",
+    attributes: {
+      id: articleId,
+      tabindex: "-1",
+      "aria-labelledby": headingId,
+      "data-expediente-dimension": dimension.id
+    }
+  });
+  const heading = makeElement("h3", { text: dimension.title, attributes: { id: headingId } });
   const explanation = makeElement("p", { text: dimension.explanation });
   const question = makeElement("p");
   question.append(makeElement("strong", { text: "Pregunta: " }), document.createTextNode(dimension.question));
@@ -103,13 +114,72 @@ function summaryText(state) {
 export function initExpedienteBuilder() {
   document.querySelectorAll("[data-expediente-builder]").forEach((root) => {
     const host = root.querySelector("[data-expediente-items]");
+    const indexList = root.querySelector("[data-expediente-index-list]");
+    const indexSelect = root.querySelector("[data-expediente-index-select]");
     const progress = root.querySelector("[data-expediente-progress]");
     const progressBar = root.querySelector("[data-expediente-progress-bar]");
+    const progressMeter = progressBar?.closest("[role='progressbar']");
     const exportButton = root.querySelector("[data-expediente-export]");
     const copyButton = root.querySelector("[data-expediente-copy]");
     const resetButton = root.querySelector("[data-expediente-reset]");
     if (!host || !progress) return;
     let state = readState();
+
+    const focusDimension = (dimensionId) => {
+      const item = root.querySelector(`#expediente-dimension-${dimensionId}`);
+      if (!item) return;
+      scrollToElement(item, "start");
+      window.setTimeout(() => item.focus({ preventScroll: true }), 240);
+    };
+
+    const setCurrentDimension = (dimensionId) => {
+      indexList?.querySelectorAll("a").forEach((link) => {
+        const current = link.dataset.expedienteIndexLink === dimensionId;
+        if (current) link.setAttribute("aria-current", "step");
+        else link.removeAttribute("aria-current");
+      });
+      if (indexSelect && indexSelect.value !== dimensionId) indexSelect.value = dimensionId;
+    };
+
+    const renderIndex = () => {
+      if (indexSelect) {
+        const options = DIMENSIONS.map((dimension, index) => makeElement("option", {
+          text: `${String(index + 1).padStart(2, "0")} · ${dimension.title}`,
+          attributes: { value: dimension.id }
+        }));
+        indexSelect.replaceChildren(...options);
+        indexSelect.addEventListener("change", () => focusDimension(indexSelect.value));
+      }
+      if (indexList) {
+        const entries = DIMENSIONS.map((dimension, index) => {
+          const item = makeElement("li");
+          const link = makeElement("a", {
+            attributes: {
+              href: `#expediente-dimension-${dimension.id}`,
+              "data-expediente-index-link": dimension.id
+            }
+          });
+          link.append(
+            makeElement("span", { className: "expediente-index__number", text: String(index + 1).padStart(2, "0") }),
+            makeElement("span", { className: "expediente-index__title", text: dimension.title }),
+            makeElement("span", {
+              className: "expediente-index__state",
+              text: "No revisado",
+              attributes: { "data-expediente-index-state": dimension.id }
+            })
+          );
+          link.addEventListener("click", (event) => {
+            event.preventDefault();
+            setCurrentDimension(dimension.id);
+            focusDimension(dimension.id);
+          });
+          item.append(link);
+          return item;
+        });
+        indexList.replaceChildren(...entries);
+      }
+      setCurrentDimension(DIMENSIONS[0].id);
+    };
 
     const updateProgress = () => {
       state = collectState(root);
@@ -120,6 +190,18 @@ export function initExpedienteBuilder() {
         const ratio = reviewed / DIMENSIONS.length;
         progressBar.style.width = `${Math.round(ratio * 100)}%`;
       }
+      if (progressMeter) {
+        progressMeter.setAttribute("aria-valuenow", String(reviewed));
+        progressMeter.setAttribute("aria-valuetext", `${reviewed} de ${DIMENSIONS.length} dimensiones revisadas`);
+      }
+      DIMENSIONS.forEach((dimension) => {
+        const value = state[dimension.id]?.state || "no-revisado";
+        const label = STATES.find(([candidate]) => candidate === value)?.[1] || "No revisado";
+        const indexState = indexList?.querySelector(`[data-expediente-index-state="${dimension.id}"]`);
+        const indexLink = indexState?.closest("a");
+        if (indexState) indexState.textContent = label;
+        if (indexLink) indexLink.dataset.state = value;
+      });
       safeStorageSet(STORAGE_KEY, JSON.stringify(state));
     };
 
@@ -149,10 +231,29 @@ export function initExpedienteBuilder() {
     resetButton?.addEventListener("click", () => {
       safeStorageRemove(STORAGE_KEY);
       state = {};
-      render();
+      root.querySelectorAll("[data-expediente-state]").forEach((select) => {
+        select.value = "no-revisado";
+      });
+      root.querySelectorAll("[data-expediente-notes]").forEach((notes) => {
+        notes.value = "";
+      });
+      updateProgress();
+      setCurrentDimension(DIMENSIONS[0].id);
       buttonFeedback(resetButton, "Expediente reiniciado");
     });
 
+    renderIndex();
     render();
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        const dimensionId = visible?.target.dataset.expedienteDimension;
+        if (dimensionId) setCurrentDimension(dimensionId);
+      }, { rootMargin: "-18% 0px -62%", threshold: [0.15, 0.5, 0.8] });
+      host.querySelectorAll("[data-expediente-dimension]").forEach((item) => observer.observe(item));
+    }
   });
 }

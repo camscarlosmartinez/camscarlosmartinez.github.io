@@ -46,7 +46,7 @@ assets/css/
 └── responsive.css
 ```
 
-`script.js` es un inicializador ES module. Carga siempre la navegación, el buscador y las utilidades compartidas, e importa dinámicamente las herramientas que existen en la página actual:
+`script.js` es un inicializador ES module. Carga siempre la navegación y el buscador, incorpora dinámicamente el acceso compacto a participación e importa las demás herramientas solo cuando existen en la página actual:
 
 ```text
 assets/js/
@@ -92,6 +92,7 @@ El contenido esencial también permanece en HTML: si JavaScript falla, las expli
 - Constructor local de expediente técnico de catorce dimensiones.
 - Biblioteca documental filtrable.
 - Buscador global con `Ctrl + K`, filtros y normalización de tildes.
+- Acceso compacto a comentar, colaborar, suscribirse o compartir, en flujo en móvil y flotante en escritorio, sin duplicar el contenido de Participar.
 
 Las preferencias y notas se guardan en el navegador. No se envía información a servidores.
 
@@ -104,6 +105,12 @@ Las preferencias y notas se guardan en el navegador. No se envía información a
 - Alternativas textuales para mapas, árboles y diagramas.
 - Respeto de `prefers-reduced-motion`.
 - Menú y contenido principal utilizables sin JavaScript.
+
+## Sistema responsive
+
+La capa `assets/css/responsive.css` parte de una composición compacta y amplía las estructuras cuando el contenido dispone de espacio. Sus umbrales documentados son 30, 48, 64, 80 y 100 rem. Los mapas CAMS y el núcleo de la propuesta pasan de lista a diagrama por container query; las fichas documentales, la mesa de trabajo, el estado del arte, el simulador, el expediente y los CTA también responden a su contenedor.
+
+La matriz verificada, los escenarios de orientación, tacto, zoom y aumento de texto, y el alcance exacto de la revisión visual están documentados en `docs/matriz-responsive.md`.
 
 ## Edición
 
@@ -135,11 +142,13 @@ Las herramientas usan solo la biblioteca estándar de Python:
 py tools/audit_site.py
 py tools/audit_css.py
 py tools/audit_js.py
+py tools/audit_responsive.py
 git diff --check
 ```
 
 - `audit_site.py`: estructura HTML, accesibilidad básica, rutas, fragmentos, assets, sitemap, JSON y documentos enlazados.
 - `audit_css.py`: selectores y variables duplicados, bloques vacíos, reglas posiblemente sin uso y colores fuera de tokens.
 - `audit_js.py`: grafo de imports, módulos desconectados, inicializadores duplicados y referencias estáticas potencialmente inexistentes.
+- `audit_responsive.py`: anchos y alturas rígidos, parches de overflow, tipografía extrema, elementos fijos, SVG, dimensiones de imágenes, media queries y cobertura móvil aparente de los componentes interactivos.
 
 Los avisos son puntos de revisión humana; los errores producen un código de salida distinto de cero.

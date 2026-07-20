@@ -5,14 +5,12 @@
 }
 
 html {
-  min-width: 20rem;
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-height) + 1rem);
 }
 
 body {
   margin: 0;
-  overflow-x: clip;
   color: var(--text);
   background-color: var(--surface);
   background-image:
@@ -52,7 +50,18 @@ svg {
 }
 
 img {
+  width: auto;
   height: auto;
+}
+
+pre {
+  max-width: 100%;
+  overflow: auto;
+  white-space: pre-wrap;
+}
+
+code {
+  overflow-wrap: anywhere;
 }
 
 svg {
@@ -184,6 +193,9 @@ blockquote {
 }
 
 summary {
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
   color: var(--brand);
   cursor: pointer;
   font-weight: 800;
@@ -205,8 +217,8 @@ summary {
 
 .skip-link {
   position: fixed;
-  top: 0.75rem;
-  left: 0.75rem;
+  top: max(0.75rem, env(safe-area-inset-top));
+  left: max(0.75rem, env(safe-area-inset-left));
   z-index: 1000;
   padding: 0.7rem 0.9rem;
   transform: translateY(-180%);

@@ -8,7 +8,8 @@
   align-items: center;
   gap: var(--space-4);
   min-height: var(--header-height);
-  padding: 0.65rem max(1rem, calc((100vw - var(--content-wide)) / 2));
+  padding-block: max(0.65rem, env(safe-area-inset-top)) 0.65rem;
+  padding-inline: max(1rem, env(safe-area-inset-left), calc((100vw - var(--content-wide)) / 2)) max(1rem, env(safe-area-inset-right), calc((100vw - var(--content-wide)) / 2));
   border-bottom: 1px solid var(--line);
   background: var(--surface-glass);
   backdrop-filter: blur(14px);
@@ -144,7 +145,7 @@
 .explore-item small {
   color: var(--accent);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -233,7 +234,7 @@
 .context-nav > * > span {
   color: var(--text-soft);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }

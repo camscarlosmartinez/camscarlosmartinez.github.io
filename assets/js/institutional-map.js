@@ -29,6 +29,7 @@ export async function initInstitutionalMap() {
       setText(detail, "[data-institution-description]", record.function);
       setText(detail, "[data-institution-input]", record.input);
       setText(detail, "[data-institution-output]", record.output);
+      setText(detail, "[data-institution-connect]", record.connectionLabel || "Conexiones por documentar.");
       detail.dataset.activeInstitution = record.id;
     };
 

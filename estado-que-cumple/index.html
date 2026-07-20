@@ -2,7 +2,7 @@
 <html lang="es-CO">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Estado que Cumple | Propuesta CAMS</title>
   <meta name="description" content="Explore Estado que Cumple en modo ciudadano, técnico o jurídico-institucional: problema, arquitectura, herramientas, rutas, expediente, riesgos y seguimiento." />
   <meta name="author" content="Carlos Arturo Martínez Sánchez" />
@@ -160,19 +160,22 @@
           <h2>Construya un recorrido por causas, problema central y efectos.</h2>
           <p class="lede">Filtre los nodos y seleccione hasta cinco. Todo permanece en este navegador.</p>
         </div>
-        <div class="problem-filters" aria-label="Filtros del árbol">
-          <label for="problem-dimension">Dimensión
-            <select id="problem-dimension" data-problem-dimension>
-              <option value="all">Todas</option><option value="normativa">Normativa</option><option value="fiscal">Fiscal</option><option value="laboral">Laboral</option><option value="tecnologica">Tecnológica</option><option value="territorial">Territorial</option><option value="documental">Documental</option><option value="politica">Política</option><option value="evaluacion">Evaluación</option><option value="coordinacion">Coordinación</option>
-            </select>
-          </label>
-          <label for="problem-level">Nivel
-            <select id="problem-level" data-problem-level><option value="all">Todos</option><option value="causa">Causas</option><option value="problema">Problema central</option><option value="efecto">Efectos</option></select>
-          </label>
-          <label for="problem-tool">Herramienta relacionada
-            <select id="problem-tool" data-problem-tool><option value="all">Todas</option><option value="raices">RAÍCES</option><option value="savia">SAVIA</option><option value="semillas">SEMILLAS</option><option value="expediente">Expediente</option><option value="tablero">Tablero</option></select>
-          </label>
-        </div>
+        <details class="responsive-filter-panel" open>
+          <summary>Filtros del diagnóstico</summary>
+          <div class="problem-filters" aria-label="Filtros del árbol">
+            <label for="problem-dimension">Dimensión
+              <select id="problem-dimension" data-problem-dimension>
+                <option value="all">Todas</option><option value="normativa">Normativa</option><option value="fiscal">Fiscal</option><option value="laboral">Laboral</option><option value="tecnologica">Tecnológica</option><option value="territorial">Territorial</option><option value="documental">Documental</option><option value="politica">Política</option><option value="evaluacion">Evaluación</option><option value="coordinacion">Coordinación</option>
+              </select>
+            </label>
+            <label for="problem-level">Nivel
+              <select id="problem-level" data-problem-level><option value="all">Todos</option><option value="causa">Causas</option><option value="problema">Problema central</option><option value="efecto">Efectos</option></select>
+            </label>
+            <label for="problem-tool">Herramienta relacionada
+              <select id="problem-tool" data-problem-tool><option value="all">Todas</option><option value="raices">RAÍCES</option><option value="savia">SAVIA</option><option value="semillas">SEMILLAS</option><option value="expediente">Expediente</option><option value="tablero">Tablero</option></select>
+            </label>
+          </div>
+        </details>
         <div class="problem-tree-layout">
           <div class="problem-tree-column" data-problem-nodes aria-live="polite">
             <p class="empty-state">Cargando nodos del diagnóstico…</p>
@@ -254,16 +257,19 @@
           <h2>Comparar para traducir capacidades, no para copiar instituciones.</h2>
           <p class="lede">Cada experiencia incluye aprendizaje, riesgo, límites y una adaptación posible para Colombia.</p>
         </div>
-        <div class="art-filters">
-          <label for="art-approach">Enfoque
-            <select id="art-approach" data-art-approach><option value="all">Todos</option><option value="capacidad estatal">Capacidad estatal</option><option value="aprendizaje adaptativo">Aprendizaje adaptativo</option><option value="regulación">Regulación</option><option value="burocracia profesional">Burocracia profesional</option><option value="coordinación">Coordinación</option><option value="participación">Participación</option><option value="evaluación">Evaluación</option><option value="desarrollo productivo">Desarrollo productivo</option></select>
-          </label>
-          <label for="art-experience">Experiencia
-            <select id="art-experience" data-art-experience><option value="all">Todas</option><option value="Colombia">Colombia</option><option value="Estados Unidos">Estados Unidos</option><option value="Unión Europea">Unión Europea</option><option value="Asia oriental">Asia oriental</option><option value="China">China</option><option value="Estados del Golfo">Estados del Golfo</option><option value="Experiencia soviética y postsoviética">Experiencia soviética y postsoviética</option><option value="América Latina">América Latina</option></select>
-          </label>
-        </div>
+        <details class="responsive-filter-panel" open>
+          <summary>Filtros del explorador comparado</summary>
+          <div class="art-filters">
+            <label for="art-approach">Enfoque
+              <select id="art-approach" data-art-approach><option value="all">Todos</option><option value="capacidad estatal">Capacidad estatal</option><option value="aprendizaje adaptativo">Aprendizaje adaptativo</option><option value="regulación">Regulación</option><option value="burocracia profesional">Burocracia profesional</option><option value="coordinación">Coordinación</option><option value="participación">Participación</option><option value="evaluación">Evaluación</option><option value="desarrollo productivo">Desarrollo productivo</option></select>
+            </label>
+            <label for="art-experience">Experiencia
+              <select id="art-experience" data-art-experience><option value="all">Todas</option><option value="Colombia">Colombia</option><option value="Estados Unidos">Estados Unidos</option><option value="Unión Europea">Unión Europea</option><option value="Asia oriental">Asia oriental</option><option value="China">China</option><option value="Estados del Golfo">Estados del Golfo</option><option value="Experiencia soviética y postsoviética">Experiencia soviética y postsoviética</option><option value="América Latina">América Latina</option></select>
+            </label>
+          </div>
+        </details>
         <p class="status-line" data-art-compare>Seleccione dos experiencias para compararlas.</p>
-        <div class="art-grid" data-art-results aria-live="polite">
+        <div class="art-grid" data-art-results>
           <p class="empty-state">Cargando explorador comparado…</p>
         </div>
         <div class="comparison-matrix panel panel--technical" data-art-matrix aria-live="polite">
@@ -305,7 +311,7 @@
             <div class="institution-layer"><h3>Método</h3><button class="institution-node" type="button" data-institution-node="methods" aria-pressed="false" aria-controls="institution-detail">RAÍCES · SAVIA · SEMILLAS</button></div>
             <div class="institution-layer"><h3>Decisión y control</h3><button class="institution-node" type="button" data-institution-node="decision" aria-pressed="false" aria-controls="institution-detail">Expediente e instrumento</button><button class="institution-node" type="button" data-institution-node="control" aria-pressed="false" aria-controls="institution-detail">Tablero y evaluación</button></div>
           </div>
-          <aside class="institution-detail panel panel--interactive" id="institution-detail" data-institution-detail aria-live="polite"><p class="eyebrow" data-institution-layer>Dirección</p><h3 data-institution-title>Sistema Administrativo Nacional Estado que Cumple</h3><p data-institution-description>Coordina revisión, transformación, implementación y evaluación con reglas comunes y trazabilidad.</p><dl class="meta-list"><div><dt>Recibe</dt><dd data-institution-input>Casos priorizados y decisiones de activación.</dd></div><div><dt>Entrega</dt><dd data-institution-output>Coordinación y responsabilidades explícitas.</dd></div></dl></aside>
+          <aside class="institution-detail panel panel--interactive" id="institution-detail" data-institution-detail aria-live="polite"><p class="eyebrow" data-institution-layer>Dirección</p><h3 data-institution-title>Sistema Administrativo Nacional Estado que Cumple</h3><p data-institution-description>Coordina revisión, transformación, implementación y evaluación con reglas comunes y trazabilidad.</p><dl class="meta-list"><div><dt>Recibe</dt><dd data-institution-input>Casos priorizados y decisiones de activación.</dd></div><div><dt>Entrega</dt><dd data-institution-output>Coordinación y responsabilidades explícitas.</dd></div><div><dt>Conecta con</dt><dd data-institution-connect>Comisión, secretaría técnica y control público.</dd></div></dl></aside>
         </div>
         <details class="textual-alternative"><summary>Alternativa textual del mapa institucional</summary><p>La dirección prioriza; la secretaría y la ventanilla ordenan el soporte; RAÍCES, SAVIA y SEMILLAS analizan; el expediente lleva la decisión al instrumento competente; tablero y evaluación conservan memoria pública.</p></details>
       </section>
@@ -369,10 +375,18 @@
         </div>
         <div class="progress-block">
           <div class="progress-label"><strong data-expediente-progress>0 de 14 dimensiones revisadas</strong><span>Preparación local</span></div>
-          <div class="progress-meter" aria-hidden="true"><span data-expediente-progress-bar></span></div>
+          <div class="progress-meter" role="progressbar" aria-label="Progreso del expediente" aria-valuemin="0" aria-valuemax="14" aria-valuenow="0" aria-valuetext="0 de 14 dimensiones revisadas"><span data-expediente-progress-bar></span></div>
         </div>
-        <div class="expediente-grid" data-expediente-items>
-          <p class="empty-state">Cargando dimensiones del expediente…</p>
+        <div class="expediente-workspace">
+          <nav class="expediente-index" aria-label="Dimensiones del expediente" data-expediente-index>
+            <label for="expediente-index-select">Ir a una dimensión
+              <select id="expediente-index-select" data-expediente-index-select></select>
+            </label>
+            <ol data-expediente-index-list></ol>
+          </nav>
+          <div class="expediente-grid" data-expediente-items>
+            <p class="empty-state">Cargando dimensiones del expediente…</p>
+          </div>
         </div>
         <div class="tool-actions">
           <button class="button button--primary" type="button" data-expediente-export>Exportar resumen como texto</button>
