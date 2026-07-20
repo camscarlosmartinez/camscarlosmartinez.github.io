@@ -28,10 +28,10 @@
   <div class="paper-noise" aria-hidden="true"></div>
   <header class="topbar">
     <a class="brand-lockup" href="/" aria-label="CAMS Estado que Cumple">
-      <img src="/assets/branding/logo-cams.png" alt="CAMS Estado que Cumple" />
+      <img src="/assets/branding/logo-cams.png" alt="CAMS Estado que Cumple" width="1200" height="414" />
     </a>
 
-    <button class="menu-button" aria-label="Abrir menú" aria-expanded="false">
+    <button class="menu-button" type="button" aria-label="Abrir menú" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
 
@@ -46,8 +46,8 @@
     </nav>
   </header>
 
-  <main id="contenido">
-    <section class="page-hero proposal-hero proposal-hero-v2">
+  <main id="contenido" data-view-mode="full">
+    <section class="page-hero proposal-hero proposal-hero-v2" data-search-title="Estado que Cumple" data-search-group="Propuesta" data-search-keywords="propuesta ciudadana técnica programática capacidad pública expediente tablero">
       <p class="overline">Propuesta ciudadana y programática</p>
       <h1>Estado que Cumple</h1>
       <p>
@@ -66,20 +66,75 @@
       </dl>
     </section>
 
-    <nav class="section internal-nav" aria-label="Navegación interna de la propuesta">
-      <a href="#problema-publico">Problema</a>
-      <a href="#arbol-problema">Árbol técnico</a>
-      <a href="#tipologia">Tipología</a>
-      <a href="#teoria-cambio">Teoría de cambio</a>
-      <a href="#estado-arte">Estado del arte</a>
-      <a href="#fundamento">Fundamento</a>
-      <a href="#arquitectura">Arquitectura</a>
-      <a href="#expediente">Expediente</a>
-      <a href="#metodologias">Metodologías</a>
-      <a href="#tablero">Tablero</a>
+    <section class="section view-mode-panel" data-view-mode-panel aria-labelledby="modo-title" data-search-title="Selector de modo" data-search-group="Propuesta" data-search-keywords="recorrido guiado documento técnico completo capítulos">
+      <div class="section-title wide">
+        <p class="overline">Modo de lectura</p>
+        <h2 id="modo-title">Elija entre una ruta guiada o el documento técnico completo.</h2>
+        <p>
+          El recorrido guiado agrupa la propuesta en cinco capítulos. El modo completo mantiene
+          visibles todas las secciones y el índice técnico.
+        </p>
+      </div>
+      <div class="view-mode-controls" role="group" aria-label="Selector de modo de lectura">
+        <button type="button" data-view-mode-option="guided" aria-pressed="false">Recorrido guiado</button>
+        <button class="is-active" type="button" data-view-mode-option="full" aria-pressed="true">Documento técnico completo</button>
+      </div>
+      <div class="guided-status" aria-live="polite">
+        <span data-guided-count>Capítulos 1-5</span>
+        <h3 data-guided-title>Documento técnico completo</h3>
+        <p data-guided-summary>Todas las secciones están visibles. Active el recorrido guiado para avanzar por capítulos.</p>
+      </div>
+      <div class="guided-controls" aria-label="Navegación del recorrido guiado">
+        <button class="button secondary" type="button" data-guided-prev>Anterior</button>
+        <button class="button primary" type="button" data-guided-next>Siguiente</button>
+        <button class="button tertiary" type="button" data-guided-full>Ver desarrollo completo</button>
+      </div>
+    </section>
+
+    <nav class="section technical-index internal-nav" aria-label="Índice técnico de la propuesta">
+      <div class="technical-links">
+        <a href="#problema-publico">Problema</a>
+        <a href="#arbol-problema">Árbol técnico</a>
+        <a href="#tipologia">Tipología</a>
+        <a href="#nucleo-metodologico">RAÍCES / SAVIA / SEMILLAS</a>
+        <a href="#teoria-cambio">Teoría de cambio</a>
+        <a href="#estado-arte">Estado del arte</a>
+        <a href="#fundamento">Fundamento</a>
+        <a href="#arquitectura">Arquitectura</a>
+        <a href="#rutas-activacion">Rutas</a>
+        <a href="#simulador">Simulador</a>
+        <a href="#ruta-integrada">Ruta integrada</a>
+        <a href="#expediente">Expediente</a>
+        <a href="#metodologias">Metodologías</a>
+        <a href="#instrumentos">Instrumentos</a>
+        <a href="#riesgos">Riesgos</a>
+        <a href="#tablero">Tablero</a>
+      </div>
+      <label class="section-jump">
+        <span>Ir a sección</span>
+        <select data-section-jump>
+          <option value="">Seleccione una sección</option>
+          <option value="#problema-publico">Problema público</option>
+          <option value="#arbol-problema">Árbol técnico</option>
+          <option value="#tipologia">Tipología</option>
+          <option value="#nucleo-metodologico">RAÍCES / SAVIA / SEMILLAS</option>
+          <option value="#teoria-cambio">Teoría de cambio</option>
+          <option value="#estado-arte">Estado del arte</option>
+          <option value="#fundamento">Fundamento</option>
+          <option value="#arquitectura">Arquitectura</option>
+          <option value="#rutas-activacion">Rutas de activación</option>
+          <option value="#simulador">Laboratorio de decisión</option>
+          <option value="#ruta-integrada">Ruta integrada</option>
+          <option value="#expediente">Expediente</option>
+          <option value="#metodologias">Metodologías</option>
+          <option value="#instrumentos">Instrumentos</option>
+          <option value="#riesgos">Riesgos</option>
+          <option value="#tablero">Tablero</option>
+        </select>
+      </label>
     </nav>
 
-    <section class="section document-brief" id="problema-publico">
+    <section class="section document-brief" id="problema-publico" data-guided-chapter="problem" data-search-title="Problema público" data-search-group="Propuesta" data-search-keywords="brecha forma institucional capacidad pública Estado de papel">
       <div class="brief-main">
         <p class="overline">Problema público</p>
         <h2>La brecha crítica está entre la forma institucional creada y la capacidad real para cumplir.</h2>
@@ -102,49 +157,57 @@
       </dl>
     </section>
 
-    <section class="section problem-tree" id="arbol-problema" data-problem-tree aria-labelledby="arbol-title">
+    <section class="section problem-tree" id="arbol-problema" data-guided-chapter="problem" data-problem-tree aria-labelledby="arbol-title" data-search-title="Árbol del problema técnico" data-search-group="Herramientas" data-search-keywords="causas problema central efectos brecha capacidad pública">
       <div class="section-title wide">
         <p class="overline">Árbol del problema técnico</p>
         <h2 id="arbol-title">La forma institucional crece más rápido que la capacidad de implementación.</h2>
       </div>
       <div class="tree-board">
+        <div class="tree-layer-label">EFECTOS</div>
         <div class="tree-effects" aria-label="Efectos del problema">
-          <button class="problem-node effect" type="button" data-problem-title="Leyes sin implementación" data-problem-text="Se producen mandatos normativos sin ruta operativa, responsables claros, financiación, datos o seguimiento posterior.">Leyes sin implementación</button>
-          <button class="problem-node effect" type="button" data-problem-title="Entidades sin territorio" data-problem-text="La estructura existe formalmente, pero no cuenta con presencia, coordinación o capacidad territorial suficiente.">Entidades sin territorio</button>
-          <button class="problem-node effect" type="button" data-problem-title="Fondos opacos" data-problem-text="Los vehículos financieros pueden perder trazabilidad si no hay reglas de datos, control, seguimiento y finalidad pública.">Fondos opacos</button>
-          <button class="problem-node effect" type="button" data-problem-title="Plataformas inconexas" data-problem-text="Sistemas digitales sin interoperabilidad, metadatos, calidad de datos o uso decisorio terminan como silos.">Plataformas inconexas</button>
-          <button class="problem-node effect" type="button" data-problem-title="Responsables difusos" data-problem-text="Cuando la competencia no está clara, cada actor reporta actividad pero el problema queda sin dueño institucional.">Responsables difusos</button>
-          <button class="problem-node effect" type="button" data-problem-title="Frustración ciudadana" data-problem-text="La ciudadanía recibe promesas normativas o institucionales que no se traducen en respuesta pública efectiva.">Frustración ciudadana</button>
-          <button class="problem-node effect" type="button" data-problem-title="Judicialización" data-problem-text="La ausencia de cumplimiento empuja conflictos hacia jueces y órganos de control, muchas veces de manera reactiva.">Judicialización</button>
-          <button class="problem-node effect" type="button" data-problem-title="Opacidad" data-problem-text="Sin expediente, datos y memoria institucional, es difícil saber quién decidió, con qué evidencia y con qué resultados.">Opacidad</button>
-          <button class="problem-node effect" type="button" data-problem-title="Burocracia inercial" data-problem-text="Se mantienen instancias, comités o trámites porque existen, no porque demuestren valor público.">Burocracia inercial</button>
-          <button class="problem-node effect" type="button" data-problem-title="Desperdicio de recursos" data-problem-text="La inversión pública se dispersa cuando se financian soluciones sin diagnóstico, coordinación o evaluación.">Desperdicio de recursos</button>
-          <button class="problem-node effect" type="button" data-problem-title="Pérdida de confianza" data-problem-text="La distancia entre promesa institucional y resultado verificable deteriora legitimidad y credibilidad pública.">Pérdida de confianza</button>
+          <button class="problem-node effect" type="button" data-problem-type="Efecto" data-problem-title="Leyes sin implementación" data-problem-text="Se producen mandatos normativos sin ruta operativa, responsables claros, financiación, datos o seguimiento posterior." data-problem-relation="Muestra cómo una forma normativa puede prometer cumplimiento sin capacidad institucional equivalente." data-problem-tool="Expediente Técnico Integrado y tablero público">Leyes sin implementación</button>
+          <button class="problem-node effect" type="button" data-problem-type="Efecto" data-problem-title="Entidades sin territorio" data-problem-text="La estructura existe formalmente, pero no cuenta con presencia, coordinación o capacidad territorial suficiente." data-problem-relation="Evidencia que crear estructura no garantiza operación territorial ni respuesta cercana a la ciudadanía." data-problem-tool="SAVIA y evaluación territorial">Entidades sin territorio</button>
+          <button class="problem-node effect" type="button" data-problem-type="Efecto" data-problem-title="Fondos opacos" data-problem-text="Los vehículos financieros pueden perder trazabilidad si no hay reglas de datos, control, seguimiento y finalidad pública." data-problem-relation="Advierte que la financiación sin control puede desplazar capacidad pública y memoria institucional." data-problem-tool="RAÍCES de fondos y expediente">Fondos opacos</button>
+          <button class="problem-node effect" type="button" data-problem-type="Efecto" data-problem-title="Plataformas inconexas" data-problem-text="Sistemas digitales sin interoperabilidad, metadatos, calidad de datos o uso decisorio terminan como silos." data-problem-relation="Conecta la promesa digital con la necesidad de estándares, datos útiles y decisiones trazables." data-problem-tool="SAVIA de datos">Plataformas inconexas</button>
+          <button class="problem-node effect" type="button" data-problem-type="Efecto" data-problem-title="Responsables difusos" data-problem-text="Cuando la competencia no está clara, cada actor reporta actividad pero el problema queda sin dueño institucional." data-problem-relation="Muestra por qué la arquitectura debe aclarar actor competente, salida y seguimiento." data-problem-tool="Mapa institucional y expediente">Responsables difusos</button>
+          <button class="problem-node effect" type="button" data-problem-type="Efecto" data-problem-title="Frustración ciudadana" data-problem-text="La ciudadanía recibe promesas normativas o institucionales que no se traducen en respuesta pública efectiva." data-problem-relation="Ubica la pérdida de confianza como consecuencia de la distancia entre promesa y cumplimiento." data-problem-tool="Tablero público y participación">Frustración ciudadana</button>
+          <button class="problem-node effect" type="button" data-problem-type="Efecto" data-problem-title="Judicialización" data-problem-text="La ausencia de cumplimiento empuja conflictos hacia jueces y órganos de control, muchas veces de manera reactiva." data-problem-relation="Señala que la falta de capacidad administrativa termina trasladando decisiones a canales reactivos." data-problem-tool="Expediente y evaluación posterior">Judicialización</button>
+          <button class="problem-node effect" type="button" data-problem-type="Efecto" data-problem-title="Opacidad" data-problem-text="Sin expediente, datos y memoria institucional, es difícil saber quién decidió, con qué evidencia y con qué resultados." data-problem-relation="Justifica que cada decisión deje soporte verificable, versiones y trazabilidad pública." data-problem-tool="Expediente Técnico Integrado">Opacidad</button>
+          <button class="problem-node effect" type="button" data-problem-type="Efecto" data-problem-title="Burocracia inercial" data-problem-text="Se mantienen instancias, comités o trámites porque existen, no porque demuestren valor público." data-problem-relation="Exige revisar si una forma institucional aún cumple una función pública real." data-problem-tool="RAÍCES y evaluación posterior">Burocracia inercial</button>
+          <button class="problem-node effect" type="button" data-problem-type="Efecto" data-problem-title="Desperdicio de recursos" data-problem-text="La inversión pública se dispersa cuando se financian soluciones sin diagnóstico, coordinación o evaluación." data-problem-relation="Conecta capacidad, presupuesto y seguimiento para evitar respuestas simbólicas costosas." data-problem-tool="SAVIA fiscal y tablero público">Desperdicio de recursos</button>
+          <button class="problem-node effect" type="button" data-problem-type="Efecto" data-problem-title="Pérdida de confianza" data-problem-text="La distancia entre promesa institucional y resultado verificable deteriora legitimidad y credibilidad pública." data-problem-relation="Resume el costo democrático de sostener formas públicas que no producen cumplimiento." data-problem-tool="Indicadores, tablero y evaluación">Pérdida de confianza</button>
         </div>
 
-        <button class="problem-node trunk is-active" type="button" data-problem-title="Brecha entre forma institucional y capacidad pública real" data-problem-text="Tronco del problema: el Estado crea o mantiene formas institucionales sin verificar si existen capacidades reales para implementarlas, financiarlas, controlarlas y evaluarlas.">Brecha entre forma institucional y capacidad pública real</button>
+        <div class="tree-layer-label">PROBLEMA CENTRAL</div>
+        <button class="problem-node trunk is-active" type="button" data-problem-type="Problema" data-problem-title="Brecha entre forma institucional y capacidad pública real" data-problem-text="Tronco del problema: el Estado crea o mantiene formas institucionales sin verificar si existen capacidades reales para implementarlas, financiarlas, controlarlas y evaluarlas." data-problem-relation="Es el punto que Estado que Cumple busca transformar mediante revisión, madurez, piloto, expediente e instrumento competente." data-problem-tool="Expediente Técnico Integrado">Brecha entre forma institucional y capacidad pública real</button>
 
+        <div class="tree-layer-label">CAUSAS</div>
         <div class="tree-causes" aria-label="Causas del problema">
-          <button class="problem-node cause" type="button" data-problem-title="Producción normativa sin capacidad" data-problem-text="Normas con obligaciones o competencias nuevas pueden nacer sin fuente fiscal, talento, datos, ruta jurídica ni responsables operativos.">Producción normativa sin capacidad de implementación</button>
-          <button class="problem-node cause" type="button" data-problem-title="Duplicidades funcionales" data-problem-text="Varias entidades o instancias atienden funciones cercanas sin coordinación suficiente, lo que diluye responsabilidad y recursos.">Duplicidades funcionales</button>
-          <button class="problem-node cause" type="button" data-problem-title="Baja trazabilidad" data-problem-text="Faltan expedientes, versiones, decisiones documentadas y seguimiento para saber qué cambió y por qué.">Baja trazabilidad</button>
-          <button class="problem-node cause" type="button" data-problem-title="Datos no interoperables" data-problem-text="Bases, plataformas y reportes no conversan entre sí o no tienen calidad suficiente para orientar decisiones.">Datos no interoperables</button>
-          <button class="problem-node cause" type="button" data-problem-title="Memoria institucional débil" data-problem-text="La rotación, la contratación recurrente y la falta de archivo técnico hacen que el Estado reaprenda lo mismo una y otra vez.">Memoria institucional débil</button>
-          <button class="problem-node cause" type="button" data-problem-title="Financiación insuficiente o mal articulada" data-problem-text="Una forma institucional puede nacer sin cierre fiscal, sin articulación presupuestal o con dependencia excesiva de contratación.">Financiación insuficiente o mal articulada</button>
-          <button class="problem-node cause" type="button" data-problem-title="Talento y capacidades insuficientes" data-problem-text="No hay planta, perfiles, saber técnico o capacidad administrativa suficiente para sostener la función pública creada.">Talento y capacidades insuficientes</button>
-          <button class="problem-node cause" type="button" data-problem-title="Debilidad territorial" data-problem-text="El diseño nacional puede no reconocer capacidades, brechas y restricciones de implementación en departamentos, distritos y municipios.">Debilidad territorial</button>
-          <button class="problem-node cause" type="button" data-problem-title="Evaluación posterior limitada" data-problem-text="Las reformas no siempre se revisan después de entrar en operación; por eso se perpetúan fallas y costos sin aprendizaje.">Evaluación posterior limitada</button>
-          <button class="problem-node cause" type="button" data-problem-title="Creación prematura" data-problem-text="Entidades, fondos, sistemas o plataformas se vuelven permanentes antes de demostrar problema, finalidad, evidencia, financiación, datos y control.">Creación prematura de entidades, fondos, sistemas o plataformas</button>
+          <button class="problem-node cause" type="button" data-problem-type="Causa" data-problem-title="Producción normativa sin capacidad" data-problem-text="Normas con obligaciones o competencias nuevas pueden nacer sin fuente fiscal, talento, datos, ruta jurídica ni responsables operativos." data-problem-relation="Activa una revisión previa de viabilidad antes de convertir una promesa normativa en mandato permanente." data-problem-tool="SAVIA y expediente">Producción normativa sin capacidad de implementación</button>
+          <button class="problem-node cause" type="button" data-problem-type="Causa" data-problem-title="Duplicidades funcionales" data-problem-text="Varias entidades o instancias atienden funciones cercanas sin coordinación suficiente, lo que diluye responsabilidad y recursos." data-problem-relation="Exige inventariar lo existente antes de crear una nueva instancia o sistema." data-problem-tool="RAÍCES">Duplicidades funcionales</button>
+          <button class="problem-node cause" type="button" data-problem-type="Causa" data-problem-title="Baja trazabilidad" data-problem-text="Faltan expedientes, versiones, decisiones documentadas y seguimiento para saber qué cambió y por qué." data-problem-relation="Justifica que toda transformación tenga expediente, memoria y decisión motivada." data-problem-tool="Expediente Técnico Integrado">Baja trazabilidad</button>
+          <button class="problem-node cause" type="button" data-problem-type="Causa" data-problem-title="Datos no interoperables" data-problem-text="Bases, plataformas y reportes no conversan entre sí o no tienen calidad suficiente para orientar decisiones." data-problem-relation="Obliga a verificar calidad, estándares y uso decisorio de los datos antes de escalar." data-problem-tool="SAVIA de datos">Datos no interoperables</button>
+          <button class="problem-node cause" type="button" data-problem-type="Causa" data-problem-title="Memoria institucional débil" data-problem-text="La rotación, la contratación recurrente y la falta de archivo técnico hacen que el Estado reaprenda lo mismo una y otra vez." data-problem-relation="Conecta gestión documental, talento y aprendizaje institucional para evitar reinicios permanentes." data-problem-tool="RAÍCES y expediente">Memoria institucional débil</button>
+          <button class="problem-node cause" type="button" data-problem-type="Causa" data-problem-title="Financiación insuficiente o mal articulada" data-problem-text="Una forma institucional puede nacer sin cierre fiscal, sin articulación presupuestal o con dependencia excesiva de contratación." data-problem-relation="Pide revisar costos, fuente, sostenibilidad y riesgos fiscales antes de decidir." data-problem-tool="SAVIA fiscal">Financiación insuficiente o mal articulada</button>
+          <button class="problem-node cause" type="button" data-problem-type="Causa" data-problem-title="Talento y capacidades insuficientes" data-problem-text="No hay planta, perfiles, saber técnico o capacidad administrativa suficiente para sostener la función pública creada." data-problem-relation="Evita crear obligaciones sin soporte laboral, conocimiento técnico y capacidad administrativa." data-problem-tool="SAVIA laboral">Talento y capacidades insuficientes</button>
+          <button class="problem-node cause" type="button" data-problem-type="Causa" data-problem-title="Debilidad territorial" data-problem-text="El diseño nacional puede no reconocer capacidades, brechas y restricciones de implementación en departamentos, distritos y municipios." data-problem-relation="Hace necesaria una lectura territorial antes de generalizar una solución." data-problem-tool="SAVIA territorial y SEMILLAS">Debilidad territorial</button>
+          <button class="problem-node cause" type="button" data-problem-type="Causa" data-problem-title="Evaluación posterior limitada" data-problem-text="Las reformas no siempre se revisan después de entrar en operación; por eso se perpetúan fallas y costos sin aprendizaje." data-problem-relation="Convierte la evaluación en una fase obligada para ajustar, escalar, absorber, cerrar o archivar." data-problem-tool="Tablero público y evaluación">Evaluación posterior limitada</button>
+          <button class="problem-node cause" type="button" data-problem-type="Causa" data-problem-title="Creación prematura" data-problem-text="Entidades, fondos, sistemas o plataformas se vuelven permanentes antes de demostrar problema, finalidad, evidencia, financiación, datos y control." data-problem-relation="Es el patrón que RAÍCES, SAVIA y SEMILLAS filtran antes de recomendar una forma permanente." data-problem-tool="RAÍCES, SAVIA y SEMILLAS">Creación prematura de entidades, fondos, sistemas o plataformas</button>
         </div>
       </div>
       <aside class="problem-detail" aria-live="polite">
         <p class="overline">Nodo seleccionado</p>
         <h3 data-problem-detail-title>Brecha entre forma institucional y capacidad pública real</h3>
         <p data-problem-detail-text>Tronco del problema: el Estado crea o mantiene formas institucionales sin verificar si existen capacidades reales para implementarlas, financiarlas, controlarlas y evaluarlas.</p>
+        <dl class="problem-detail-list">
+          <div><dt>Tipo</dt><dd data-problem-detail-type>Problema</dd></div>
+          <div><dt>Relación con Estado que Cumple</dt><dd data-problem-detail-relation>Es el punto que Estado que Cumple busca transformar mediante revisión, madurez, piloto, expediente e instrumento competente.</dd></div>
+          <div><dt>Herramienta relacionada</dt><dd data-problem-detail-tool>Expediente Técnico Integrado</dd></div>
+        </dl>
       </aside>
     </section>
 
-    <section class="section" id="tipologia">
+    <section class="section" id="tipologia" data-guided-chapter="problem" data-search-title="Tipología de formas institucionales prematuras" data-search-group="Propuesta" data-search-keywords="tipología creación orgánica normativa instancias fondos plataformas">
       <div class="section-title wide">
         <p class="overline">Tipología</p>
         <h2>Formas institucionales prematuras: cinco patrones que la propuesta busca filtrar.</h2>
@@ -183,7 +246,7 @@
       </div>
     </section>
 
-    <section class="section core-lab" id="nucleo-metodologico" data-core-tabs aria-labelledby="nucleo-title">
+    <section class="section core-lab" id="nucleo-metodologico" data-guided-chapter="logic" data-core-tabs aria-labelledby="nucleo-title" data-search-title="RAÍCES, SAVIA y SEMILLAS" data-search-group="Metodologías" data-search-keywords="RAÍCES revisión integral SAVIA madurez SEMILLAS pilotos institucionales">
       <div class="section-title wide">
         <p class="overline">Núcleo metodológico</p>
         <h2 id="nucleo-title">RAÍCES, SAVIA y SEMILLAS operan como filtros antes de decidir.</h2>
@@ -220,7 +283,7 @@
       </div>
     </section>
 
-    <section class="section stepper-section" id="teoria-cambio" data-stepper aria-labelledby="teoria-title">
+    <section class="section stepper-section" id="teoria-cambio" data-guided-chapter="logic" data-stepper aria-labelledby="teoria-title" data-search-title="Teoría de cambio" data-search-group="Propuesta" data-search-keywords="activar revisar madurar probar evaluar capacidad resultados">
       <div class="section-title wide">
         <p class="overline">Tesis central y teoría de cambio</p>
         <h2 id="teoria-title">No crear primero y justificar después: activar, revisar, madurar, probar y evaluar.</h2>
@@ -238,20 +301,20 @@
           <button type="button" data-step-tab="evaluacion" aria-selected="false">Evaluación posterior</button>
         </div>
         <div class="step-panels">
-          <article class="step-panel is-active" data-step-panel="decision"><span>01</span><h3>Decisión / activación</h3><p>Un problema entra por fuente política, legislativa, ciudadana, territorial, judicial, de control o por indicadores críticos.</p></article>
-          <article class="step-panel" data-step-panel="raices"><span>02</span><h3>Revisión RAÍCES</h3><p>Se revisa qué existe, qué se duplica, qué falta, qué no tiene trazabilidad y dónde está la restricción real.</p></article>
-          <article class="step-panel" data-step-panel="savia"><span>03</span><h3>Análisis SAVIA</h3><p>Se contrasta la alternativa con madurez fiscal, jurídica, laboral, territorial, documental, de datos y control.</p></article>
-          <article class="step-panel" data-step-panel="semillas"><span>04</span><h3>Piloto SEMILLAS</h3><p>Si la madurez es baja o hay incertidumbre relevante, se prueba primero con línea base e indicadores.</p></article>
-          <article class="step-panel" data-step-panel="expediente"><span>05</span><h3>Expediente técnico</h3><p>El caso se documenta con diagnóstico, alternativas, participación, riesgos, cronograma, indicadores y evaluación.</p></article>
-          <article class="step-panel" data-step-panel="instrumento"><span>06</span><h3>Instrumento competente</h3><p>La decisión se lleva al canal jurídico correcto: directiva, decreto, CONPES, PND, proyecto de ley, acuerdo territorial u otro.</p></article>
-          <article class="step-panel" data-step-panel="implementacion"><span>07</span><h3>Implementación</h3><p>La transformación se ejecuta con responsables, plazos, datos, presupuesto, gestión documental y seguimiento público.</p></article>
-          <article class="step-panel" data-step-panel="resultados"><span>08</span><h3>Resultados verificables</h3><p>La discusión deja de centrarse en crear formas y se concentra en capacidad, cumplimiento y efectos observables.</p></article>
-          <article class="step-panel" data-step-panel="evaluacion"><span>09</span><h3>Evaluación posterior</h3><p>La decisión se revisa para ajustar, escalar, absorber, cerrar o archivar con memoria institucional.</p></article>
+          <article class="step-panel is-active" data-step-panel="decision"><span>01</span><h3>Decisión / activación</h3><p>La entrada delimita el problema antes de escoger solución. Así evita que la respuesta pública nazca como forma institucional prediseñada.</p></article>
+          <article class="step-panel" data-step-panel="raices"><span>02</span><h3>Revisión RAÍCES</h3><p>Inventariar lo existente produce capacidad porque muestra duplicidades, vacíos, restricciones y alternativas antes de gastar energía en crear algo nuevo.</p></article>
+          <article class="step-panel" data-step-panel="savia"><span>03</span><h3>Análisis SAVIA</h3><p>La madurez institucional reduce improvisación: pregunta por soporte fiscal, jurídico, laboral, territorial, documental, de datos y control.</p></article>
+          <article class="step-panel" data-step-panel="semillas"><span>04</span><h3>Piloto SEMILLAS</h3><p>Probar en pequeño produce aprendizaje con menor costo político y fiscal cuando aún no hay evidencia suficiente para volver permanente una solución.</p></article>
+          <article class="step-panel" data-step-panel="expediente"><span>05</span><h3>Expediente técnico</h3><p>Documentar alternativas, riesgos e indicadores convierte la discusión en una decisión trazable y revisable, no en una narrativa de reforma.</p></article>
+          <article class="step-panel" data-step-panel="instrumento"><span>06</span><h3>Instrumento competente</h3><p>Llevar el caso al canal correcto protege competencias y evita que una buena intención termine jurídicamente frágil.</p></article>
+          <article class="step-panel" data-step-panel="implementacion"><span>07</span><h3>Implementación</h3><p>Responsables, recursos, datos y plazos convierten la decisión en capacidad operativa verificable.</p></article>
+          <article class="step-panel" data-step-panel="resultados"><span>08</span><h3>Resultados verificables</h3><p>La medición desplaza el debate desde la forma creada hacia lo que cambia en servicios, coordinación, territorio y confianza pública.</p></article>
+          <article class="step-panel" data-step-panel="evaluacion"><span>09</span><h3>Evaluación posterior</h3><p>Revisar después de implementar permite ajustar, absorber, escalar, cerrar o archivar sin perder memoria institucional.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section knowledge-tabs" id="estado-arte" data-knowledge-tabs aria-labelledby="arte-title">
+    <section class="section knowledge-tabs" id="estado-arte" data-guided-chapter="logic" data-knowledge-tabs aria-labelledby="arte-title" data-search-title="Estado del arte" data-search-group="Investigación" data-search-keywords="capacidad estatal madurez aprendizaje forma sin capacidad comparado">
       <div class="section-title wide">
         <p class="overline">Estado del arte</p>
         <h2 id="arte-title">Capacidad estatal, madurez y aprendizaje traducidos a decisiones públicas.</h2>
@@ -266,17 +329,65 @@
           <button type="button" data-knowledge-tab="tension" aria-selected="false">Tensión central</button>
         </div>
         <div class="knowledge-panels">
-          <article class="knowledge-panel is-active" data-knowledge-panel="colombia"><h3>Debates de capacidad estatal en Colombia</h3><p>La propuesta organiza preocupaciones conocidas sobre coordinación, implementación, función pública, planeación, datos, territorio y seguimiento, pero las convierte en una ruta operativa antes de crear nuevas formas.</p></article>
-          <article class="knowledge-panel" data-knowledge-panel="madurez"><h3>Madurez institucional</h3><p>No toda idea lista políticamente está lista institucionalmente. SAVIA pregunta por condiciones fiscales, laborales, jurídicas, territoriales, documentales y de datos antes de escalar.</p></article>
-          <article class="knowledge-panel" data-knowledge-panel="aprendizaje"><h3>Aprendizaje institucional</h3><p>SEMILLAS introduce pilotos con línea base y evaluación para que el Estado aprenda antes de volver permanente una estructura costosa o rígida.</p></article>
-          <article class="knowledge-panel" data-knowledge-panel="formas"><h3>Riesgo de copiar formas sin capacidad</h3><p>Crear ministerios, agencias, fondos, observatorios o plataformas puede simular respuesta pública si no se demuestra capacidad real de implementación.</p></article>
-          <article class="knowledge-panel" data-knowledge-panel="comparado"><h3>Referencias comparadas</h3><p>El documento recoge aprendizajes de enfoques comparados sobre coordinación, desempeño, madurez y capacidades, sin convertirlos en recetas copiadas mecánicamente.</p></article>
-          <article class="knowledge-panel" data-knowledge-panel="tension"><h3>Forma institucional vs. capacidad pública</h3><p>La tensión de fondo es simple y exigente: una forma pública solo debe sostenerse si puede cumplir derechos, coordinarse, financiarse, medirse, aprender y rendir cuentas.</p></article>
+          <article class="knowledge-panel is-active" data-knowledge-panel="colombia">
+            <h3>Debates de capacidad estatal en Colombia</h3>
+            <dl class="knowledge-list">
+              <div><dt>Tesis</dt><dd>La discusión colombiana no se agota en crear o cerrar entidades: exige mirar coordinación, función pública, planeación, datos, territorio y seguimiento.</dd></div>
+              <div><dt>Aprendizaje para Colombia</dt><dd>La capacidad debe verificarse antes de prometer resultados institucionales permanentes.</dd></div>
+              <div><dt>Traducción a Estado que Cumple</dt><dd>RAÍCES, SAVIA, SEMILLAS y el expediente convierten ese debate en una secuencia de revisión.</dd></div>
+              <div><dt>Advertencia o límite</dt><dd>No sustituye las competencias constitucionales ni convierte una propuesta ciudadana en política oficial.</dd></div>
+            </dl>
+          </article>
+          <article class="knowledge-panel" data-knowledge-panel="madurez">
+            <h3>Madurez institucional</h3>
+            <dl class="knowledge-list">
+              <div><dt>Tesis</dt><dd>No toda idea lista políticamente está lista institucionalmente.</dd></div>
+              <div><dt>Aprendizaje para Colombia</dt><dd>Las reformas necesitan soporte fiscal, laboral, jurídico, territorial, documental, de datos y control.</dd></div>
+              <div><dt>Traducción a Estado que Cumple</dt><dd>SAVIA funciona como matriz de madurez antes de escalar o crear una forma permanente.</dd></div>
+              <div><dt>Advertencia o límite</dt><dd>Una matriz no reemplaza estudios técnicos formales ni conceptos de autoridades competentes.</dd></div>
+            </dl>
+          </article>
+          <article class="knowledge-panel" data-knowledge-panel="aprendizaje">
+            <h3>Aprendizaje institucional</h3>
+            <dl class="knowledge-list">
+              <div><dt>Tesis</dt><dd>El Estado aprende mejor cuando prueba, mide y corrige antes de fijar soluciones rígidas.</dd></div>
+              <div><dt>Aprendizaje para Colombia</dt><dd>Los pilotos pueden reducir costos de error si tienen línea base, responsables e indicadores.</dd></div>
+              <div><dt>Traducción a Estado que Cumple</dt><dd>SEMILLAS propone pilotos acotados para cerrar incertidumbres institucionales relevantes.</dd></div>
+              <div><dt>Advertencia o límite</dt><dd>Un piloto sin evaluación puede convertirse en otra forma provisional permanente.</dd></div>
+            </dl>
+          </article>
+          <article class="knowledge-panel" data-knowledge-panel="formas">
+            <h3>Riesgo de copiar formas sin capacidad</h3>
+            <dl class="knowledge-list">
+              <div><dt>Tesis</dt><dd>Ministerios, agencias, fondos, observatorios o plataformas pueden simular respuesta pública si no tienen capacidad real.</dd></div>
+              <div><dt>Aprendizaje para Colombia</dt><dd>La visibilidad institucional no equivale a implementación, coordinación ni resultados.</dd></div>
+              <div><dt>Traducción a Estado que Cumple</dt><dd>La tipología identifica patrones prematuros y los somete a revisión y madurez.</dd></div>
+              <div><dt>Advertencia o límite</dt><dd>No toda creación institucional es negativa; el problema es crear sin soporte suficiente.</dd></div>
+            </dl>
+          </article>
+          <article class="knowledge-panel" data-knowledge-panel="comparado">
+            <h3>Referencias comparadas</h3>
+            <dl class="knowledge-list">
+              <div><dt>Tesis</dt><dd>Las experiencias comparadas ayudan a preguntar mejor, no a copiar arquitectura institucional.</dd></div>
+              <div><dt>Aprendizaje para Colombia</dt><dd>Coordinación, desempeño, madurez y capacidades deben traducirse al régimen y territorio propios.</dd></div>
+              <div><dt>Traducción a Estado que Cumple</dt><dd>El documento usa referencias como criterios de análisis, no como recetas cerradas.</dd></div>
+              <div><dt>Advertencia o límite</dt><dd>Una práctica internacional puede fallar si se importa sin competencias, datos, financiación o cultura administrativa compatible.</dd></div>
+            </dl>
+          </article>
+          <article class="knowledge-panel" data-knowledge-panel="tension">
+            <h3>Forma institucional vs. capacidad pública</h3>
+            <dl class="knowledge-list">
+              <div><dt>Tesis</dt><dd>Una forma pública solo debe sostenerse si puede cumplir derechos, coordinarse, financiarse, medirse, aprender y rendir cuentas.</dd></div>
+              <div><dt>Aprendizaje para Colombia</dt><dd>El debate estatal necesita pasar de etiquetas ideológicas a evidencia sobre capacidad real.</dd></div>
+              <div><dt>Traducción a Estado que Cumple</dt><dd>La propuesta ordena la decisión desde problema público hasta evaluación posterior.</dd></div>
+              <div><dt>Advertencia o límite</dt><dd>La capacidad no se demuestra con retórica ni con diseño institucional aislado.</dd></div>
+            </dl>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="fundamento">
+    <section class="section" id="fundamento" data-guided-chapter="architecture" data-search-title="Fundamento constitucional, legal y administrativo" data-search-group="Propuesta" data-search-keywords="constitucional legal administrativo competencias instrumento correcto">
       <div class="section-title wide">
         <p class="overline">Fundamento constitucional, legal y administrativo</p>
         <h2>La propuesta no reemplaza competencias: ordena la decisión para llevarla al instrumento correcto.</h2>
@@ -289,23 +400,37 @@
       </div>
     </section>
 
-    <section class="section system-map" id="arquitectura" data-system-map aria-labelledby="arquitectura-title">
+    <section class="section system-map" id="arquitectura" data-guided-chapter="architecture" data-system-map aria-labelledby="arquitectura-title" data-search-title="Arquitectura institucional" data-search-group="Sistema" data-search-keywords="sistema administrativo comisión intersectorial secretaría técnica ventanilla tablero público">
       <div class="section-title wide">
         <p class="overline">Arquitectura institucional completa</p>
         <h2 id="arquitectura-title">Un sistema de coordinación, no una entidad nueva por defecto.</h2>
       </div>
       <div class="system-layout">
         <div class="system-nodes" aria-label="Mapa institucional Estado que Cumple">
-          <button class="system-node main is-active" type="button" data-system-node="sistema" aria-selected="true">Sistema Administrativo Nacional</button>
-          <button class="system-node" type="button" data-system-node="comision" aria-selected="false">Comisión Intersectorial</button>
-          <button class="system-node" type="button" data-system-node="secretaria" aria-selected="false">Secretaría Técnica Conjunta</button>
-          <button class="system-node" type="button" data-system-node="ventanilla" aria-selected="false">Ventanilla Técnica Integrada</button>
-          <button class="system-node" type="button" data-system-node="raices" aria-selected="false">RAÍCES</button>
-          <button class="system-node" type="button" data-system-node="savia" aria-selected="false">SAVIA</button>
-          <button class="system-node" type="button" data-system-node="semillas" aria-selected="false">SEMILLAS</button>
-          <button class="system-node" type="button" data-system-node="expediente" aria-selected="false">Expediente Técnico</button>
-          <button class="system-node" type="button" data-system-node="tablero" aria-selected="false">Tablero público</button>
-          <button class="system-node" type="button" data-system-node="rutas" aria-selected="false">Rutas de activación</button>
+          <div class="system-layer direction-layer">
+            <h3>Capa de dirección</h3>
+            <button class="system-node main is-active" type="button" data-system-node="sistema" aria-selected="true">Sistema Administrativo Nacional</button>
+            <button class="system-node" type="button" data-system-node="comision" aria-selected="false">Comisión Intersectorial</button>
+          </div>
+          <div class="system-layer technical-layer">
+            <h3>Capa técnica</h3>
+            <button class="system-node" type="button" data-system-node="secretaria" aria-selected="false">Secretaría Técnica DAFP-DNP</button>
+            <button class="system-node" type="button" data-system-node="ventanilla" aria-selected="false">Ventanilla Técnica Integrada</button>
+          </div>
+          <div class="system-layer method-layer">
+            <h3>Capa metodológica</h3>
+            <button class="system-node" type="button" data-system-node="raices" aria-selected="false">RAÍCES</button>
+            <button class="system-node" type="button" data-system-node="savia" aria-selected="false">SAVIA</button>
+            <button class="system-node" type="button" data-system-node="semillas" aria-selected="false">SEMILLAS</button>
+          </div>
+          <div class="system-layer control-layer">
+            <h3>Capa de decisión y control</h3>
+            <button class="system-node" type="button" data-system-node="rutas" aria-selected="false">Rutas de activación</button>
+            <button class="system-node" type="button" data-system-node="expediente" aria-selected="false">Expediente Técnico</button>
+            <button class="system-node" type="button" data-system-node="instrumento" aria-selected="false">Instrumento competente</button>
+            <button class="system-node" type="button" data-system-node="tablero" aria-selected="false">Tablero público</button>
+            <button class="system-node" type="button" data-system-node="evaluacion" aria-selected="false">Evaluación</button>
+          </div>
         </div>
         <div class="system-details">
           <article class="system-panel is-active" data-system-panel="sistema"><span>Sistema</span><h3>Sistema Administrativo Nacional Estado que Cumple</h3><p>Coordina la revisión, transformación, implementación y evaluación de capacidades públicas con reglas comunes y trazabilidad.</p></article>
@@ -316,13 +441,15 @@
           <article class="system-panel" data-system-panel="savia"><span>Madurez</span><h3>SAVIA</h3><p>Determina si una solución tiene capacidad constitucional, fiscal, laboral, territorial, documental, de datos y de control.</p></article>
           <article class="system-panel" data-system-panel="semillas"><span>Piloto</span><h3>SEMILLAS</h3><p>Prueba antes de volver permanente, especialmente cuando falta evidencia o hay riesgo de creación prematura.</p></article>
           <article class="system-panel" data-system-panel="expediente"><span>Soporte</span><h3>Expediente Técnico Integrado</h3><p>Hace visible la evidencia que sostiene la decisión y evita que la reforma quede en una narrativa sin soporte.</p></article>
+          <article class="system-panel" data-system-panel="instrumento"><span>Competencia</span><h3>Instrumento competente</h3><p>Traslada el expediente al canal jurídico o administrativo correcto: directiva, decreto, CONPES, PND, ley, acuerdo territorial, guía o archivo motivado.</p></article>
           <article class="system-panel" data-system-panel="tablero"><span>Control público</span><h3>Tablero público</h3><p>Muestra procesos, resultados, aprendizaje y memoria institucional para seguimiento ciudadano y corrección.</p></article>
+          <article class="system-panel" data-system-panel="evaluacion"><span>Aprendizaje</span><h3>Evaluación posterior</h3><p>Revisa si la decisión cumplió, qué debe ajustarse, qué puede escalarse y qué debe cerrarse o archivarse con memoria pública.</p></article>
           <article class="system-panel" data-system-panel="rutas"><span>Entrada</span><h3>Rutas de activación</h3><p>Permiten que Ejecutivo, Congreso, sociedad civil, territorios y otros actores activen casos con salidas diferenciadas.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section route-tabs" id="rutas-activacion" data-route-tabs aria-labelledby="rutas-title">
+    <section class="section route-tabs" id="rutas-activacion" data-guided-chapter="architecture" data-route-tabs aria-labelledby="rutas-title" data-search-title="Rutas de activación" data-search-group="Sistema" data-search-keywords="ejecutivo legislativo sociedad civil territorio activación">
       <div class="section-title wide">
         <p class="overline">Rutas de activación</p>
         <h2 id="rutas-title">Cada entrada tiene fuente, instrumento, actor y salida esperada.</h2>
@@ -339,7 +466,7 @@
       <div class="route-panel" data-route-panel="territorio"><span>Territorio</span><h3>Fuente local: gobiernos y comunidades</h3><p><strong>Instrumentos:</strong> planes territoriales, acuerdos, pilotos, tableros locales y observatorios. <strong>Salida:</strong> aprendizaje situado y capacidad territorial.</p></div>
     </section>
 
-    <section class="section decision-lab" id="simulador" data-decision-lab aria-labelledby="decision-lab-title">
+    <section class="section decision-lab" id="simulador" data-guided-chapter="decision" data-decision-lab aria-labelledby="decision-lab-title" data-search-title="Laboratorio de decisión" data-search-group="Herramientas" data-search-keywords="simulador ruta preliminar actor competente instrumento posible advertencias">
       <div class="section-title wide">
         <p class="overline">Laboratorio de decisión</p>
         <h2 id="decision-lab-title">Explore qué ruta institucional podría corresponder antes de crear una forma permanente.</h2>
@@ -435,14 +562,24 @@
             <li>Revisar qué existe.</li>
             <li>Evaluar madurez y viabilidad.</li>
           </ol>
+          <dl class="decision-detail-list">
+            <div><dt>Diagnóstico recomendado</dt><dd data-decision-diagnosis>Delimitación inicial del problema y revisión de formas existentes.</dd></div>
+            <div><dt>Herramientas sugeridas</dt><dd data-decision-tools>RAÍCES y SAVIA.</dd></div>
+            <div><dt>Actor competente</dt><dd data-decision-actor>Debe definirse según competencia y alcance.</dd></div>
+            <div><dt>Instrumento posible</dt><dd data-decision-instrument>Por clasificar mediante expediente.</dd></div>
+            <div><dt>Condiciones pendientes</dt><dd data-decision-conditions>Evidencia, datos, fuente fiscal, soporte laboral y ruta jurídica.</dd></div>
+            <div><dt>Advertencias</dt><dd data-decision-warnings>No constituye concepto jurídico ni decisión administrativa.</dd></div>
+            <div><dt>Siguiente paso</dt><dd data-decision-next>Completar inventario y matriz de madurez.</dd></div>
+          </dl>
           <div class="decision-badges" data-decision-badges></div>
           <button class="button secondary decision-copy" type="button" data-decision-copy disabled>Copiar resultado</button>
+          <button class="button tertiary decision-reset" type="button" data-decision-reset>Reiniciar simulación</button>
           <small>No constituye concepto jurídico ni decisión administrativa.</small>
         </aside>
       </div>
     </section>
 
-    <section class="section stepper-section" id="ruta-integrada" data-stepper aria-labelledby="ruta-title">
+    <section class="section stepper-section" id="ruta-integrada" data-guided-chapter="decision" data-stepper aria-labelledby="ruta-title" data-search-title="Ruta integrada de transformación institucional" data-search-group="Propuesta" data-search-keywords="solicitud revisión priorización análisis piloto expediente decisión implementación evaluación">
       <div class="section-title wide">
         <p class="overline">Ruta integrada de transformación institucional</p>
         <h2 id="ruta-title">De la solicitud a la evaluación: una cadena de decisión con memoria.</h2>
@@ -459,19 +596,19 @@
         <button type="button" data-step-tab="evaluacion" aria-selected="false">Evaluación</button>
       </div>
       <div class="step-panels process-panels">
-        <article class="step-panel is-active" data-step-panel="solicitud"><span>Entrada</span><h3>Solicitud</h3><p>Un caso entra por gobierno, Congreso, ciudadanía, territorio, servidores, órganos de control, decisión judicial o indicador crítico.</p></article>
-        <article class="step-panel" data-step-panel="revision"><span>RAÍCES</span><h3>Revisión</h3><p>Se identifica qué existe, qué se superpone, qué falta, qué datos hay y qué restricciones institucionales aparecen.</p></article>
-        <article class="step-panel" data-step-panel="priorizacion"><span>Gobernanza</span><h3>Priorización</h3><p>La instancia competente decide si el caso requiere mesa técnica, expediente completo, piloto o archivo motivado.</p></article>
-        <article class="step-panel" data-step-panel="analisis"><span>SAVIA</span><h3>Análisis</h3><p>Se revisa madurez fiscal, laboral, territorial, documental, jurídica, de datos, participación, control y prevención de captura.</p></article>
-        <article class="step-panel" data-step-panel="piloto"><span>SEMILLAS</span><h3>Piloto si aplica</h3><p>Cuando la capacidad no está probada, se ensaya una solución acotada con línea base, indicadores y evaluación.</p></article>
-        <article class="step-panel" data-step-panel="expediente"><span>Soporte</span><h3>Expediente</h3><p>Se integra evidencia, alternativas, costos, riesgos, participación, cronograma, indicadores y ruta jurídica.</p></article>
-        <article class="step-panel" data-step-panel="decision"><span>Competencia</span><h3>Decisión</h3><p>La salida se lleva al instrumento correcto: directiva, decreto, CONPES, PND, ley, acuerdo territorial, guía o archivo.</p></article>
-        <article class="step-panel" data-step-panel="implementacion"><span>Cumplimiento</span><h3>Implementación</h3><p>La decisión queda asociada a responsables, plazos, recursos, datos, archivo, seguimiento y rendición pública.</p></article>
-        <article class="step-panel" data-step-panel="evaluacion"><span>Aprendizaje</span><h3>Evaluación</h3><p>Se revisa qué funcionó, qué debe ajustarse, qué puede escalarse, qué debe cerrarse y qué queda como memoria institucional.</p></article>
+        <article class="step-panel is-active" data-step-panel="solicitud"><span>Entrada</span><h3>Solicitud</h3><p><strong>Quién actúa:</strong> gobierno, Congreso, ciudadanía, territorio, servidores u órgano de control. <strong>Documento:</strong> ficha de entrada. <strong>Salida:</strong> problema delimitado.</p></article>
+        <article class="step-panel" data-step-panel="revision"><span>RAÍCES</span><h3>Revisión</h3><p><strong>Quién actúa:</strong> ventanilla y equipos técnicos. <strong>Documento:</strong> inventario funcional. <strong>Salida:</strong> duplicidades, vacíos y alternativas iniciales.</p></article>
+        <article class="step-panel" data-step-panel="priorizacion"><span>Gobernanza</span><h3>Priorización</h3><p><strong>Quién actúa:</strong> instancia competente o comisión. <strong>Documento:</strong> acta de priorización. <strong>Salida:</strong> mesa, expediente, piloto o archivo motivado.</p></article>
+        <article class="step-panel" data-step-panel="analisis"><span>SAVIA</span><h3>Análisis</h3><p><strong>Quién actúa:</strong> DAFP, DNP, sector y soportes especializados. <strong>Documento:</strong> matriz de madurez. <strong>Salida:</strong> viabilidad condicionada y riesgos.</p></article>
+        <article class="step-panel" data-step-panel="piloto"><span>SEMILLAS</span><h3>Piloto si aplica</h3><p><strong>Quién actúa:</strong> entidad líder y territorio o sector piloto. <strong>Documento:</strong> plan piloto. <strong>Salida:</strong> evidencia de aprendizaje antes de escalar.</p></article>
+        <article class="step-panel" data-step-panel="expediente"><span>Soporte</span><h3>Expediente</h3><p><strong>Quién actúa:</strong> secretaría técnica y actores competentes. <strong>Documento:</strong> expediente integrado. <strong>Salida:</strong> soporte completo para decidir.</p></article>
+        <article class="step-panel" data-step-panel="decision"><span>Competencia</span><h3>Decisión</h3><p><strong>Quién actúa:</strong> autoridad con competencia. <strong>Documento:</strong> instrumento jurídico o administrativo. <strong>Salida:</strong> directiva, decreto, CONPES, PND, ley, acuerdo, guía o archivo.</p></article>
+        <article class="step-panel" data-step-panel="implementacion"><span>Cumplimiento</span><h3>Implementación</h3><p><strong>Quién actúa:</strong> responsables definidos en el instrumento. <strong>Documento:</strong> plan de implementación. <strong>Salida:</strong> recursos, datos, plazos y responsables públicos.</p></article>
+        <article class="step-panel" data-step-panel="evaluacion"><span>Aprendizaje</span><h3>Evaluación</h3><p><strong>Quién actúa:</strong> entidad responsable, control y seguimiento ciudadano. <strong>Documento:</strong> evaluación posterior. <strong>Salida:</strong> ajuste, escalamiento, absorción, cierre o archivo.</p></article>
       </div>
     </section>
 
-    <section class="section checklist-section" id="expediente" data-checklist>
+    <section class="section checklist-section" id="expediente" data-guided-chapter="decision" data-checklist data-search-title="Expediente Técnico Integrado" data-search-group="Herramientas" data-search-keywords="diagnóstico alternativas fiscal laboral datos archivo riesgos participación indicadores evaluación">
       <div class="section-title wide">
         <p class="overline">Expediente Técnico Integrado</p>
         <h2>La decisión debe dejar huella: evidencia, alternativas, riesgos, cronograma e indicadores.</h2>
@@ -500,7 +637,7 @@
       </div>
     </section>
 
-    <section class="section" id="metodologias">
+    <section class="section" id="metodologias" data-guided-chapter="decision" data-search-title="Metodologías de análisis" data-search-group="Propuesta" data-search-keywords="fiscal laboral territorial documental datos captura">
       <div class="section-title wide">
         <p class="overline">Metodologías de análisis</p>
         <h2>El expediente no se limita a diagnóstico general: cruza dimensiones operativas que suelen fallar.</h2>
@@ -515,7 +652,7 @@
       </div>
     </section>
 
-    <section class="section" id="instrumentos">
+    <section class="section" id="instrumentos" data-guided-chapter="decision" data-search-title="Instrumentos, normas y competencias" data-search-group="Propuesta" data-search-keywords="directiva decreto CONPES PND MIPG FURAG proyecto de ley acuerdo guías">
       <div class="section-title wide">
         <p class="overline">Instrumentos, normas y competencias</p>
         <h2>No todo se resuelve con la misma herramienta jurídica.</h2>
@@ -532,7 +669,7 @@
       </div>
     </section>
 
-    <section class="section" id="riesgos">
+    <section class="section" id="riesgos" data-guided-chapter="control" data-search-title="Riesgos, blindajes y condiciones de éxito" data-search-group="Control" data-search-keywords="burocratización captura simulación sobrecarga centralismo participación datos evaluación">
       <div class="section-title wide">
         <p class="overline">Riesgos, blindajes y condiciones de éxito</p>
         <h2>La propuesta también debe protegerse de su propia burocratización.</h2>
@@ -549,7 +686,7 @@
       </div>
     </section>
 
-    <section class="section" id="tablero">
+    <section class="section" id="tablero" data-guided-chapter="control" data-search-title="Indicadores y tablero público" data-search-group="Control" data-search-keywords="proceso resultado aprendizaje memoria seguimiento público">
       <div class="section-title wide">
         <p class="overline">Indicadores y tablero público</p>
         <h2>Medir para corregir, no para decorar la reforma con cifras sin uso.</h2>
@@ -562,7 +699,7 @@
       </div>
     </section>
 
-    <section class="section document-download">
+    <section class="section document-download" data-guided-chapter="control" data-search-title="Documento fuente PDF" data-search-group="Documento" data-search-keywords="Estado que Cumple PDF documento técnico político discusión pública">
       <div>
         <p class="overline">Documento fuente</p>
         <h2>Estado que Cumple. Documento técnico-político de discusión pública.</h2>
@@ -592,7 +729,7 @@
 
   <footer class="site-footer">
     <div class="footer-logo">
-      <img src="/assets/branding/emblema-cams.png" alt="" />
+      <img src="/assets/branding/emblema-cams.png" alt="" width="799" height="1082" loading="lazy" />
       <div>
         <strong>CAMS</strong>
         <span>Estado que Cumple</span>
@@ -600,6 +737,7 @@
     </div>
     <p>Archivo público, propuesta ciudadana y laboratorio de capacidad pública.</p>
     <div class="footer-links">
+      <a href="/estado-que-cumple/">Propuesta</a>
       <a href="/documentos/">Documentos</a>
       <a href="/participar/">Participar</a>
       <a href="https://github.com/camscarlosmartinez" target="_blank" rel="noopener">GitHub</a>
