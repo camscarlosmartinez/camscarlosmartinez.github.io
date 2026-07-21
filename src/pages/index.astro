@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DocumentCard from '../components/global/DocumentCard.astro';
+import BrandEmblem from '../components/brand/BrandEmblem.astro';
 
 const desc = 'Plataforma personal de Carlos Arturo Martínez Sánchez para investigación pública, diseño institucional, propuestas, seguimiento y participación.';
 ---
@@ -36,6 +37,7 @@ const desc = 'Plataforma personal de Carlos Arturo Martínez Sánchez para inves
       </div>
 
       <aside class="home-hero__panel" aria-labelledby="home-method-title">
+        <BrandEmblem class="home-brand-emblem" />
         <p class="home-hero__panel-code">CAMS · Método público</p>
         <h2 id="home-method-title">Del problema a una versión que pueda revisarse</h2>
         <ol class="home-method" aria-label="Método CAMS resumido">
