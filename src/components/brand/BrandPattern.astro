@@ -1,0 +1,5 @@
+---
+interface Props { tone?: 'light' | 'dark'; }
+const { tone = 'light' } = Astro.props;
+---
+<div class:list={['brand-pattern', `brand-pattern--${tone}`]} aria-hidden="true"><i></i><i></i><i></i></div>

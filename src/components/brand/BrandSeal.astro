@@ -1,0 +1,7 @@
+---
+interface Props { size?: 'small' | 'medium'; decorative?: boolean; class?: string; }
+const { size = 'small', decorative = false, class: className = '' } = Astro.props;
+---
+<span class:list={['brand-seal', `brand-seal--${size}`, className]} aria-hidden={decorative ? 'true' : undefined}>
+  <img src="/assets/branding/sello-cams.png" width="800" height="814" alt={decorative ? '' : 'Sello editorial CAMS — Estado que Cumple'} loading="lazy" decoding="async" />
+</span>

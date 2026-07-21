@@ -1,4 +1,5 @@
 ---
+import BrandLogo from '../brand/BrandLogo.astro';
 const { currentPath = '/' } = Astro.props;
 const primary = [
   ['/', 'Inicio'], ['/cams/', 'CAMS'], ['/estado-que-cumple/', 'Estado que Cumple'],
@@ -10,7 +11,7 @@ const knowledgeActive = currentPath.startsWith('/conocimiento') || knowledge.som
 ---
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/" aria-label="CAMS, inicio"><strong>CAMS</strong><span>Carlos Arturo Martínez Sánchez</span></a>
+    <BrandLogo compact />
     <div class="header-actions">
       <button class="search-trigger" type="button" data-search-open aria-controls="command-palette" aria-expanded="false">Buscar <kbd>Ctrl K</kbd></button>
       <button class="menu-toggle" type="button" data-menu-toggle aria-controls="primary-nav" aria-expanded="false">Menú</button>

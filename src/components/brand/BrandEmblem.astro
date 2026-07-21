@@ -1,0 +1,8 @@
+---
+interface Props { class?: string; }
+const { class: className = '' } = Astro.props;
+---
+<figure class:list={['brand-emblem', className]}>
+  <div class="brand-emblem__image"><img src="/assets/branding/emblema-cams.png" width="799" height="1082" alt="Emblema CAMS" decoding="async" fetchpriority="high" /></div>
+  <figcaption><span>Autor y responsable</span><strong>Carlos Arturo Martínez Sánchez</strong><small>CAMS organiza la obra · Estado que Cumple es el proyecto insignia</small></figcaption>
+</figure>
