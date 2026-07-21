@@ -1,20 +1,8 @@
 {
-  "name": "CAMS | Estado que Cumple",
+  "name": "CAMS — Carlos Arturo Martínez Sánchez",
   "short_name": "CAMS",
-  "description": "Del Estado de papel a la capacidad pública real.",
-  "lang": "es-CO",
-  "dir": "ltr",
-  "id": "/",
-  "start_url": "/",
-  "scope": "/",
-  "display": "standalone",
-  "background_color": "#fbf7ef",
-  "theme_color": "#071d33",
-  "icons": [
-    {
-      "src": "/assets/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
-    }
-  ]
+  "description": "Propuestas y conocimiento para que el Estado cumpla.",
+  "lang": "es-CO", "dir": "ltr", "id": "/", "start_url": "/", "scope": "/",
+  "display": "standalone", "background_color": "#fbf8f2", "theme_color": "#071d33",
+  "icons": [{"src":"/assets/favicon.svg","sizes":"any","type":"image/svg+xml"}]
 }

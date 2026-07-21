@@ -1,0 +1,4 @@
+---
+const { items=[] }=Astro.props;
+---
+<aside class="section"><h2>Contenido relacionado</h2><div class="chapter-nav">{items.map((i:{href:string,label:string})=><a href={i.href}>{i.label}</a>)}</div></aside>

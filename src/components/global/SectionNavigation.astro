@@ -1,0 +1,4 @@
+---
+const { items, currentPath } = Astro.props;
+---
+<nav class="chapter-nav" aria-label="Capítulos de esta sección">{items.map((i:{href:string,label:string})=><a href={i.href} aria-current={currentPath===i.href?'page':undefined}>{i.label}</a>)}</nav>

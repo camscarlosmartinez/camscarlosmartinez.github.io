@@ -8,7 +8,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "audit": "node tools/audit-dist.mjs",
+    "validate": "npm run check && npm run build && npm run audit"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.0.0",

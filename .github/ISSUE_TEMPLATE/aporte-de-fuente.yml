@@ -1,0 +1,17 @@
+name: Aporte de fuente
+description: Proponer una referencia para una pieza concreta.
+title: "[Fuente] "
+labels: [fuente]
+body:
+  - type: input
+    id: reference
+    attributes: { label: Referencia completa, placeholder: "Autor, título, fecha y URL" }
+    validations: { required: true }
+  - type: input
+    id: related
+    attributes: { label: Contenido relacionado, placeholder: "URL, página o capítulo" }
+    validations: { required: true }
+  - type: textarea
+    id: relevance
+    attributes: { label: Relevancia y límites, description: "Explique qué apoya, matiza o contradice." }
+    validations: { required: true }

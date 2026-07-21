@@ -1,0 +1,5 @@
+---
+import BaseLayout from './BaseLayout.astro';import PageHero from '../components/global/PageHero.astro';import SectionNavigation from '../components/global/SectionNavigation.astro';import {eqcNav} from '../data/navigation';
+const {title,description,eyebrow='Estado que Cumple',lead,currentPath,status}=Astro.props;
+---
+<BaseLayout title={title} description={description} currentPath={currentPath}><PageHero eyebrow={eyebrow} title={title} lead={lead} status={status}/><div class="container page"><SectionNavigation items={eqcNav} currentPath={currentPath}/><slot /></div></BaseLayout>

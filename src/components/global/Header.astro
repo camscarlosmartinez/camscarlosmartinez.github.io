@@ -1,118 +1,32 @@
 ---
-const { currentPath = '/' } = Astro.props as { currentPath?: string };
-
-const knowledgePaths = ['/conocimiento', '/documentos', '/bitacora', '/observatorio', '/archivo'];
-const isKnowledgeCurrent = knowledgePaths.some((path) => currentPath.startsWith(path));
-
-const links = [
-  { href: '/', label: 'Inicio', current: currentPath === '/' },
-  { href: '/cams/', label: 'CAMS', current: currentPath.startsWith('/cams') },
-  { href: '/estado-que-cumple/', label: 'Estado que Cumple', current: currentPath.startsWith('/estado-que-cumple') },
-  { href: '/propuestas/', label: 'Propuestas', current: currentPath.startsWith('/propuestas') },
-  { href: '/conocimiento/', label: 'Conocimiento', current: isKnowledgeCurrent },
-  { href: '/participar/', label: 'Participar', current: currentPath.startsWith('/participar') },
+const { currentPath = '/' } = Astro.props;
+const primary = [
+  ['/', 'Inicio'], ['/cams/', 'CAMS'], ['/estado-que-cumple/', 'Estado que Cumple'],
+  ['/propuestas/', 'Propuestas'], ['/conocimiento/', 'Conocimiento'], ['/participar/', 'Participar']
 ];
-
-const knowledgeLinks = [
-  { href: '/conocimiento/investigaciones/', label: 'Investigaciones', aliases: [] },
-  { href: '/conocimiento/documentos/', label: 'Documentos', aliases: ['/documentos'] },
-  { href: '/conocimiento/bitacora/', label: 'Bitácora', aliases: ['/bitacora'] },
-  { href: '/conocimiento/observatorio/', label: 'Observatorio', aliases: ['/observatorio'] },
-  { href: '/conocimiento/archivo/', label: 'Archivo', aliases: ['/archivo'] },
-];
-
-const isCurrent = (href: string, aliases: string[] = []) => [href.replace(/\/$/, ''), ...aliases].some((path) => currentPath.startsWith(path));
+const knowledge = [['/investigaciones/','Investigaciones'],['/documentos/','Documentos'],['/bitacora/','Bitácora'],['/observatorio/','Observatorio'],['/archivo/','Archivo']];
+const active = (href:string) => href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+const knowledgeActive = currentPath.startsWith('/conocimiento') || knowledge.some(([href]) => active(href));
 ---
-
 <header class="site-header">
-  <div class="container site-header__inner">
-    <a class="brand" href="/" aria-label="CAMS Inicio">
-      <span class="brand__mark">CAMS</span>
-      <span class="brand__text">Carlos Arturo Martínez Sánchez</span>
-    </a>
-
-    <button class="mobile-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" data-menu-toggle>
-      Menú
-    </button>
-
-    <nav class="site-nav" id="site-navigation" aria-label="Navegación principal">
-      <ul class="nav-list">
-        {links.map((link) => (
-          <li class:list={link.label === 'Conocimiento' ? ['nav-item', 'has-submenu'] : ['nav-item']}>
-            {link.label === 'Conocimiento' ? (
-              <div class="nav-link-group">
-                <a class="nav-link" href={link.href} aria-current={link.current ? 'page' : undefined}>{link.label}</a>
-                <button class="nav-link--button" type="button" aria-label="Mostrar secciones de Conocimiento" aria-expanded="false" aria-controls={`submenu-${link.label.toLowerCase()}`} data-submenu-trigger>
-                  <span aria-hidden="true">▾</span>
-                </button>
-                <ul class="submenu" id={`submenu-${link.label.toLowerCase()}`} hidden>
-                  {knowledgeLinks.map((subLink) => (
-                    <li>
-                      <a class="submenu-link" href={subLink.href} aria-current={isCurrent(subLink.href, subLink.aliases) ? 'page' : undefined}>{subLink.label}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : (
-              <a class="nav-link" href={link.href} aria-current={link.current ? 'page' : undefined}>
-                {link.label}
-              </a>
-            )}
-          </li>
-        ))}
-      </ul>
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="CAMS, inicio"><strong>CAMS</strong><span>Carlos Arturo Martínez Sánchez</span></a>
+    <div class="header-actions">
+      <button class="search-trigger" type="button" data-search-open aria-controls="command-palette" aria-expanded="false">Buscar <kbd>Ctrl K</kbd></button>
+      <button class="menu-toggle" type="button" data-menu-toggle aria-controls="primary-nav" aria-expanded="false">Menú</button>
+    </div>
+    <nav id="primary-nav" class="site-nav" aria-label="Navegación principal">
+      <ul>{primary.map(([href,label]) => <li class:list={{knowledge: label==='Conocimiento'}}>
+        <a href={href} aria-current={(label==='Conocimiento' ? knowledgeActive : active(href)) ? 'page' : undefined}>{label}</a>
+        {label === 'Conocimiento' && <><button type="button" data-submenu aria-expanded="false" aria-controls="knowledge-menu" aria-label="Abrir secciones de Conocimiento">▾</button><ul id="knowledge-menu" class="submenu" hidden>{knowledge.map(([h,l]) => <li><a href={h} aria-current={active(h)?'page':undefined}>{l}</a></li>)}</ul></>}
+      </li>)}</ul>
     </nav>
   </div>
 </header>
-
 <script>
-  const toggle = document.querySelector<HTMLElement>('[data-menu-toggle]');
-  const nav = document.getElementById('site-navigation');
-  const submenuTriggers = Array.from(document.querySelectorAll<HTMLElement>('[data-submenu-trigger]'));
-  let lastActivator: HTMLElement | null = null;
-  const closeMenus = () => {
-    if (toggle) {
-      toggle.setAttribute('aria-expanded', 'false');
-    }
-    nav?.classList.remove('is-open');
-    submenuTriggers.forEach((trigger) => trigger.setAttribute('aria-expanded', 'false'));
-    document.querySelectorAll('.submenu').forEach((submenu) => submenu.setAttribute('hidden', ''));
-  };
-
-  toggle?.addEventListener('click', () => {
-    lastActivator = toggle;
-    const isOpen = nav?.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', String(Boolean(isOpen)));
-    if (!isOpen) {
-      closeMenus();
-    }
-  });
-
-  submenuTriggers.forEach((trigger) => {
-    trigger.addEventListener('click', () => {
-      lastActivator = trigger;
-      const nextState = trigger.getAttribute('aria-expanded') === 'true' ? 'false' : 'true';
-      trigger.setAttribute('aria-expanded', nextState);
-      const targetId = trigger.getAttribute('aria-controls');
-      const submenu = document.getElementById(targetId ?? '');
-      if (submenu) {
-        submenu.hidden = nextState === 'false';
-      }
-    });
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      const focusTarget = lastActivator;
-      closeMenus();
-      focusTarget?.focus();
-      lastActivator = null;
-    }
-  });
-
-  nav?.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      closeMenus();
-    });
-  });
+  const menu = document.querySelector<HTMLElement>('[data-menu-toggle]'); const nav = document.querySelector<HTMLElement>('#primary-nav');
+  const sub = document.querySelector<HTMLElement>('[data-submenu]'); const panel = document.querySelector<HTMLElement>('#knowledge-menu');
+  menu?.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true'; menu.setAttribute('aria-expanded',String(open)); nav?.classList.toggle('open',open)});
+  sub?.addEventListener('click',()=>{const open=sub.getAttribute('aria-expanded')!=='true';sub.setAttribute('aria-expanded',String(open));if(panel)panel.hidden=!open});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){menu?.setAttribute('aria-expanded','false');nav?.classList.remove('open');sub?.setAttribute('aria-expanded','false');if(panel)panel.hidden=true;}});
 </script>
