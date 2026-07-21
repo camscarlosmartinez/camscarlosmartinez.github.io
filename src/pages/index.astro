@@ -1,13 +1,176 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';import PageHero from '../components/global/PageHero.astro';import DocumentCard from '../components/global/DocumentCard.astro';
-const desc='Plataforma personal de Carlos Arturo Martínez Sánchez para investigación pública, diseño institucional, propuestas, seguimiento y participación.';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DocumentCard from '../components/global/DocumentCard.astro';
+
+const desc = 'Plataforma personal de Carlos Arturo Martínez Sánchez para investigación pública, diseño institucional, propuestas, seguimiento y participación.';
 ---
-<BaseLayout title="CAMS" description={desc} currentPath="/" jsonLd={{'@context':'https://schema.org','@type':'WebSite',name:'CAMS',url:'https://camscarlosmartinez.github.io',author:{'@type':'Person',name:'Carlos Arturo Martínez Sánchez'}}}>
-<PageHero eyebrow="Carlos Arturo Martínez Sánchez · CAMS" title="Propuestas y conocimiento para que el Estado cumpla" lead="Investigación pública, diseño institucional, seguimiento y participación para convertir problemas verificables en alternativas discutibles, corregibles y trazables."><div class="actions"><a class="button primary" href="/estado-que-cumple/">Explorar Estado que Cumple</a><a class="button secondary" href="/cams/">Conocer CAMS</a></div></PageHero>
-<div class="container page">
- <section class="section section-grid"><div class="prose"><p class="eyebrow">Proyecto insignia</p><h2>Estado que Cumple</h2><p class="lede">El problema no es solo la ausencia de normas: también es la brecha entre las formas institucionales creadas y la capacidad real para implementarlas.</p><p>La tesis propone revisar lo existente, estimar madurez, pilotear cuando haya incertidumbre y decidir mediante un expediente técnico y el instrumento competente.</p><ol class="process"><li>Problema</li><li>RAÍCES</li><li>SAVIA</li><li>SEMILLAS</li><li>Expediente</li><li>Implementación</li><li>Evaluación</li></ol><div class="actions"><a class="button primary" href="/estado-que-cumple/">Abrir micrositio</a><a class="button" href="/estado-que-cumple/documento/">Ver documento</a></div></div><aside class="callout"><span class="status">Propuesta pública</span><h3>No es una política oficial</h3><p>Es una propuesta ciudadana, técnica y programática abierta a crítica, adaptación y corrección.</p></aside></section>
- <section class="section"><p class="eyebrow">Trabajo reciente</p><h2>Una publicación disponible</h2><div class="cards"><DocumentCard title="Estado que Cumple 2026–2030" summary="Documento técnico-político de discusión pública, publicado el 6 de junio de 2026 según los metadatos del PDF." href="/documentos/estado-que-cumple-2026-2030/" /></div></section>
- <section class="section"><p class="eyebrow">Agenda de trabajo</p><h2>Cuatro campos conectados</h2><div class="cards"><article class="card"><h3>Capacidad estatal</h3><p>Funciones, recursos, talento, datos, archivo, control y resultados.</p></article><article class="card"><h3>Administración y territorio</h3><p>Competencias y condiciones diferenciadas de implementación.</p></article><article class="card"><h3>Participación y juventud</h3><p>Aportes públicos que dejen evidencia, respuesta y memoria.</p></article><article class="card"><h3>Infraestructura y políticas públicas</h3><p>Diseño, coordinación y ejecución desde la capacidad institucional.</p></article></div></section>
- <section class="section section-grid"><div><p class="eyebrow">Método CAMS</p><h2>Del problema a una versión pública</h2><ol class="process"><li>Investigar</li><li>Diagnosticar</li><li>Formular</li><li>Contrastar</li><li>Publicar</li><li>Corregir y versionar</li></ol><a href="/cams/metodo/">Conocer el método completo →</a></div><div><p class="eyebrow">Perfil</p><h2>Carlos Arturo Martínez Sánchez</h2><p>Estudiante de Administración Pública en la ESAP. CAMS es su identidad pública personal, método editorial y archivo independiente.</p><a href="/cams/trayectoria/">Consultar trayectoria verificable →</a></div></section>
- <section class="section"><p class="eyebrow">Participación real</p><h2>Corregir, documentar y colaborar</h2><div class="cards"><article class="card"><h3>Corregir un error</h3><a href="/participar/correcciones/">Abrir guía y canal</a></article><article class="card"><h3>Aportar una fuente</h3><a href="/participar/aportar-fuente/">Proponer referencia</a></article><article class="card"><h3>Comentar o colaborar</h3><a href="/participar/colaborar/">Revisar alcance</a></article></div></section>
-</div></BaseLayout>
+
+<BaseLayout
+  title="CAMS"
+  description={desc}
+  currentPath="/"
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'CAMS',
+    url: 'https://camscarlosmartinez.github.io',
+    author: {
+      '@type': 'Person',
+      name: 'Carlos Arturo Martínez Sánchez',
+    },
+  }}
+>
+  <section class="home-hero">
+    <div class="container home-hero__grid">
+      <div class="home-hero__copy">
+        <p class="eyebrow">Carlos Arturo Martínez Sánchez · CAMS</p>
+        <h1>Propuestas y conocimiento para que el Estado cumpla</h1>
+        <p class="home-hero__lead">
+          Investigación pública, diseño institucional, seguimiento y participación para convertir
+          problemas verificables en alternativas discutibles, corregibles y trazables.
+        </p>
+        <div class="actions home-hero__actions">
+          <a class="button primary" href="/estado-que-cumple/">Explorar Estado que Cumple</a>
+          <a class="button secondary" href="/cams/">Conocer CAMS</a>
+        </div>
+      </div>
+
+      <aside class="home-hero__panel" aria-labelledby="home-method-title">
+        <p class="home-hero__panel-code">CAMS · Método público</p>
+        <h2 id="home-method-title">Del problema a una versión que pueda revisarse</h2>
+        <ol class="home-method" aria-label="Método CAMS resumido">
+          <li><span>01</span><div><strong>Investigar</strong><small>Fuentes, antecedentes y límites.</small></div></li>
+          <li><span>02</span><div><strong>Formular</strong><small>Competencias, alternativas y condiciones.</small></div></li>
+          <li><span>03</span><div><strong>Publicar</strong><small>Documento, versión y trazabilidad.</small></div></li>
+          <li><span>04</span><div><strong>Corregir</strong><small>Crítica, evidencia nueva y memoria.</small></div></li>
+        </ol>
+        <a class="home-hero__panel-link" href="/cams/metodo/">Examinar el método completo <span aria-hidden="true">→</span></a>
+      </aside>
+    </div>
+  </section>
+
+  <div class="home-main">
+    <section class="home-section home-project">
+      <div class="container home-project__grid">
+        <div class="home-project__copy">
+          <p class="eyebrow">Proyecto insignia</p>
+          <h2>Estado que Cumple</h2>
+          <p class="lede">
+            El problema no es solo la ausencia de normas: también es la brecha entre las formas
+            institucionales creadas y la capacidad real para implementarlas.
+          </p>
+          <p>
+            La propuesta revisa lo existente, estima madurez, prueba cuando hay incertidumbre y
+            organiza la decisión mediante un expediente técnico y el instrumento competente.
+          </p>
+
+          <ol class="process process--numbered" aria-label="Secuencia resumida de Estado que Cumple">
+            <li>Problema</li>
+            <li>RAÍCES</li>
+            <li>SAVIA</li>
+            <li>SEMILLAS</li>
+            <li>Expediente</li>
+            <li>Implementación</li>
+            <li>Evaluación</li>
+          </ol>
+
+          <div class="actions">
+            <a class="button primary" href="/estado-que-cumple/">Abrir micrositio</a>
+            <a class="button" href="/estado-que-cumple/documento/">Consultar documento</a>
+          </div>
+        </div>
+
+        <aside class="project-status" aria-label="Estado editorial de la propuesta">
+          <span class="status">Propuesta pública</span>
+          <h3>No es una política oficial</h3>
+          <p>
+            Es una propuesta ciudadana, técnica y programática abierta a crítica, adaptación y
+            corrección.
+          </p>
+          <dl>
+            <div><dt>Responsable</dt><dd>Carlos Arturo Martínez Sánchez</dd></div>
+            <div><dt>Condición</dt><dd>Documento público en revisión abierta</dd></div>
+            <div><dt>Acceso</dt><dd>Micrositio, PDF y archivo de versiones</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section class="home-section home-section--soft">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Trabajo publicado</p>
+            <h2>Una pieza disponible, sin llenar el sitio con proyectos ficticios</h2>
+          </div>
+          <a href="/documentos/">Abrir biblioteca <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="cards cards--featured">
+          <DocumentCard
+            title="Estado que Cumple 2026–2030"
+            summary="Documento técnico-político de discusión pública, publicado el 6 de junio de 2026 según los metadatos del PDF."
+            href="/documentos/estado-que-cumple-2026-2030/"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Agenda de trabajo</p>
+            <h2>Campos que se relacionan, pero no se confunden</h2>
+          </div>
+          <p>La agenda orienta investigaciones y propuestas futuras; no afirma que todas estén publicadas.</p>
+        </div>
+        <div class="agenda-grid">
+          <article class="agenda-item"><span>01</span><h3>Capacidad estatal</h3><p>Funciones, recursos, talento, datos, archivo, control y resultados.</p></article>
+          <article class="agenda-item"><span>02</span><h3>Administración y territorio</h3><p>Competencias y condiciones diferenciadas de implementación.</p></article>
+          <article class="agenda-item"><span>03</span><h3>Participación y juventud</h3><p>Aportes públicos que dejen evidencia, respuesta y memoria.</p></article>
+          <article class="agenda-item"><span>04</span><h3>Infraestructura y políticas públicas</h3><p>Diseño, coordinación y ejecución desde la capacidad institucional.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section home-section--navy">
+      <div class="container home-about">
+        <div>
+          <p class="eyebrow">CAMS</p>
+          <h2>Una identidad pública personal, no una entidad paralela</h2>
+          <p>
+            CAMS organiza la investigación, las propuestas y el archivo de Carlos Arturo Martínez
+            Sánchez bajo criterios de trazabilidad, prudencia editorial y revisión pública.
+          </p>
+          <a class="button secondary" href="/cams/">Conocer autoría, trayectoria y criterios</a>
+        </div>
+        <ol class="method-strip" aria-label="Método CAMS">
+          <li><span>01</span>Investigar</li>
+          <li><span>02</span>Diagnosticar</li>
+          <li><span>03</span>Formular</li>
+          <li><span>04</span>Contrastar</li>
+          <li><span>05</span>Publicar</li>
+          <li><span>06</span>Corregir</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="container participation-intro">
+        <div>
+          <p class="eyebrow">Participación verificable</p>
+          <h2>Corregir, documentar y colaborar</h2>
+          <p>
+            Los canales publicados distinguen entre correcciones, aportes de fuentes y propuestas de
+            colaboración. No se simulan formularios ni suscripciones inexistentes.
+          </p>
+        </div>
+        <div class="participation-links">
+          <a href="/participar/correcciones/"><span>01</span><strong>Corregir un error</strong><small>Localizar, verificar y registrar el cambio.</small></a>
+          <a href="/participar/aportar-fuente/"><span>02</span><strong>Aportar una fuente</strong><small>Relacionar evidencia con una afirmación concreta.</small></a>
+          <a href="/participar/colaborar/"><span>03</span><strong>Proponer colaboración</strong><small>Definir alcance, producto y disponibilidad.</small></a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
