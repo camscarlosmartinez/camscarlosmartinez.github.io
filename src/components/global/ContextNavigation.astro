@@ -1,0 +1,4 @@
+---
+const { previous, next }=Astro.props;
+---
+<nav class="chapter-nav" aria-label="Navegación contextual">{previous&&<a href={previous.href}>← {previous.label}</a>}{next&&<a href={next.href}>{next.label} →</a>}</nav>

@@ -1,0 +1,4 @@
+---
+const { title, summary, href, status='Publicado' }=Astro.props;
+---
+<article class="card"><span class="status">{status}</span><h3>{title}</h3><p>{summary}</p><a href={href}>Consultar ficha →</a></article>

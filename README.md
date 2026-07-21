@@ -1,154 +1,41 @@
-# CAMS | Estado que Cumple
+# CAMS
 
-Plataforma pública estática de Carlos Arturo Martínez Sánchez para explicar, documentar y explorar la propuesta ciudadana **Estado que Cumple**.
+Sitio público personal de Carlos Arturo Martínez Sánchez. Distingue la identidad CAMS, la propuesta Estado que Cumple, el catálogo de propuestas, el centro de conocimiento y los canales de participación.
 
-La propuesta es técnica y programática; no ha sido adoptada oficialmente y no sustituye conceptos jurídicos ni competencias de las autoridades. El sitio evita presentar prototipos, indicadores propuestos o canales por conectar como servicios o datos existentes.
+## Requisitos y uso local
 
-## Arquitectura de información
+- Node.js 22 LTS o compatible.
+- Instalar: `npm ci`
+- Desarrollo: `npm run dev`
+- Comprobación Astro/TypeScript: `npm run check`
+- Compilación estática: `npm run build`
+- Auditoría de `dist/`: `npm run audit`
+- Validación completa: `npm run validate`
 
-La navegación principal tiene cinco entradas:
+## Estructura editorial
 
-- **Inicio**: identidad, orientación del ecosistema, experiencias, proyectos, publicaciones, participación y perfil breve.
-- **Estado que Cumple**: problema, teoría, estado del arte, herramientas, arquitectura, rutas, expediente, instrumentos, riesgos, seguimiento y simuladores.
-- **Explorar**: panel accesible que agrupa Documentos, Observatorio, Bitácora y Archivo sin cambiar sus rutas.
-- **Participar**: comentarios, colaboración, suscripción, voluntariado y opciones para compartir.
-- **CAMS**: autoría, criterios de producción, proyectos, redes verificables e independencia.
+- `src/pages/`: rutas públicas; Astro genera HTML estático.
+- `src/layouts/` y `src/components/global/`: estructura, SEO, navegación y piezas editoriales reutilizables.
+- `src/components/tools/`: interacciones cargadas únicamente en el capítulo correspondiente.
+- `src/data/`: navegación e índice de búsqueda como fuentes únicas tipadas.
+- `public/assets/`: imágenes, PDF y JSON públicos usados por herramientas.
+- `.github/ISSUE_TEMPLATE/`: correcciones, fuentes y colaboraciones públicas.
+- `tools/audit-dist.mjs`: auditoría posterior al build.
 
-Las rutas públicas son:
+## Agregar contenido
 
-```text
-/
-/estado-que-cumple/
-/documentos/
-/observatorio/
-/bitacora/
-/participar/
-/archivo/
-/cams/
-```
+### Propuestas
 
-Cada página incluye una navegación contextual breve: de dónde viene la visita, qué está explorando y cuál es el siguiente paso sugerido.
+Cree una ruta o fuente tipada solo cuando exista ficha con problema, tesis, evidencia, alternativas, ruta institucional, instrumentos, condiciones, riesgos, versión, fecha y uno de estos estados: idea registrada, investigación, borrador, propuesta pública, piloto o archivada. Agregue la ruta a `src/data/site.ts`.
 
-## Tecnología
+### Documentos
 
-El sitio usa HTML, CSS y JavaScript nativos. No requiere frameworks, npm, base de datos ni servicios externos y es compatible con GitHub Pages.
+Publique el archivo una sola vez en `public/assets/documentos/`, cree una ficha en `src/pages/documentos/` e informe autoría, resumen, versión, fecha, tamaño, extensión, citación, historial, licencia y huella cuando proceda.
 
-`styles.css` es el punto de entrada del sistema visual:
+### Artículos
 
-```text
-assets/css/
-├── tokens.css
-├── base.css
-├── layout.css
-├── components.css
-├── interactions.css
-├── pages.css
-└── responsive.css
-```
+No anuncie una entrada como publicada hasta que exista el texto completo, fuentes y metadatos. Cuando haya al menos una entrada real puede crearse una colección de contenido y RSS; el sitio no genera un feed vacío.
 
-`script.js` es un inicializador ES module. Carga siempre la navegación y el buscador, incorpora dinámicamente el acceso compacto a participación e importa las demás herramientas solo cuando existen en la página actual:
+## Despliegue
 
-```text
-assets/js/
-├── menu.js
-├── command-palette.js
-├── utilities.js
-├── interactions.js
-├── home-experience.js
-├── view-modes.js
-├── problem-tree.js
-├── proposal-core.js
-├── state-of-art.js
-├── institutional-map.js
-├── decision-lab.js
-├── expediente-builder.js
-├── document-library.js
-└── participation.js
-```
-
-Los datos estructurados reutilizables viven en:
-
-```text
-assets/data/
-├── problem-tree.json
-├── proposal-architecture.json
-├── state-of-art.json
-├── activation-routes.json
-└── documents.json
-```
-
-El contenido esencial también permanece en HTML: si JavaScript falla, las explicaciones, alternativas textuales y enlaces principales siguen disponibles.
-
-## Experiencias interactivas
-
-- Selector de perfil de visita y ruta sugerida, guardado solo en `localStorage`.
-- Mapa del ecosistema CAMS con selección previa a la navegación.
-- Modos de lectura ciudadano, técnico y jurídico-institucional.
-- Núcleo orbital RAÍCES, SAVIA, SEMILLAS y su cadena de decisión.
-- Árbol técnico con filtros y recorrido diagnóstico de hasta cinco nodos.
-- Explorador comparado del estado del arte y matriz entre dos experiencias.
-- Mapa institucional por capas.
-- Simulador pedagógico de activación normativa.
-- Constructor local de expediente técnico de catorce dimensiones.
-- Biblioteca documental filtrable.
-- Buscador global con `Ctrl + K`, filtros y normalización de tildes.
-- Acceso compacto a comentar, colaborar, suscribirse o compartir, en flujo en móvil y flotante en escritorio, sin duplicar el contenido de Participar.
-
-Las preferencias y notas se guardan en el navegador. No se envía información a servidores.
-
-## Accesibilidad y comportamiento sin JavaScript
-
-- Un `h1` por página, `skip-link` y `main#contenido`.
-- Navegación activa con `aria-current`.
-- Menús con `aria-expanded`, `aria-controls`, cierre con Escape y devolución de foco.
-- Selecciones con `aria-pressed`, controles etiquetados y foco visible.
-- Alternativas textuales para mapas, árboles y diagramas.
-- Respeto de `prefers-reduced-motion`.
-- Menú y contenido principal utilizables sin JavaScript.
-
-## Sistema responsive
-
-La capa `assets/css/responsive.css` parte de una composición compacta y amplía las estructuras cuando el contenido dispone de espacio. Sus umbrales documentados son 30, 48, 64, 80 y 100 rem. Los mapas CAMS y el núcleo de la propuesta pasan de lista a diagrama por container query; las fichas documentales, la mesa de trabajo, el estado del arte, el simulador, el expediente y los CTA también responden a su contenedor.
-
-La matriz verificada, los escenarios de orientación, tacto, zoom y aumento de texto, y el alcance exacto de la revisión visual están documentados en `docs/matriz-responsive.md`.
-
-## Edición
-
-1. Mantener la función exclusiva de cada página; no duplicar el bloque completo de participación ni la explicación integral de la propuesta.
-2. Usar los componentes existentes antes de crear variantes nuevas.
-3. Mantener los colores hexadecimales en `assets/css/tokens.css`.
-4. Incorporar documentos y experiencias en sus archivos JSON y conservar una explicación HTML accesible cuando sea contenido esencial.
-5. Marcar con claridad estados como publicado, prototipo, borrador o planeado.
-6. No inventar datos, adopción institucional, canales habilitados ni resultados.
-7. No publicar datos personales sensibles o información de terceros.
-
-El diagnóstico previo a esta reorganización está en `docs/auditoria-experiencia-v6.md`.
-
-## Prueba local
-
-Desde la raíz del proyecto:
-
-```powershell
-py -m http.server 5500
-```
-
-Abrir `http://localhost:5500`.
-
-## Auditorías
-
-Las herramientas usan solo la biblioteca estándar de Python:
-
-```powershell
-py tools/audit_site.py
-py tools/audit_css.py
-py tools/audit_js.py
-py tools/audit_responsive.py
-git diff --check
-```
-
-- `audit_site.py`: estructura HTML, accesibilidad básica, rutas, fragmentos, assets, sitemap, JSON y documentos enlazados.
-- `audit_css.py`: selectores y variables duplicados, bloques vacíos, reglas posiblemente sin uso y colores fuera de tokens.
-- `audit_js.py`: grafo de imports, módulos desconectados, inicializadores duplicados y referencias estáticas potencialmente inexistentes.
-- `audit_responsive.py`: anchos y alturas rígidos, parches de overflow, tipografía extrema, elementos fijos, SVG, dimensiones de imágenes, media queries y cobertura móvil aparente de los componentes interactivos.
-
-Los avisos son puntos de revisión humana; los errores producen un código de salida distinto de cero.
+`astro.config.mjs` usa salida estática, sitio canónico `https://camscarlosmartinez.github.io` y sitemap. `.github/workflows/deploy.yml` ejecuta comprobación, compila con la acción oficial de Astro y despliega GitHub Pages al actualizar `main`.

@@ -1,0 +1,24 @@
+name: Corrección de error
+description: Reportar un error verificable en una página o documento.
+title: "[Corrección] "
+labels: [corrección]
+body:
+  - type: markdown
+    attributes:
+      value: "No incluya datos personales o sensibles: este reporte será público."
+  - type: input
+    id: location
+    attributes: { label: Página o documento, placeholder: "URL y sección" }
+    validations: { required: true }
+  - type: textarea
+    id: error
+    attributes: { label: Error observado, description: "Copie el texto o describa el dato." }
+    validations: { required: true }
+  - type: textarea
+    id: correction
+    attributes: { label: Corrección propuesta }
+    validations: { required: true }
+  - type: input
+    id: source
+    attributes: { label: Fuente verificable, placeholder: "Referencia o URL estable" }
+    validations: { required: true }

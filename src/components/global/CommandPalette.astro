@@ -1,0 +1,18 @@
+---
+import { searchItems } from '../../data/site';
+---
+<dialog id="command-palette" class="command-palette" aria-labelledby="search-title">
+  <div class="dialog-head"><h2 id="search-title">Buscar en CAMS</h2><button type="button" data-search-close aria-label="Cerrar buscador">×</button></div>
+  <label for="global-search">Título, tema o palabra clave</label><input id="global-search" type="search" autocomplete="off" data-search-input />
+  <p class="search-hint">Use ↑ y ↓ para recorrer resultados, Enter para abrir y Escape para cerrar.</p>
+  <div data-search-results class="search-results" aria-live="polite"></div>
+</dialog>
+<script is:inline define:vars={{ items: searchItems }}>
+  const dialog=document.querySelector('#command-palette'); const input=dialog?.querySelector('[data-search-input]'); const output=dialog?.querySelector('[data-search-results]');
+  const norm=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+  const render=()=>{const q=norm(input.value.trim());const found=items.filter(x=>!q||norm([x.title,x.group,x.summary,...x.keywords].join(' ')).includes(q)).slice(0,12); output.innerHTML=found.length?found.map(x=>`<a href="${x.url}"><strong>${x.title}</strong><span>${x.group} · ${x.summary}</span></a>`).join(''):'<p>No hay resultados en el índice publicado.</p>';};
+  const open=()=>{dialog.showModal();document.querySelector('[data-search-open]')?.setAttribute('aria-expanded','true');render();setTimeout(()=>input.focus(),0)};
+  document.querySelector('[data-search-open]')?.addEventListener('click',open); dialog?.querySelector('[data-search-close]')?.addEventListener('click',()=>dialog.close());
+  input?.addEventListener('input',render); dialog?.addEventListener('close',()=>document.querySelector('[data-search-open]')?.setAttribute('aria-expanded','false'));
+  document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();open();}});
+</script>

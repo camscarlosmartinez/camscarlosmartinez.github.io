@@ -4,64 +4,40 @@ import SkipLink from '../components/global/SkipLink.astro';
 import Header from '../components/global/Header.astro';
 import Footer from '../components/global/Footer.astro';
 import SeoHead from '../components/global/SeoHead.astro';
-
-interface Props {
-  title?: string;
-  description?: string;
-  currentPath?: string;
-  canonical?: string;
-  image?: string;
-  type?: string;
-  robots?: string;
-  locale?: string;
-  author?: string;
-}
-
-const {
-  title = 'CAMS',
-  description = 'Plataforma pública de investigación, propuestas y participación de CAMS.',
-  currentPath = '/',
-  canonical,
-  image = '/assets/og-cams-v3.png',
-  type = 'website',
-  robots = 'index, follow',
-  locale = 'es_CO',
-  author = 'Carlos Arturo Martínez Sánchez',
-} = Astro.props as Props;
-
-const siteTitle = title === 'CAMS' ? 'CAMS — Carlos Arturo Martínez Sánchez' : `${title} · CAMS`;
-const siteUrl = Astro.site ?? new URL('https://camscarlosmartinez.github.io');
-const canonicalUrl = new URL(canonical ?? Astro.url.pathname, siteUrl).toString();
-const socialImageUrl = new URL(image, siteUrl).toString();
+import CommandPalette from '../components/global/CommandPalette.astro';
+import Breadcrumbs from '../components/global/Breadcrumbs.astro';
+interface Props { title: string; description: string; currentPath?: string; type?: string; jsonLd?: Record<string, unknown>; }
+const { title, description, currentPath = Astro.url.pathname, type = 'website', jsonLd } = Astro.props;
+const fullTitle = title === 'CAMS' ? 'CAMS — Carlos Arturo Martínez Sánchez' : `${title} · CAMS`;
+const site = Astro.site ?? new URL('https://camscarlosmartinez.github.io');
+const canonical = new URL(Astro.url.pathname, site).toString();
 ---
-
-<html lang="es">
+<!doctype html>
+<html lang="es-CO">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="generator" content={Astro.generator} />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#071d33" />
+    <meta name="generator" content={Astro.generator} />
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
     <link rel="manifest" href="/site.webmanifest" />
-    <SeoHead
-      title={siteTitle}
-      description={description}
-      canonical={canonicalUrl}
-      image={socialImageUrl}
-      type={type}
-      robots={robots}
-      locale={locale}
-      author={author}
-    />
+    <SeoHead title={fullTitle} description={description} canonical={canonical} type={type} />
+    {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body>
+    <div class="reading-progress" data-reading-progress aria-hidden="true"><span></span></div>
     <SkipLink />
-    <div class="site-shell">
-      <Header currentPath={currentPath} />
-      <main id="main-content" tabindex="-1">
-        <slot />
-      </main>
-      <Footer />
-    </div>
+    <Header currentPath={currentPath} />
+    <main id="contenido" tabindex="-1">
+      {currentPath !== '/' && <div class="container" style="padding-top:1rem"><Breadcrumbs items={[{label:'Inicio',href:'/'},{label:title}]} /></div>}
+      <slot />
+    </main>
+    <Footer />
+    <CommandPalette />
+    <script>
+      const bar = document.querySelector<HTMLElement>('[data-reading-progress] span');
+      const update = () => { const max = document.documentElement.scrollHeight - innerHeight; if (bar) bar.style.width = `${max > 0 ? scrollY / max * 100 : 0}%`; };
+      addEventListener('scroll', update, { passive: true }); update();
+    </script>
   </body>
 </html>

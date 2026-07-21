@@ -1,42 +1,15 @@
 ---
-interface Props {
-  title: string;
-  description: string;
-  canonical: string;
-  image?: string;
-  type?: string;
-  robots?: string;
-  locale?: string;
-  author?: string;
-}
-
-const {
-  title,
-  description,
-  canonical,
-  image = 'https://camscarlosmartinez.github.io/assets/og-cams-v3.png',
-  type = 'website',
-  robots = 'index, follow',
-  locale = 'es_CO',
-  author = 'Carlos Arturo Martínez Sánchez',
-} = Astro.props;
+interface Props { title: string; description: string; canonical: string; type?: string; }
+const { title, description, canonical, type = 'website' } = Astro.props;
+const image = 'https://camscarlosmartinez.github.io/assets/og-cams-v3.png';
 ---
-
 <title>{title}</title>
 <meta name="description" content={description} />
-<meta name="author" content={author} />
-<meta name="robots" content={robots} />
+<meta name="author" content="Carlos Arturo Martínez Sánchez" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
 <link rel="canonical" href={canonical} />
-
-<meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
-<meta property="og:type" content={type} />
-<meta property="og:url" content={canonical} />
-<meta property="og:image" content={image} />
-<meta property="og:locale" content={locale} />
-<meta property="og:site_name" content="CAMS" />
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content={title} />
-<meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={image} />
+<meta property="og:title" content={title} /><meta property="og:description" content={description} />
+<meta property="og:type" content={type} /><meta property="og:url" content={canonical} />
+<meta property="og:image" content={image} /><meta property="og:locale" content="es_CO" /><meta property="og:site_name" content="CAMS" />
+<meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} /><meta name="twitter:image" content={image} />

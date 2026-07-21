@@ -1,0 +1,4 @@
+---
+const { version, date }=Astro.props;
+---
+<aside class="version-notice"><strong>Versión: {version}</strong>{date && <span> · {date}</span>}<slot /></aside>

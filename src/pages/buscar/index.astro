@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/global/PageHero.astro';
+import { searchItems } from '../../data/site';
+---
+<BaseLayout title="Buscar" description="Índice global accesible de páginas, herramientas y contenidos publicados en CAMS." currentPath="/buscar/">
+  <PageHero eyebrow="Índice global" title="Buscar en CAMS" lead="Consulte por título, grupo, resumen o palabras clave." />
+  <div class="container page">
+    <label for="page-search"><strong>Buscar</strong></label>
+    <input id="page-search" type="search" style="width:100%;padding:.8rem;font:inherit" autocomplete="off" />
+    <div class="search-results" data-page-results aria-live="polite">
+      {searchItems.map((i) => <a href={i.url} data-text={[i.title,i.group,i.summary,...i.keywords].join(' ')}><strong>{i.title}</strong><span>{i.group} · {i.summary}</span></a>)}
+    </div>
+  </div>
+  <script>
+    const input = document.querySelector<HTMLInputElement>('#page-search');
+    const links = [...document.querySelectorAll<HTMLElement>('[data-page-results] a')];
+    const norm = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+    input?.addEventListener('input', () => links.forEach((a) => a.hidden = !norm(a.dataset.text ?? '').includes(norm(input.value))));
+  </script>
+</BaseLayout>

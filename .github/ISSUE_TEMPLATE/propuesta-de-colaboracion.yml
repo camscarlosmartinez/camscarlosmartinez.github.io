@@ -1,0 +1,17 @@
+name: Propuesta de colaboración
+description: Proponer un aporte concreto y públicamente trazable.
+title: "[Colaboración] "
+labels: [colaboración]
+body:
+  - type: textarea
+    id: objective
+    attributes: { label: Objetivo y contenido relacionado }
+    validations: { required: true }
+  - type: textarea
+    id: contribution
+    attributes: { label: Aporte y producto esperado }
+    validations: { required: true }
+  - type: textarea
+    id: scope
+    attributes: { label: Alcance, disponibilidad y posibles conflictos de interés }
+    validations: { required: true }
